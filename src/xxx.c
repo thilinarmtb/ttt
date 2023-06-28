@@ -58,4 +58,12 @@ struct xxx_t *xxx_init(int *argc, char **argv[]) {
   return xxx;
 }
 
+void xxx_debug(int verbose, const char *fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  if (verbose > 0)
+    vprintf(fmt, args);
+  va_end(args);
+}
+
 void xxx_finalize(struct xxx_t **xxx) { xxx_free(xxx); }

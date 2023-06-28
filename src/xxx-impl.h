@@ -1,6 +1,7 @@
 #if !defined(__LIBXXX_IMPL_H__)
 #define __LIBXXX_IMPL_H__
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
