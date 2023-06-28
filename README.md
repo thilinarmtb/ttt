@@ -9,4 +9,5 @@ project specific names and/or prefixes. This script also renames the files.
 
 Then `mylib.sh` (Originally, `xxx.sh` before calling setup), can be used to
 build and install the library `mylib.so` and the executable `drive`. Latter
-is not renamed since it is just the driver to interact with the library.
+is not renamed since it is just the driver code to interact with the library.
+`setup.sh` self-deletes itself and deletes this `README.md` as well.

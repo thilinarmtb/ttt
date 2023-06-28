@@ -15,7 +15,7 @@ struct xxx_t {
 };
 
 // Dynamic memory allocation function.
-#define xxx_calloc(T, n) (T *)calloc(n, sizeof(T))
+#define xxx_calloc(T, n) ((T *)calloc(n, sizeof(T)))
 
 // Dynamic memory deallocation function.
 void xxx_free_(void **p);

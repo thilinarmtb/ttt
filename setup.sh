@@ -15,3 +15,6 @@ git mv src/xxx.c src/${name}.c
 git mv src/xxx.h src/${name}.h
 git mv src/xxx-impl.h src/${name}-impl.h
 git clean -dfx
+
+# Remove this script, and README.md.
+rm -- README.md "$0"

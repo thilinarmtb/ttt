@@ -12,4 +12,4 @@ mkdir -p ${XXX_BUILD_DIR} 2> /dev/null
 cmake -DCMAKE_C_COMPILER=${XXX_CC} -DCMAKE_INSTALL_PREFIX=${XXX_INSTALL_DIR} \
   -B ${XXX_BUILD_DIR} -S ${XXX_CURRENT_DIR}
   
-cmake --build ${XXX_BUILD_DIR} --target install -j10
+cmake --build ${XXX_BUILD_DIR} --target install -j4
