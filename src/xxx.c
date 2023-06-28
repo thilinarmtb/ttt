@@ -7,11 +7,11 @@ void xxx_free_(void **p) { free(*p), *p = NULL; }
 static void print_help(const char *name) {
   printf("Usage: %s [OPTIONS]\n", name);
   printf("Options:\n");
-  printf("  --xxx-verbose=<VERBOSITY>, Verbose level. Values: 0, 1, 2, ...\n");
+  printf("  --xxx-verbose=<verbose level>, Verbose level (0, 1, 2, ...).\n");
   printf("  --xxx-help, Prints this help message and exit.\n");
 }
 
-static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_in) {
+static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_) {
   xxx->verbose = 0;
 
   static struct option long_options[] = {
@@ -19,7 +19,7 @@ static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_in) {
       {"xxx-help", no_argument, 0, 99},
       {0, 0, 0, 0}};
 
-  char **argv = *argv_in;
+  char **argv = *argv_;
   for (;;) {
     int c = getopt_long(*argc, argv, "", long_options, NULL);
     if (c == -1)

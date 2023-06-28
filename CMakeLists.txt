@@ -20,11 +20,11 @@ target_compile_options(xxx PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
   $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>)
 
-add_executable(drive bin/drive.c)
-set_target_properties(drive PROPERTIES VERSION ${PROJECT_VERSION})
-target_link_libraries(drive PRIVATE xxx)
-target_include_directories(drive PRIVATE src)
-target_compile_options(drive PRIVATE
+add_executable(xxx_driver bin/xxx.c)
+set_target_properties(xxx_driver PROPERTIES VERSION ${PROJECT_VERSION})
+target_link_libraries(xxx_driver PRIVATE xxx)
+target_include_directories(xxx_driver PRIVATE src)
+target_compile_options(xxx_driver PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
   $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>)
 
@@ -36,6 +36,6 @@ if (CLANG_FORMAT)
     COMMENT "Running clang-format ...")
 endif()
 
-install(TARGETS xxx drive RUNTIME DESTINATION bin LIBRARY DESTINATION lib
+install(TARGETS xxx xxx_driver RUNTIME DESTINATION bin LIBRARY DESTINATION lib
   PUBLIC_HEADER DESTINATION include
 )
