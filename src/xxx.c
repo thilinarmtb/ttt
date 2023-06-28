@@ -11,14 +11,13 @@ static void print_help(const char *name) {
   printf("  --xxx-help, Prints this help message and exit.\n");
 }
 
-struct xxx_t *xxx_init(int *argc, char **argv_in[]) {
+static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_in) {
+  xxx->verbose = 0;
+
   static struct option long_options[] = {
       {"xxx-verbose", optional_argument, 0, 10},
       {"xxx-help", no_argument, 0, 99},
       {0, 0, 0, 0}};
-
-  struct xxx_t *xxx = (struct xxx_t *)xxx_calloc(struct xxx_t, 1);
-  xxx->verbose = 0;
 
   char **argv = *argv_in;
   for (;;) {
@@ -47,6 +46,14 @@ struct xxx_t *xxx_init(int *argc, char **argv_in[]) {
   for (int i = optind; i < *argc; i++)
     argv[i - optind] = argv[i];
   *argc -= optind;
+
+  return;
+}
+
+struct xxx_t *xxx_init(int *argc, char **argv[]) {
+  struct xxx_t *xxx = xxx_calloc(struct xxx_t, 1);
+
+  xxx_parse_opts(xxx, argc, argv);
 
   return xxx;
 }
