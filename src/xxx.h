@@ -6,6 +6,8 @@ struct xxx_t *xxx_init(int *argc, char **argv[]);
 
 void xxx_debug(const int verbose, const char *fmt, ...);
 
+void xxx_error(const char *fmt, ...);
+
 void xxx_assert_(int cond, const char *fmt, const char *file,
                  const unsigned line);
 #define xxx_assert(COND, MSG) xxx_assert_(COND, MSG, __FILE__, __LINE__)

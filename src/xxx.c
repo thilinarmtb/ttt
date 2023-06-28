@@ -66,6 +66,14 @@ void xxx_debug(int verbose, const char *fmt, ...) {
   va_end(args);
 }
 
+void xxx_error(const char *fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  vfprintf(stderr, fmt, args);
+  va_end(args);
+  exit(EXIT_FAILURE);
+}
+
 void xxt_assert_(int cond, const char *msg, const char *file,
                  const unsigned line) {
   if (!cond) {
