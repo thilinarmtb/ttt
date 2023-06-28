@@ -6,7 +6,7 @@ if [ $# -lt 1 ]; then
 fi
 
 name=$1
-NAME=${1^^}
+NAME=$(echo "$1" | tr '[:lower:]' '[:upper:]')
 
 git grep -l 'xxx' | grep -v setup.sh | xargs sed -i.bak "s/xxx/${name}/g"
 git grep -l 'XXX' | grep -v setup.sh | xargs sed -i.bak "s/XXX/${NAME}/g"
