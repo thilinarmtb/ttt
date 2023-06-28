@@ -66,4 +66,12 @@ void xxx_debug(int verbose, const char *fmt, ...) {
   va_end(args);
 }
 
+void xxt_assert_(int cond, const char *msg, const char *file,
+                 const unsigned line) {
+  if (!cond) {
+    printf("%s:%d Assertion failure: %s", file, line, msg);
+    exit(EXIT_FAILURE);
+  }
+}
+
 void xxx_finalize(struct xxx_t **xxx) { xxx_free(xxx); }
