@@ -7,20 +7,22 @@ void xxx_free_(void **p) { free(*p), *p = NULL; }
 static void print_help(const char *name) {
   printf("Usage: %s [OPTIONS]\n", name);
   printf("Options:\n");
-  printf("  --verbose=<VERBOSITY>, Verbose level. Values: 0, 1, 2, ...\n");
-  printf("  --help, Prints this help message.\n");
+  printf("  --xxx-verbose=<VERBOSITY>, Verbose level. Values: 0, 1, 2, ...\n");
+  printf("  --xxx-help, Prints this help message and exit.\n");
 }
 
-struct xxx_t *xxx_init(int argc, char **argv) {
-  static struct option long_options[] = {{"verbose", optional_argument, 0, 10},
-                                         {"help", no_argument, 0, 99},
-                                         {0, 0, 0, 0}};
+struct xxx_t *xxx_init(int *argc, char **argv_in[]) {
+  static struct option long_options[] = {
+      {"xxx-verbose", optional_argument, 0, 10},
+      {"xxx-help", no_argument, 0, 99},
+      {0, 0, 0, 0}};
 
-  struct xxx_t *xxx = (struct xxx_t *)calloc(1, sizeof(struct xxx_t));
+  struct xxx_t *xxx = (struct xxx_t *)xxx_calloc(struct xxx_t, 1);
   xxx->verbose = 0;
 
+  char **argv = *argv_in;
   for (;;) {
-    int c = getopt_long(argc, argv, "", long_options, NULL);
+    int c = getopt_long(*argc, argv, "", long_options, NULL);
     if (c == -1)
       break;
 
@@ -38,6 +40,13 @@ struct xxx_t *xxx_init(int argc, char **argv) {
       break;
     }
   }
+
+  // Remove parsed arguments from argv. We just need to update the pointers
+  // since command line arguments are not transient and available until the
+  // end of the program.
+  for (int i = optind; i < *argc; i++)
+    argv[i - optind] = argv[i];
+  *argc -= optind;
 
   return xxx;
 }
