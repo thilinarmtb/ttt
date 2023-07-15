@@ -1,5 +1,7 @@
 ### XXX
 
+## Setup a new project
+
 Simply use `setup.sh` to replace instances of `xxx` and `XXX` with your
 project specific names and/or prefixes. This script also renames the files.
 ```sh
@@ -18,4 +20,14 @@ self-deletes itself and deletes git history and this `README.md` as well.
 Pass `-h` or `--help` to print the full help message.
 ```sh
 ./setup.sh --help
+```
+
+## Build this project
+
+This project uses conda to manage dependencies (CMake, clang-format, and other
+dependencies for documentation). Dependencies can be installed by executing the
+following commands after installing [conda](https://docs.conda.io/en/latest/miniconda.html).
+```sh
+conda env create -f environment-dev.yml
+conda activate xxx-dev
 ```

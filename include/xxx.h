@@ -15,7 +15,30 @@
 #define XXX_INTERN extern XXX_VISIBILITY(hidden)
 #endif
 
+/**
+ * @defgroup xxx_api User API functions
+ *
+ * @brief xxx API functions defined in `xxx.h`.
+ */
+
+/**
+ * @struct xxx_t
+ * @ingroup xxx_api
+ *
+ * @brief xxx handle returned by xxx_init().
+ */
 struct xxx_t;
+
+/**
+ * @ingroup xxx_api
+ *
+ * @brief Initialize xxx.
+ *
+ * @param argc Pointer to the number of commnad line arguments.
+ * @param argv Pointer to the array of command line arguments.
+ *
+ * @return struct xxx_t*
+ */
 XXX_EXTERN struct xxx_t *xxx_init(int *argc, char **argv[]);
 
 XXX_EXTERN void xxx_debug(const int verbose, const char *fmt, ...);
