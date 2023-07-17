@@ -1,0 +1,72 @@
+name: Build and test docs
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'Run the build with tmate debugging enabled'
+        required: false
+        default: false
+env:
+  # Increase to reset cache manually
+  CACHE_NUMBER: 0
+  XXX_ENV: /usr/share/miniconda/envs/xxx-dev
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    env:
+      BUILDDIR: build
+      DOCSDIR: build/docs
+      PUSH_ON_MAIN: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    steps:
+      - name: Setup GitHub actions
+        uses: actions/checkout@v3
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3.13
+        if: ${{ inputs.debug_enabled }}
+      - name: Setup conda environment
+        id: setup_conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: xxx-dev
+          use-mamba: false
+      - name: Cache conda environment
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.XXX_ENV }}
+          key:  conda-${{ runner.os }}-${{ hashFiles('environment-dev.yml') }}-${{ hashFiles('requirements-dev.txt') }}-${{ env.CACHE_NUMBER }}
+        id: cache
+      - name: Update conda environment
+        id: update_env
+        run: |
+          conda env update -n xxx-dev -f environment-dev.yml
+        if: steps.cache.outputs.cache-hit != 'true'
+      - name: Build documentation
+        id: build_docs
+        run: |
+          cmake -DENABLE_DOCS=ON -DCMAKE_INSTALL_PREFIX=${HOME}/local -B ${BUILDDIR} -S .
+          cmake --build ${BUILDDIR} --target install -j4
+      # https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/
+      - name: Bypass Jekyll
+        id: bypass_jekyll
+        if: ${{ fromJSON(env.PUSH_ON_MAIN) }}
+        run: |
+          cd ${DOCSDIR}/sphinx && touch .nojekyll
+      - name: Deploy to gh-pages
+        id: deploy
+        if: ${{ fromJSON(env.PUSH_ON_MAIN) }}
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: ${{ env.DOCSDIR }}/sphinx
+      - name: Block to allow inspecting failures
+        run: sleep 30m
+        if: ${{ failure() && inputs.debug_enabled }}
