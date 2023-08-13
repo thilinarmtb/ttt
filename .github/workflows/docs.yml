@@ -14,7 +14,7 @@ on:
 env:
   # Increase to reset cache manually
   CACHE_NUMBER: 0
-  XXX_ENV: /usr/share/miniconda3/envs/xxx-dev
+  XXX_ENV: /usr/share/miniconda/envs/xxx-dev
 jobs:
   docs:
     runs-on: ubuntu-latest
