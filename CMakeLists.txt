@@ -40,6 +40,7 @@ if (ENABLE_DOCS)
   add_subdirectory ("docs")
 endif()
 
+# Add clang-format as a custom target if available.
 find_program(CLANG_FORMAT NAMES clang-format)
 if (CLANG_FORMAT)
   add_custom_target(format COMMAND ${CLANG_FORMAT} -i
@@ -61,8 +62,8 @@ endif()
 
 # Add AddressSanitizer if the build type is Debug.
 if (CMAKE_BUILD_TYPE MATCHES Debug)
-  include(CheckCCompilerFlag)
-  check_c_compiler_flag("-fsanitize=address" HAS_ADDRESS_SANITIZER)
+  include(CheckLinkerFlag)
+  check_linker_flag(C -fsanitize=address HAS_ADDRESS_SANITIZER)
   if (HAS_ADDRESS_SANITIZER)
     target_compile_options(xxx PRIVATE -fsanitize=address)
     target_link_options(xxx PRIVATE -fsanitize=address)
