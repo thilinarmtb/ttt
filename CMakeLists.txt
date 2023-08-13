@@ -51,3 +51,10 @@ endif()
 install(TARGETS xxx xxx-driver RUNTIME DESTINATION bin LIBRARY DESTINATION lib
   PUBLIC_HEADER DESTINATION include
 )
+
+# Add clang-tidy to the build if available.
+find_program(CLANG_TIDY NAMES clang-tidy)
+if (CLANG_TIDY)
+  set_target_properties(xxx PROPERTIES C_CLANG_TIDY "${CLANG_TIDY}")
+  set_target_properties(xxx-driver PROPERTIES C_CLANG_TIDY "${CLANG_TIDY}")
+endif()

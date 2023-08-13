@@ -5,8 +5,8 @@ channels:
 dependencies:
   - python=3.10
   - cmake=3.24
+  - clangdev=16.0
+  - doxygen
   - pip
   - pip:
     - -r requirements-dev.txt
-  - clang-format=15.0.3
-  - doxygen
