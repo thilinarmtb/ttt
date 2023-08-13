@@ -52,9 +52,21 @@ install(TARGETS xxx xxx-driver RUNTIME DESTINATION bin LIBRARY DESTINATION lib
   PUBLIC_HEADER DESTINATION include
 )
 
-# Add clang-tidy to the build if available.
+# Add clang-tidy to target properties if available.
 find_program(CLANG_TIDY NAMES clang-tidy)
 if (CLANG_TIDY)
   set_target_properties(xxx PROPERTIES C_CLANG_TIDY "${CLANG_TIDY}")
   set_target_properties(xxx-driver PROPERTIES C_CLANG_TIDY "${CLANG_TIDY}")
+endif()
+
+# Add AddressSanitizer if the build type is Debug.
+if (CMAKE_BUILD_TYPE MATCHES Debug)
+  include(CheckCCompilerFlag)
+  check_c_compiler_flag("-fsanitize=address" HAS_ADDRESS_SANITIZER)
+  if (HAS_ADDRESS_SANITIZER)
+    target_compile_options(xxx PRIVATE -fsanitize=address)
+    target_link_options(xxx PRIVATE -fsanitize=address)
+    target_compile_options(xxx-driver PRIVATE -fsanitize=address)
+    target_link_options(xxx-driver PRIVATE -fsanitize=address)
+  endif()
 endif()
