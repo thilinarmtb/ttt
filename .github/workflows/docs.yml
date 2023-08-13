@@ -14,7 +14,7 @@ on:
 env:
   # Increase to reset cache manually
   CACHE_NUMBER: 0
-  XXX_ENV: /usr/share/miniconda/envs/xxx-dev
+  XXX_ENV: /usr/share/miniconda3/envs/xxx-dev
 jobs:
   docs:
     runs-on: ubuntu-latest
@@ -37,6 +37,7 @@ jobs:
         with:
           activate-environment: xxx-dev
           use-mamba: false
+      # https://dev.to/epassaro/caching-anaconda-environments-in-github-actions-5hde
       - name: Cache conda environment
         uses: actions/cache@v3
         with:
