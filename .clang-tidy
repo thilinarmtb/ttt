@@ -1,5 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*'
+Checks:          '*,-altera-*,-llvmlibc-restrict-system-libc-headers,-google-readability-braces-around-statements,-hicpp-braces-around-statements,-readability-braces-around-statements'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false

@@ -43,11 +43,11 @@ XXX_EXTERN struct xxx_t *xxx_init(int *argc, char **argv[]);
 
 XXX_EXTERN void xxx_debug(const int verbose, const char *fmt, ...);
 
-XXX_EXTERN void xxx_error(const char *fmt, ...);
-
 XXX_INTERN void xxx_assert_(int cond, const char *fmt, const char *file,
                             const unsigned line);
 #define xxx_assert(COND, MSG) xxx_assert_(COND, MSG, __FILE__, __LINE__)
+
+XXX_EXTERN void xxx_error(const char *fmt, ...);
 
 XXX_EXTERN void xxx_finalize(struct xxx_t **xxx);
 

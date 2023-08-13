@@ -2,7 +2,7 @@
 #include <xxx-impl.h>
 
 // Dynamic memory free function.
-void xxx_free_(void **p) { free(*p), *p = NULL; }
+void xxx_free_(void **ptr) { free(*ptr), *ptr = NULL; }
 
 static void print_help(const char *name) {
   printf("Usage: %s [OPTIONS]\n", name);
@@ -19,15 +19,18 @@ static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_) {
       {"xxx-help", no_argument, 0, 99},
       {0, 0, 0, 0}};
 
+  char *end = NULL;
   char **argv = *argv_;
   for (;;) {
-    int c = getopt_long(*argc, argv, "", long_options, NULL);
-    if (c == -1)
+    int opt = getopt_long(*argc, argv, "", long_options, NULL);
+    if (opt == -1)
       break;
 
-    switch (c) {
+    switch (opt) {
     case 10:
-      xxx->verbose = atoi(optarg);
+      xxx->verbose = strtol(optarg, &end, 10);
+      if (!end || *end != '\0' || optarg == end)
+        xxx_error("Invalid string for verbose level: %s\n", optarg);
       break;
     case 99:
       print_help(argv[0]);
@@ -46,8 +49,6 @@ static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_) {
   for (int i = optind; i < *argc; i++)
     argv[i - optind] = argv[i];
   *argc -= optind;
-
-  return;
 }
 
 struct xxx_t *xxx_init(int *argc, char **argv[]) {
@@ -66,20 +67,21 @@ void xxx_debug(int verbose, const char *fmt, ...) {
   va_end(args);
 }
 
-void xxx_error(const char *fmt, ...) {
-  va_list args;
-  va_start(args, fmt);
-  vfprintf(stderr, fmt, args);
-  va_end(args);
-  exit(EXIT_FAILURE);
-}
-
-void xxt_assert_(int cond, const char *msg, const char *file,
+void xxx_assert_(int cond, const char *msg, const char *file,
                  const unsigned line) {
   if (!cond) {
     printf("%s:%d Assertion failure: %s", file, line, msg);
     exit(EXIT_FAILURE);
   }
+}
+
+void xxx_error(const char *fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  int nchars = vfprintf(stderr, fmt, args);
+  va_end(args);
+  xxx_assert(nchars >= 0, "vfprintf failed");
+  exit(EXIT_FAILURE);
 }
 
 void xxx_finalize(struct xxx_t **xxx) { xxx_free(xxx); }
