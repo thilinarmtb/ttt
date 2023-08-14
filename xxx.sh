@@ -2,7 +2,7 @@
 
 : ${XXX_CC:=cc}
 : ${XXX_ENABLE_DOCS:=OFF}
-: ${XXX_BUILD_TYPE:=Debug}
+: ${XXX_BUILD_TYPE:=Release}
 : ${XXX_INSTALL_PREFIX:=`pwd`/install}
 
 ### Don't touch anything that follows this line. ###
