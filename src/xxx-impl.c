@@ -1,9 +1,6 @@
 #include <getopt.h>
 #include <xxx-impl.h>
 
-// Dynamic memory free function.
-void xxx_free_(void **ptr) { free(*ptr), *ptr = NULL; }
-
 static void print_help(const char *name) {
   printf("Usage: %s [OPTIONS]\n", name);
   printf("Options:\n");
@@ -14,9 +11,10 @@ static void print_help(const char *name) {
 static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_) {
   xxx->verbose = 0;
 
+  enum xxx_input_t { XXX_INPUT_VERBOSE = 0, XXX_INPUT_HELP = 99 };
   static struct option long_options[] = {
-      {"xxx-verbose", optional_argument, 0, 10},
-      {"xxx-help", no_argument, 0, 99},
+      {"xxx-verbose", optional_argument, 0, XXX_INPUT_VERBOSE},
+      {"xxx-help", no_argument, 0, XXX_INPUT_HELP},
       {0, 0, 0, 0}};
 
   char *end = NULL;
@@ -27,12 +25,13 @@ static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_) {
       break;
 
     switch (opt) {
-    case 10:
+    case XXX_INPUT_VERBOSE:
+      // NOLINTNEXTLINE
       xxx->verbose = strtol(optarg, &end, 10);
       if (!end || *end != '\0' || optarg == end)
         xxx_error("Invalid string for verbose level: %s\n", optarg);
       break;
-    case 99:
+    case XXX_INPUT_HELP:
       print_help(argv[0]);
       exit(EXIT_SUCCESS);
       break;
@@ -50,6 +49,9 @@ static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_) {
     argv[i - optind] = argv[i];
   *argc -= optind;
 }
+
+// Dynamic memory free function.
+void xxx_free_(void **ptr) { free(*ptr), *ptr = NULL; }
 
 struct xxx_t *xxx_init(int *argc, char **argv[]) {
   struct xxx_t *xxx = xxx_calloc(struct xxx_t, 1);
@@ -80,7 +82,7 @@ void xxx_error(const char *fmt, ...) {
   va_start(args, fmt);
   int nchars = vfprintf(stderr, fmt, args);
   va_end(args);
-  xxx_assert(nchars >= 0, "vfprintf failed");
+  xxx_assert(nchars >= 0, "vfprintf() failed in xxx_error().");
   exit(EXIT_FAILURE);
 }
 
