@@ -8,8 +8,8 @@ project specific names and/or prefixes. This script also renames the files.
 ./setup.sh --rename mylib
 ```
 
-Then `mylib.sh` (Originally, `xxx.sh` before calling setup), can be used to
-build and install the library `mylib.so` and the executable `mylib_driver`.
+Then `mylib.sh` (Initially `xxx.sh` before calling setup), can be used to
+build and install the library `mylib.so` and the executable `mylib-driver`.
 
 If the option `-n` or `--nuke` is also passed to the script, `setup.sh`
 self-deletes itself and deletes git history and this `README.md` as well.
@@ -24,10 +24,15 @@ Pass `-h` or `--help` to print the full help message.
 
 ## Build this project
 
-This project uses conda to manage dependencies (CMake, clang-format, and other
-dependencies for documentation). Dependencies can be installed by executing the
-following commands after installing [conda](https://docs.conda.io/en/latest/miniconda.html).
+This project uses conda to manage dependencies (CMake, clang-format, clang-tidy
+and other dependencies for documentation). Dependencies can be installed by
+executing following commands after installing [conda](https://docs.conda.io/en/latest/miniconda.html).
 ```sh
 conda env create -f environment-dev.yml
 conda activate xxx-dev
+```
+
+Then simply run `mylib.sh` script to build and install the library.
+```sh
+./mylib.sh
 ```
