@@ -1,21 +1,98 @@
 #!/bin/bash
 
+function print_help() {
+  echo "Usage: $0 [options]"
+  echo "Options:"
+  echo "  -c|--cc <compiler> Set the compiler to use for the build."
+  echo "  -t|--type <Release|Debug> Build type."
+  echo "  -p|--prefix <install prefix> Install prefix."
+  echo "  -b|--build-dir <build directory> Build directory."
+  echo "  -d|--docs <yes|no> Enable or disable building documentation."
+  echo "  -i|--install <yes|no> Install the project."
+  echo "  -f|--format <yes|no> Format the source code with clang-format."
+  echo "  -h|--help Print this help message and exit."
+}
+
+# Set default values.
 : ${XXX_CC:=cc}
-: ${XXX_ENABLE_DOCS:=OFF}
 : ${XXX_BUILD_TYPE:=Release}
 : ${XXX_INSTALL_PREFIX:=`pwd`/install}
+: ${XXX_BUILD_DIR:=`pwd`/build}
+: ${XXX_ENABLE_DOCS:=yes}
+: ${XXX_INSTALL:=yes}
+: ${XXX_FORMAT:=no}
 
-### Don't touch anything that follows this line. ###
-XXX_CURRENT_DIR=`pwd`
-XXX_BUILD_DIR=${XXX_CURRENT_DIR}/build
-
+# Handle command line arguments.
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -c|--cc)
+      XXX_CC="$2"
+      shift
+      shift
+      ;;
+    -t|--type)
+      XXX_BUILD_TYPE="$2"
+      shift
+      shift
+      ;;
+    -p|--prefix)
+      XXX_INSTALL_PREFIX="$2"
+      shift
+      shift
+      ;;
+    -b|--build-dir)
+      XXX_BUILD_DIR="$2"
+      shift
+      shift
+      ;;
+    -d|--docs)
+      XXX_ENABLE_DOCS="$2"
+      shift
+      shift
+      ;;
+    -i|--install)
+      XXX_INSTALL="$2"
+      shift
+      shift
+      ;;
+    -f|--format)
+      XXX_FORMAT="$2"
+      shift
+      shift
+      ;;
+    -h|--help)
+      print_help
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1"
+      print_help
+      exit 1
+      ;;
+  esac
+done
+  
 mkdir -p ${XXX_BUILD_DIR} 2> /dev/null
 
 cmake -DCMAKE_C_COMPILER=${XXX_CC} \
-  -DCMAKE_INSTALL_PREFIX=${XXX_INSTALL_PREFIX} \
   -DCMAKE_BUILD_TYPE=${XXX_BUILD_TYPE} \
-  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+  -DCMAKE_INSTALL_PREFIX=${XXX_INSTALL_PREFIX} \
+  -B ${XXX_BUILD_DIR} \
   -DENABLE_DOCS=${XXX_ENABLE_DOCS} \
-  -B ${XXX_BUILD_DIR} -S ${XXX_CURRENT_DIR}
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+  -S . \
   
-cmake --build ${XXX_BUILD_DIR} --target install -j4
+if [[ "${XXX_FORMAT}" == "yes" ]]; then
+  echo "Formatting source code..."
+  cmake --build ${XXX_BUILD_DIR} --target format -j4
+fi
+
+if [[ ${XXX_ENABLE_DOCS} == "yes" ]]; then
+  echo "Building documentation..."
+  cmake --build ${XXX_BUILD_DIR} --target Sphinx -j4
+fi
+
+if [[ "${XXX_INSTALL}" == "yes" ]]; then
+  echo "Installing..."
+  cmake --build ${XXX_BUILD_DIR} --target install -j4
+fi
