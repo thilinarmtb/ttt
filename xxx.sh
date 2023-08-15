@@ -83,16 +83,13 @@ cmake -DCMAKE_C_COMPILER=${XXX_CC} \
   -S . \
   
 if [[ "${XXX_FORMAT}" == "yes" ]]; then
-  echo "Formatting source code..."
   cmake --build ${XXX_BUILD_DIR} --target format -j4
 fi
 
 if [[ ${XXX_ENABLE_DOCS} == "yes" ]]; then
-  echo "Building documentation..."
   cmake --build ${XXX_BUILD_DIR} --target Sphinx -j4
 fi
 
 if [[ "${XXX_INSTALL}" == "yes" ]]; then
-  echo "Installing..."
   cmake --build ${XXX_BUILD_DIR} --target install -j4
 fi
