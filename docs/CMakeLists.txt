@@ -23,9 +23,9 @@ add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 set(SPHINX_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(SPHINX_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/sphinx)
 
-add_custom_target(Sphinx ALL COMMAND ${SPHINX_EXECUTABLE} -b html
-  -Dbreathe_projects.xxx=${DOXYGEN_OUTPUT_DIR}/xml
-  ${SPHINX_SOURCE_DIR} ${SPHINX_BUILD_DIR}
+add_custom_target(Sphinx ALL DEPENDS Doxygen
+  COMMAND ${SPHINX_EXECUTABLE} -b html -Dbreathe_projects.xxx=${DOXYGEN_OUTPUT_DIR}/xml
+    ${SPHINX_SOURCE_DIR} ${SPHINX_BUILD_DIR}
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   COMMENT "Building Sphinx documentation ..." VERBATIM)
 
