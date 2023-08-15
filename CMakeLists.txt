@@ -43,21 +43,17 @@ endif()
 # Add clang-format as a custom target if available.
 find_program(CLANG_FORMAT NAMES clang-format)
 if (CLANG_FORMAT)
-  add_custom_target(format COMMAND ${CLANG_FORMAT} -i
-    ${CMAKE_CURRENT_SOURCE_DIR}/*/*.[ch]
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  add_custom_target(format
+    COMMAND ${CLANG_FORMAT} -i ${CMAKE_CURRENT_SOURCE_DIR}/*/*.[ch]
     COMMENT "Running clang-format ...")
 endif()
 
-install(TARGETS xxx xxx-driver RUNTIME DESTINATION bin LIBRARY DESTINATION lib
-  PUBLIC_HEADER DESTINATION include
-)
-
-# Add clang-tidy to target properties if available.
+# Add clang-tidy as a custom target if available.
 find_program(CLANG_TIDY NAMES clang-tidy)
 if (CLANG_TIDY)
-  set_target_properties(xxx PROPERTIES C_CLANG_TIDY "${CLANG_TIDY}")
-  set_target_properties(xxx-driver PROPERTIES C_CLANG_TIDY "${CLANG_TIDY}")
+  add_custom_target(tidy
+    COMMAND ${CLANG_TIDY} -p ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/*/*.[ch]
+    COMMENT "Running clang-tidy ...")
 endif()
 
 # Add AddressSanitizer if the build type is Debug.
@@ -71,3 +67,7 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
     target_link_options(xxx-driver PRIVATE -fsanitize=address)
   endif()
 endif()
+
+install(TARGETS xxx xxx-driver RUNTIME DESTINATION bin LIBRARY DESTINATION lib
+  PUBLIC_HEADER DESTINATION include
+)

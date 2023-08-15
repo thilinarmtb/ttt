@@ -5,7 +5,9 @@ channels:
 dependencies:
   - python=3.10
   - cmake=3.24
-  - clangdev=16.0
+  - clang-format=16.0
+  - clang-tools=16.0
+  - clangdev=16.0 # We need this since clang-tools don't install clang headers for some reason.
   - doxygen
   - pip
   - pip:
