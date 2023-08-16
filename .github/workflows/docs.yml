@@ -52,8 +52,7 @@ jobs:
       - name: Build documentation
         id: build_docs
         run: |
-          cmake -DENABLE_DOCS=ON -DCMAKE_INSTALL_PREFIX=${HOME}/local -B ${BUILDDIR} -S .
-          cmake --build ${BUILDDIR} --target install -j4
+          ./xxx.sh --docs yes --install yes --build-dir ${BUILDDIR}
       # https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/
       - name: Bypass Jekyll
         id: bypass_jekyll

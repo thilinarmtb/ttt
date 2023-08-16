@@ -51,12 +51,12 @@ while [[ $# -gt 0 ]]; do
       shift
       shift
       ;;
-    -i|--install)
+    --install)
       XXX_INSTALL="$2"
       shift
       shift
       ;;
-    -f|--format)
+    --format)
       XXX_FORMAT="$2"
       shift
       shift
