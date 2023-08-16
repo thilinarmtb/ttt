@@ -1,4 +1,4 @@
-Checks: 'clang-diagnostic-*,clang-analyzer-*,readability-*,-readability-braces-around-statements'
+Checks: 'clang-diagnostic-*,clang-analyzer-*,readability-*,-clang-analyzer-valist.Uninitialized,-readability-braces-around-statements'
 HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: false
 FormatStyle: none

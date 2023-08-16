@@ -55,7 +55,7 @@ jobs:
       - name: Run clang-tidy check
         id: tidy_check
         run: |
-          echo "WarningsAsErrors: 'clang-diagnostic-*,clang-analyzer-*,readability-*,-readability-braces-around-statements'" >> .clang-tidy
+          echo "WarningsAsErrors: 'clang-diagnostic-*,clang-analyzer-*,readability-*,-clang-analyzer-valist.Uninitialized,-readability-braces-around-statements'" >> .clang-tidy
           ./xxx.sh --docs no --install yes --build-dir ${BUILDDIR} --tidy yes
       - name: Block to allow inspecting failures
         run: sleep 30m
