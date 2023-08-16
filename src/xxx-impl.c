@@ -1,8 +1,7 @@
 #include <getopt.h>
 #include <xxx-impl.h>
 
-static void print_help(const char *name) {
-  printf("Usage: %s [OPTIONS]\n", name);
+static void print_help(const char *name) { printf("Usage: %s [OPTIONS]\n", name);
   printf("Options:\n");
   printf("  --xxx-verbose=<verbose level>, Verbose level (0, 1, 2, ...).\n");
   printf("  --xxx-help, Prints this help message and exit.\n");

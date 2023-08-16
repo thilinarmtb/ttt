@@ -1,6 +1,4 @@
----
 Checks: 'clang-diagnostic-*,clang-analyzer-*,readability-*,-readability-braces-around-statements'
-WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
 FormatStyle: none
@@ -23,5 +21,3 @@ CheckOptions:
   modernize-loop-convert.NamingStyle: CamelCase
   llvm-else-after-return.WarnOnUnfixable: 'false'
   google-readability-function-size.StatementThreshold: '800'
-...
-
