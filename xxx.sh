@@ -21,6 +21,7 @@ function print_help() {
 : ${XXX_ENABLE_DOCS:=no}
 : ${XXX_INSTALL:=yes}
 : ${XXX_FORMAT:=no}
+: ${XXX_FORMAT_CHECK:=no}
 : ${XXX_TIDY:=no}
 
 # Handle command line arguments.
@@ -61,6 +62,11 @@ while [[ $# -gt 0 ]]; do
       shift
       shift
       ;;
+    --format-check)
+      XXX_FORMAT_CHECK="$2"
+      shift
+      shift
+      ;;
     --tidy)
       XXX_TIDY="$2"
       shift
@@ -90,6 +96,10 @@ cmake -DCMAKE_C_COMPILER=${XXX_CC} \
   
 if [[ "${XXX_FORMAT}" == "yes" ]]; then
   cmake --build ${XXX_BUILD_DIR} --target format -j4
+fi
+
+if [[ "${XXX_FORMAT_CHECK}" == "yes" ]]; then
+  cmake --build ${XXX_BUILD_DIR} --target format-check -j4
 fi
 
 if [[ "${XXX_TIDY}" == "yes" ]]; then
