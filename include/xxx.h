@@ -16,21 +16,15 @@
 #endif
 
 /**
- * @defgroup xxx_api User API functions
+ * @defgroup xxx_user_api User API functions
  *
  * @brief xxx API functions defined in `xxx.h`.
  */
 
-/**
- * @struct xxx_t
- * @ingroup xxx_api
- *
- * @brief xxx handle returned by xxx_init().
- */
 struct xxx_t;
 
 /**
- * @ingroup xxx_api
+ * @ingroup xxx_user_api
  *
  * @brief Initialize xxx.
  *
@@ -41,6 +35,17 @@ struct xxx_t;
  */
 XXX_EXTERN struct xxx_t *xxx_init(int *argc, char **argv[]);
 
+/**
+ * @ingroup xxx_user_api
+ *
+ * @brief Print a debug message if the verbosity level is greater than 0.
+ *
+ * @param verbose Verbosity level.
+ * @param fmt Format string.
+ * @param ... Format string arguments.
+ *
+ * @return void
+ */
 XXX_EXTERN void xxx_debug(int verbose, const char *fmt, ...);
 
 XXX_INTERN void xxx_assert_(int cond, const char *fmt, const char *file,

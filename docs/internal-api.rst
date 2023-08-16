@@ -1,13 +1,13 @@
-.. _api_user:
+.. _api_internal:
 
 .. toctree::
    :maxdepth: 2
 
-User API
-========
+Internal API
+============
 
 Functions
 ^^^^^^^^^
-.. doxygengroup:: xxx_user_api
+.. doxygengroup:: xxx_internal_api
    :project: xxx
    :content-only:
