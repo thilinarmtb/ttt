@@ -18,7 +18,7 @@ function print_help() {
 : ${XXX_BUILD_TYPE:=Release}
 : ${XXX_INSTALL_PREFIX:=`pwd`/install}
 : ${XXX_BUILD_DIR:=`pwd`/build}
-: ${XXX_ENABLE_DOCS:=yes}
+: ${XXX_ENABLE_DOCS:=no}
 : ${XXX_INSTALL:=yes}
 : ${XXX_FORMAT:=no}
 : ${XXX_TIDY:=no}

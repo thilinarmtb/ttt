@@ -16,7 +16,7 @@ struct xxx_t {
 // Dynamic memory allocation macro.
 #define xxx_calloc(T, n) ((T *)calloc(n, sizeof(T)))
 
-XXX_INTERN void xxx_free_(void **p);
+XXX_INTERN void xxx_free_(void **ptr);
 // Dynamic memory deallocation macro.
 #define xxx_free(p) xxx_free_((void **)p)
 

@@ -1,9 +1,9 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,readability-*,-readability-braces-around-statements'
+Checks: 'clang-diagnostic-*,clang-analyzer-*,readability-*,-readability-braces-around-statements'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
-FormatStyle:     none
+FormatStyle: none
 CheckOptions:
   llvm-else-after-return.WarnOnConditionVariables: 'false'
   modernize-loop-convert.MinConfidence: reasonable
