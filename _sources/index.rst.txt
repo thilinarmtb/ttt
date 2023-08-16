@@ -7,3 +7,4 @@ XXX
 
    self
    user-api
+   internal-api
