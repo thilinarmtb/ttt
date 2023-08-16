@@ -100,16 +100,32 @@ fi
 
 if [[ "${XXX_FORMAT_CHECK}" == "yes" ]]; then
   cmake --build ${XXX_BUILD_DIR} --target format-check -j4
+  if [[ $? -ne 0 ]]; then
+    echo "Error: clang-format check failed."
+    exit 1
+  fi
 fi
 
 if [[ "${XXX_TIDY}" == "yes" ]]; then
   cmake --build ${XXX_BUILD_DIR} --target tidy -j4
+  if [[ $? -ne 0 ]]; then
+    echo "Error: clang-tidy failed."
+    exit 1
+  fi
 fi
 
 if [[ ${XXX_ENABLE_DOCS} == "yes" ]]; then
   cmake --build ${XXX_BUILD_DIR} --target Sphinx -j4
+  if [[ $? -ne 0 ]]; then
+    echo "Error: Building docs with Sphinx failed."
+    exit 1
+  fi
 fi
 
 if [[ "${XXX_INSTALL}" == "yes" ]]; then
   cmake --build ${XXX_BUILD_DIR} --target install -j4
+  if [[ $? -ne 0 ]]; then
+    echo "Error: Installing failed."
+    exit 1
+  fi
 fi
