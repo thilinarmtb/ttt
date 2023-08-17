@@ -17,7 +17,7 @@ self-deletes itself and deletes git history and this `README.md` as well.
 ./setup.sh --rename mylib --nuke
 ```
 
-Pass `-h` or `--help` to print the full help message.
+Use `-h` or `--help` to print the full help message.
 ```sh
 ./setup.sh --help
 ```
@@ -35,4 +35,9 @@ conda activate xxx-dev
 Then simply run `mylib.sh` script to build and install the library.
 ```sh
 ./mylib.sh
+```
+
+Use `-h` or `--help` to see all the options supported by `mylib.sh` script.
+```
+./mylib.sh --help
 ```

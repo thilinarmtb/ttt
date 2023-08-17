@@ -10,6 +10,8 @@ function print_help() {
   echo "  -d|--docs <yes|no> Enable or disable building documentation."
   echo "  --install <yes|no> Install the project."
   echo "  --format <yes|no> Format the source code with clang-format."
+  echo "  --format-check <yes|no> Check if source formatting is compliant with clang-format."
+  echo "  --tidy <yes|no> Run clang-tidy."
   echo "  -h|--help Print this help message and exit."
 }
 
