@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User API &mdash; xxx  documentation</title>
@@ -12,11 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> xxx
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            xxx
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,8 +66,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>User API</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">User API</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/user-api.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -84,13 +88,13 @@
 <span id="_CPPv38xxx_initPiA_PPc"></span><span id="_CPPv28xxx_initPiA_PPc"></span><span id="xxx_init__iP.cPPA"></span><span class="target" id="group__xxx__user__api_1ga79d5472c538ccca2a90a44aae8b192a5"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="internal-api.html#_CPPv45xxx_t" title="xxx_t"><span class="n"><span class="pre">xxx_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">xxx_init</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48xxx_initPiA_PPc" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initialize xxx. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>argc</strong> – Pointer to the number of commnad line arguments. </p></li>
 <li><p><strong>argv</strong> – Pointer to the array of command line arguments.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>struct xxx_t* </p>
 </dd>
 </dl>
@@ -101,15 +105,12 @@
 <span id="_CPPv39xxx_debugiPKcz"></span><span id="_CPPv29xxx_debugiPKcz"></span><span id="xxx_debug__i.cCP.z"></span><span class="target" id="group__xxx__user__api_1gaff1e03515fe7fe2264a397428cb2c5b6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">xxx_debug</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">verbose</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49xxx_debugiPKcz" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Print a debug message if the verbosity level is greater than 0. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>verbose</strong> – Verbosity level. </p></li>
 <li><p><strong>fmt</strong> – Format string. </p></li>
-<li><p><strong>...</strong> – Format string arguments.</p></li>
+<li><p><strong>...</strong> – Format string arguments. </p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>void </p>
 </dd>
 </dl>
 </dd></dl>

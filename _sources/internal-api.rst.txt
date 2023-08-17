@@ -11,3 +11,8 @@ Functions
 .. doxygengroup:: xxx_internal_api
    :project: xxx
    :content-only:
+
+Structures
+^^^^^^^^^^
+.. doxygenstruct:: xxx_t
+  :members:

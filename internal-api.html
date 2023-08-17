@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Internal API &mdash; xxx  documentation</title>
@@ -12,11 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> xxx
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            xxx
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="user-api.html">User API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Internal API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structures">Structures</a></li>
 </ul>
 </li>
 </ul>
@@ -61,8 +66,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Internal API</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Internal API</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/internal-api.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,24 +88,34 @@
 <span class="target" id="group__xxx__internal__api_1ga97843602a02d9e63679cafdb3a7ca6a3"></span><span class="sig-name descname"><span class="n"><span class="pre">xxx_calloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.xxx_calloc" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Allocate memory. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – Type of the memory to be allocated. </p></li>
 <li><p><strong>n</strong> – Number of elements of type T to be allocated.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Pointer to the allocated memory. </p>
 </dd>
 </dl>
 </dd></dl>
 
+</section>
+<section id="structures">
+<h2>Structures<a class="headerlink" href="#structures" title="Permalink to this heading"></a></h2>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv45xxx_t">
 <span id="_CPPv35xxx_t"></span><span id="_CPPv25xxx_t"></span><span id="xxx_t"></span><span class="target" id="structxxx__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">xxx_t</span></span></span><a class="headerlink" href="#_CPPv45xxx_t" title="Permalink to this definition"></a><br /></dt>
-<dd><div class="docutils container">
-<em>#include &lt;xxx-impl.h&gt;</em></div>
-<p>xxx handle returned by <a class="reference internal" href="user-api.html#group__xxx__user__api_1ga79d5472c538ccca2a90a44aae8b192a5"><span class="std std-ref">xxx_init()</span></a>. </p>
+<dd><p>xxx handle returned by <a class="reference internal" href="user-api.html#group__xxx__user__api_1ga79d5472c538ccca2a90a44aae8b192a5"><span class="std std-ref">xxx_init()</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5xxx_t7verboseE">
+<span id="_CPPv3N5xxx_t7verboseE"></span><span id="_CPPv2N5xxx_t7verboseE"></span><span id="xxx_t::verbose__unsigned"></span><span class="target" id="structxxx__t_1ac778564b7a24fc530c42f4f0bb1b55e7"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">verbose</span></span></span><a class="headerlink" href="#_CPPv4N5xxx_t7verboseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Verbosity level. </p>
+</dd></dl>
+
+</div>
 </dd></dl>
 
 </section>
