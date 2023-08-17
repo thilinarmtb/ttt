@@ -43,8 +43,6 @@ XXX_EXTERN struct xxx_t *xxx_init(int *argc, char **argv[]);
  * @param verbose Verbosity level.
  * @param fmt Format string.
  * @param ... Format string arguments.
- *
- * @return void
  */
 XXX_EXTERN void xxx_debug(int verbose, const char *fmt, ...);
 

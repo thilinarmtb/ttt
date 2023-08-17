@@ -16,18 +16,24 @@ file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
 add_custom_command(OUTPUT ${DOXYGEN_INDEX_FILE} DEPENDS ${XXX_HEADERS}
   COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
   MAIN_DEPENDENCY ${DOXYFILE_OUT} ${DOXYFILE_IN}
-  COMMENT "Building Doxygen documentation ..." VERBATIM)
+  COMMENT "Building Doxygen documentation ...")
 
 add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 
 set(SPHINX_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(SPHINX_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/sphinx)
+set(SPHINX_INDEX_FILE ${SPHINX_BUILD_DIR}/index.html)
 
-add_custom_target(Sphinx ALL DEPENDS Doxygen
-  COMMAND ${SPHINX_EXECUTABLE} -b html -Dbreathe_projects.xxx=${DOXYGEN_OUTPUT_DIR}/xml
+add_custom_command(OUTPUT ${SPHINX_INDEX_FILE}
+  COMMAND
+    ${SPHINX_EXECUTABLE} -b html
+    -Dbreathe_projects.xxx=${DOXYGEN_OUTPUT_DIR}/xml
     ${SPHINX_SOURCE_DIR} ${SPHINX_BUILD_DIR}
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-  COMMENT "Building Sphinx documentation ..." VERBATIM)
+  DEPENDS ${DOXYGEN_INDEX_FILE}
+  COMMENT "Building Sphinx documentation ...")
+
+add_custom_target(Sphinx ALL DEPENDS ${SPHINX_INDEX_FILE})
 
 install(DIRECTORY ${SPHINX_BUILD_DIR}/
   DESTINATION ${CMAKE_INSTALL_PREFIX}/docs

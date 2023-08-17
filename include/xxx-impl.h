@@ -16,12 +16,10 @@
  */
 
 /**
- * @ingroup xxx_internal_api
- *
- * @brief xxx handle returned by xxx_init().
+ * xxx handle returned by xxx_init().
  */
 struct xxx_t {
-  unsigned verbose;
+  unsigned verbose; /**< Verbosity level. */
 };
 
 /**

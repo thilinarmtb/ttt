@@ -8,8 +8,8 @@ function print_help() {
   echo "  -p|--prefix <install prefix> Install prefix."
   echo "  -b|--build-dir <build directory> Build directory."
   echo "  -d|--docs <yes|no> Enable or disable building documentation."
-  echo "  -i|--install <yes|no> Install the project."
-  echo "  -f|--format <yes|no> Format the source code with clang-format."
+  echo "  --install <yes|no> Install the project."
+  echo "  --format <yes|no> Format the source code with clang-format."
   echo "  -h|--help Print this help message and exit."
 }
 
