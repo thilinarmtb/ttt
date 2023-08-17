@@ -1,56 +1,44 @@
 #if !defined(__LIBXXX_H__)
 #define __LIBXXX_H__
 
+/**
+ * @defgroup xxx_user_api_macros User API macros
+ *
+ * @brief User API macros defined in `xxx.h`.
+ */
+
+/**
+ * @ingroup xxx_user_api_macros
+ *
+ * @def XXX_VISIBILITY
+ *
+ * @brief Set the visibility of a symbol.
+ * @param mode Visibility mode (hidden, default, etc.).
+ */
 #define XXX_VISIBILITY(mode) __attribute__((visibility(#mode)))
 
+/**
+ * @ingroup xxx_user_api_macros
+ *
+ * @def XXX_EXTERN
+ *
+ * @brief Declare a symbol as external.
+ */
 #if defined(__cplusplus)
 #define XXX_EXTERN extern "C" XXX_VISIBILITY(default)
 #else
 #define XXX_EXTERN extern XXX_VISIBILITY(default)
 #endif
 
-#if defined(__cplusplus)
-#define XXX_INTERN extern "C" XXX_VISIBILITY(hidden)
-#else
-#define XXX_INTERN extern XXX_VISIBILITY(hidden)
-#endif
-
-/**
- * @defgroup xxx_user_api User API functions
- *
- * @brief xxx API functions defined in `xxx.h`.
- */
-
 struct xxx_t;
 
 /**
- * @ingroup xxx_user_api
+ * @defgroup xxx_user_api_functions User API functions
  *
- * @brief Initialize xxx.
- *
- * @param argc Pointer to the number of commnad line arguments.
- * @param argv Pointer to the array of command line arguments.
- *
- * @return struct xxx_t*
+ * @brief User API functions defined in `xxx.h`.
  */
+
 XXX_EXTERN struct xxx_t *xxx_init(int *argc, char **argv[]);
-
-/**
- * @ingroup xxx_user_api
- *
- * @brief Print a debug message if the verbosity level is greater than 0.
- *
- * @param verbose Verbosity level.
- * @param fmt Format string.
- * @param ... Format string arguments.
- */
-XXX_EXTERN void xxx_debug(int verbose, const char *fmt, ...);
-
-XXX_INTERN void xxx_assert_(int cond, const char *fmt, const char *file,
-                            unsigned line);
-#define xxx_assert(COND, MSG) xxx_assert_(COND, MSG, __FILE__, __LINE__)
-
-XXX_EXTERN void xxx_error(const char *fmt, ...);
 
 XXX_EXTERN void xxx_finalize(struct xxx_t **xxx);
 

@@ -50,9 +50,26 @@ static void xxx_parse_opts(struct xxx_t *xxx, int *argc, char ***argv_) {
   *argc -= optind;
 }
 
-// Dynamic memory free function.
+/**
+ * @ingroup xxx_internal_api_functions
+ *
+ * @brief Function for freeing memory. xxx_free_() calls C standard library
+ * function `free()` and sets the pointer to NULL.
+ *
+ * @param ptr Pointer to the memory address (pointer to a pointer) to be freed.
+ */
 void xxx_free_(void **ptr) { free(*ptr), *ptr = NULL; }
 
+/**
+ * @ingroup xxx_user_api_functions
+ *
+ * @brief Initialize xxx.
+ *
+ * @param argc Pointer to the number of commnad line arguments.
+ * @param argv Pointer to the array of command line arguments.
+ *
+ * @return struct xxx_t*
+ */
 struct xxx_t *xxx_init(int *argc, char **argv[]) {
   struct xxx_t *xxx = xxx_calloc(struct xxx_t, 1);
 
@@ -61,6 +78,15 @@ struct xxx_t *xxx_init(int *argc, char **argv[]) {
   return xxx;
 }
 
+/**
+ * @ingroup xxx_internal_api_functions
+ *
+ * @brief Print a debug message if the verbosity level is greater than 0.
+ *
+ * @param verbose Verbosity level.
+ * @param fmt Format string.
+ * @param ... Format string arguments.
+ */
 void xxx_debug(int verbose, const char *fmt, ...) {
   va_list args;
   va_start(args, fmt);

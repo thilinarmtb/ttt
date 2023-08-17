@@ -10,10 +10,29 @@
 #include <xxx.h>
 
 /**
- * @defgroup xxx_internal_api Internal API functions
+ * @defgroup xxx_internal_api_macros Internal API macros
  *
- * @brief xxx API functions defined in `xxx-impl.h`.
+ * @brief Internal API macros defined in `xxx-impl.h`.
  */
+
+/**
+ * @defgroup xxx_internal_api_functions Internal API functions
+ *
+ * @brief Internal API functions defined in `xxx-impl.h`.
+ */
+
+/**
+ * @ingroup xxx_internal_api_macros
+ *
+ * @def XXX_INTERN
+ *
+ * @brief Declare a symbol as internal.
+ */
+#if defined(__cplusplus)
+#define XXX_INTERN extern "C" XXX_VISIBILITY(hidden)
+#else
+#define XXX_INTERN extern XXX_VISIBILITY(hidden)
+#endif
 
 /**
  * xxx handle returned by xxx_init().
@@ -23,9 +42,10 @@ struct xxx_t {
 };
 
 /**
- * @ingroup xxx_internal_api
+ * @ingroup xxx_internal_api_macros
  *
- * @brief Allocate memory.
+ * @brief Macro for allocating memory. This macro calls C standard library
+ * function `calloc()` and casts the returned pointer as a pointer to type `T`.
  *
  * @param T Type of the memory to be allocated.
  * @param n Number of elements of type T to be allocated.
@@ -36,6 +56,30 @@ struct xxx_t {
 
 XXX_INTERN void xxx_free_(void **ptr);
 
+/**
+ * @ingroup xxx_internal_api_macros
+ *
+ * @brief Macro for freeing memory. This macro calls xxx_free_() function.
+ *
+ * @param p Pointer to the memory to be freed.
+ */
 #define xxx_free(p) xxx_free_((void **)p)
+
+XXX_INTERN void xxx_debug(int verbose, const char *fmt, ...);
+
+XXX_INTERN void xxx_assert_(int cond, const char *fmt, const char *file,
+                            unsigned line);
+/**
+ * @ingroup xxx_internal_api_macros
+ *
+ * @brief Macro for asserting a condition. This macro calls xxx_assert_()
+ * function.
+ *
+ * @param COND Condition to be asserted.
+ * @param MSG Message to be printed if the condition is not met.
+ */
+#define xxx_assert(COND, MSG) xxx_assert_(COND, MSG, __FILE__, __LINE__)
+
+XXX_INTERN void xxx_error(const char *fmt, ...);
 
 #endif // __LIBXXX_IMPL_H__
