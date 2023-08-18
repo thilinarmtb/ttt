@@ -94,7 +94,7 @@ cmake -DCMAKE_C_COMPILER=${XXX_CC} \
   -B ${XXX_BUILD_DIR} \
   -DENABLE_DOCS=${XXX_ENABLE_DOCS} \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-  -S . \
+  -S .
   
 if [[ "${XXX_FORMAT}" == "yes" ]]; then
   cmake --build ${XXX_BUILD_DIR} --target format -j4

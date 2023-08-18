@@ -45,9 +45,15 @@ done
 
 if [[ $rename -eq 1 ]]; then
   NAME=$(echo "${name}" | tr '[:lower:]' '[:upper:]')
+  name=$(echo "${name}" | tr '[:upper:]' '[:lower:]')
 
   git grep -l 'xxx' | grep -v setup.sh | xargs sed -i.bak "s/xxx/${name}/g"
   git grep -l 'XXX' | grep -v setup.sh | xargs sed -i.bak "s/XXX/${NAME}/g"
+
+  len=${#name}
+  printf -v underline -- "=%.0s" $(seq $len)
+  sed -i.bak "2s/.*/$underline/g" docs/index.rst
+
   git mv xxx.sh ${name}.sh
   git mv src/xxx-impl.c src/${name}-impl.c
   git mv src/xxx.c src/${name}.c
