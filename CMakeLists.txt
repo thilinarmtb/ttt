@@ -19,7 +19,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
-set(SOURCES src/xxx-impl.c)
+set(SOURCES src/xxx-impl.c src/xxx.c)
 add_library(xxx SHARED ${SOURCES})
 set_target_properties(xxx PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION 1
   PUBLIC_HEADER include/xxx.h)
