@@ -8,12 +8,12 @@ User API
 
 Macros
 ^^^^^^
-.. doxygengroup:: xxx_user_api_macros
-   :project: xxx
+.. doxygengroup:: ttt_user_api_macros
+   :project: ttt
    :content-only:
 
 Functions
 ^^^^^^^^^
-.. doxygengroup:: xxx_user_api_functions
-   :project: xxx
+.. doxygengroup:: ttt_user_api_functions
+   :project: ttt
    :content-only:

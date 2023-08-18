@@ -1,9 +1,9 @@
 # Configuration file for the Sphinx documentation builder.
 
 # -- Project information -----------------------------------------------------
-project = "xxx"
-copyright = "2022, xxx"
-author = "xxx"
+project = "ttt"
+copyright = "2022, ttt"
+author = "ttt"
 
 # -- General configuration ---------------------------------------------------
 extensions = ["breathe"]
@@ -16,4 +16,4 @@ html_static_path = ["_static"]
 html_css_files = ["main_stylesheet.css"]
 
 # -- Breathe Configuration ---------------------------------------------------
-breathe_default_project = "xxx"
+breathe_default_project = "ttt"

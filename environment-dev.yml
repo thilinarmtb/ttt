@@ -1,4 +1,4 @@
-name: xxx-dev
+name: ttt-dev
 channels:
   - conda-forge
   - anaconda

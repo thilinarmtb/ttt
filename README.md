@@ -1,14 +1,14 @@
-### XXX
+### TTT
 
 ## Setup a new project
 
-Simply use `setup.sh` to replace instances of `xxx` and `XXX` with your
+Simply use `setup.sh` to replace instances of `ttt` and `TTT` with your
 project specific names and/or prefixes. This script also renames the files.
 ```sh
 ./setup.sh --rename mylib
 ```
 
-Then `mylib.sh` (Initially `xxx.sh` before calling setup), can be used to
+Then `mylib.sh` (Initially `ttt.sh` before calling setup), can be used to
 build and install the library `mylib.so` and the executable `mylib-driver`.
 
 If the option `-n` or `--nuke` is also passed to the script, `setup.sh`
@@ -33,7 +33,7 @@ conda activate mylib-dev
 ```
 
 You can format the source code with `clang-format` (`.c` and `.h` files are
-likely to be messy after renaming from `xxx` to `mylib`) using the option
+likely to be messy after renaming from `ttt` to `mylib`) using the option
 `--format yes`.
 ```
 ./mylib.sh --format yes

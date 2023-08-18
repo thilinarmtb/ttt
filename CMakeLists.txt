@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.23)
-project(xxx VERSION 0.0.1 DESCRIPTION "" LANGUAGES C)
+project(ttt VERSION 0.0.1 DESCRIPTION "" LANGUAGES C)
 
 option(ENABLE_DOCS "Enable Documentation" OFF)
 
@@ -19,20 +19,20 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
-set(SOURCES src/xxx-impl.c src/xxx.c)
-add_library(xxx SHARED ${SOURCES})
-set_target_properties(xxx PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION 1
-  PUBLIC_HEADER include/xxx.h)
-target_include_directories(xxx PRIVATE include)
-target_compile_options(xxx PRIVATE
+set(SOURCES src/ttt-impl.c src/ttt.c)
+add_library(ttt SHARED ${SOURCES})
+set_target_properties(ttt PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION 1
+  PUBLIC_HEADER include/ttt.h)
+target_include_directories(ttt PRIVATE include)
+target_compile_options(ttt PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
   $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>)
 
-add_executable(xxx-driver bin/xxx-driver.c)
-set_target_properties(xxx-driver PROPERTIES VERSION ${PROJECT_VERSION})
-target_link_libraries(xxx-driver PRIVATE xxx)
-target_include_directories(xxx-driver PRIVATE include)
-target_compile_options(xxx-driver PRIVATE
+add_executable(ttt-driver bin/ttt-driver.c)
+set_target_properties(ttt-driver PROPERTIES VERSION ${PROJECT_VERSION})
+target_link_libraries(ttt-driver PRIVATE ttt)
+target_include_directories(ttt-driver PRIVATE include)
+target_compile_options(ttt-driver PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
   $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>)
 
@@ -64,13 +64,13 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
   include(CheckLinkerFlag)
   check_linker_flag(C -fsanitize=address HAS_ADDRESS_SANITIZER)
   if (HAS_ADDRESS_SANITIZER)
-    target_compile_options(xxx PRIVATE -fsanitize=address)
-    target_link_options(xxx PRIVATE -fsanitize=address)
-    target_compile_options(xxx-driver PRIVATE -fsanitize=address)
-    target_link_options(xxx-driver PRIVATE -fsanitize=address)
+    target_compile_options(ttt PRIVATE -fsanitize=address)
+    target_link_options(ttt PRIVATE -fsanitize=address)
+    target_compile_options(ttt-driver PRIVATE -fsanitize=address)
+    target_link_options(ttt-driver PRIVATE -fsanitize=address)
   endif()
 endif()
 
-install(TARGETS xxx xxx-driver RUNTIME DESTINATION bin LIBRARY DESTINATION lib
+install(TARGETS ttt ttt-driver RUNTIME DESTINATION bin LIBRARY DESTINATION lib
   PUBLIC_HEADER DESTINATION include
 )

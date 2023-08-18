@@ -14,7 +14,7 @@ on:
 env:
   # Increase to reset cache manually
   CACHE_NUMBER: 0
-  XXX_ENV: /usr/share/miniconda/envs/xxx-dev
+  TTT_ENV: /usr/share/miniconda/envs/ttt-dev
 jobs:
   clang-checks:
     runs-on: ubuntu-latest
@@ -34,29 +34,29 @@ jobs:
         id: setup_conda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: xxx-dev
+          activate-environment: ttt-dev
           use-mamba: false
       # https://dev.to/epassaro/caching-anaconda-environments-in-github-actions-5hde
       - name: Cache conda environment
         uses: actions/cache@v3
         with:
-          path: ${{ env.XXX_ENV }}
+          path: ${{ env.TTT_ENV }}
           key:  conda-${{ runner.os }}-${{ hashFiles('environment-dev.yml') }}-${{ hashFiles('requirements-dev.txt') }}-${{ env.CACHE_NUMBER }}
         id: cache
       - name: Update conda environment
         id: update_env
         run: |
-          conda env update -n xxx-dev -f environment-dev.yml
+          conda env update -n ttt-dev -f environment-dev.yml
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Run clang-format check
         id: format_check
         run: |
-          ./xxx.sh --docs no --install yes --build-dir ${BUILDDIR} --format-check yes
+          ./ttt.sh --docs no --install yes --build-dir ${BUILDDIR} --format-check yes
       - name: Run clang-tidy check
         id: tidy_check
         run: |
           echo "WarningsAsErrors: 'clang-diagnostic-*,clang-analyzer-*,readability-*,-clang-analyzer-valist.Uninitialized,-readability-braces-around-statements'" >> .clang-tidy
-          ./xxx.sh --docs no --install yes --build-dir ${BUILDDIR} --tidy yes
+          ./ttt.sh --docs no --install yes --build-dir ${BUILDDIR} --tidy yes
       - name: Block to allow inspecting failures
         run: sleep 30m
         if: ${{ failure() && inputs.debug_enabled }}
