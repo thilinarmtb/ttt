@@ -109,7 +109,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv48xxx_initPiA_PPc">
 <span id="_CPPv38xxx_initPiA_PPc"></span><span id="_CPPv28xxx_initPiA_PPc"></span><span id="xxx_init__iP.cPPA"></span><span class="target" id="group__xxx__user__api__functions_1ga79d5472c538ccca2a90a44aae8b192a5"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="internal-api.html#_CPPv45xxx_t" title="xxx_t"><span class="n"><span class="pre">xxx_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">xxx_init</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48xxx_initPiA_PPc" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Initialize xxx. </p>
+<dd><p>Initialize xxx. Returns a pointer to a newly allocated struct <a class="reference internal" href="internal-api.html#structxxx__t"><span class="std std-ref">xxx_t</span></a>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -119,6 +119,17 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>struct xxx_t* </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412xxx_finalizePP5xxx_t">
+<span id="_CPPv312xxx_finalizePP5xxx_t"></span><span id="_CPPv212xxx_finalizePP5xxx_t"></span><span id="xxx_finalize__xxx_tPP"></span><span class="target" id="group__xxx__user__api__functions_1ga1916077e055dca2fcb3e475ee4444145"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">xxx_finalize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="internal-api.html#_CPPv45xxx_t" title="xxx_t"><span class="n"><span class="pre">xxx_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">xxx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412xxx_finalizePP5xxx_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Finalize xxx. Frees the memory allocated for the struct <a class="reference internal" href="internal-api.html#structxxx__t"><span class="std std-ref">xxx_t</span></a> returned by <a class="reference internal" href="#group__xxx__user__api__functions_1ga79d5472c538ccca2a90a44aae8b192a5"><span class="std std-ref">xxx_init()</span></a> and sets the pointer to NULL. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>xxx</strong> – Pointer to the struct xxx_t* to be freed. </p>
 </dd>
 </dl>
 </dd></dl>
