@@ -47,6 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="index.html">XXX</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-api.html">User API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Internal API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#macros">Macros</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#structures">Structures</a></li>
 </ul>
@@ -81,12 +82,18 @@
 </div>
 <section id="internal-api">
 <h1>Internal API<a class="headerlink" href="#internal-api" title="Permalink to this heading"></a></h1>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
+<section id="macros">
+<h2>Macros<a class="headerlink" href="#macros" title="Permalink to this heading"></a></h2>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.XXX_INTERN">
+<span class="target" id="group__xxx__internal__api__macros_1ga87a4fc6d8a33cc6cbb814bd8c0b8f683"></span><span class="sig-name descname"><span class="n"><span class="pre">XXX_INTERN</span></span></span><a class="headerlink" href="#c.XXX_INTERN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Declare a symbol as internal. </p>
+</dd></dl>
+
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.xxx_calloc">
-<span class="target" id="group__xxx__internal__api_1ga97843602a02d9e63679cafdb3a7ca6a3"></span><span class="sig-name descname"><span class="n"><span class="pre">xxx_calloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.xxx_calloc" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Allocate memory. </p>
+<span class="target" id="group__xxx__internal__api__macros_1ga97843602a02d9e63679cafdb3a7ca6a3"></span><span class="sig-name descname"><span class="n"><span class="pre">xxx_calloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.xxx_calloc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Macro for allocating memory. This macro calls C standard library function <code class="docutils literal notranslate"><span class="pre">calloc()</span></code> and casts the returned pointer as a pointer to type <code class="docutils literal notranslate"><span class="pre">T</span></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -100,13 +107,69 @@
 </dl>
 </dd></dl>
 
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.xxx_free">
+<span class="target" id="group__xxx__internal__api__macros_1ga6bcbf0e1a717af51a511eebc6f6550d2"></span><span class="sig-name descname"><span class="n"><span class="pre">xxx_free</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">p</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.xxx_free" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Macro for freeing memory. This macro calls <a class="reference internal" href="#group__xxx__internal__api__functions_1gabf14aed432e9cca1d583527b924c6fd8"><span class="std std-ref">xxx_free_()</span></a> function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> – Pointer to the memory to be freed. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.xxx_assert">
+<span class="target" id="group__xxx__internal__api__macros_1ga066320d5457c01dbfcd4f36345d9d373"></span><span class="sig-name descname"><span class="n"><span class="pre">xxx_assert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">COND</span></span>, <span class="n"><span class="pre">MSG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.xxx_assert" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Macro for asserting a condition. This macro calls xxx_assert_() function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>COND</strong> – Condition to be asserted. </p></li>
+<li><p><strong>MSG</strong> – Message to be printed if the condition is not met. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv49xxx_free_PPv">
+<span id="_CPPv39xxx_free_PPv"></span><span id="_CPPv29xxx_free_PPv"></span><span id="xxx_free___voidPP"></span><span class="target" id="group__xxx__internal__api__functions_1gabf14aed432e9cca1d583527b924c6fd8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">xxx_free_</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49xxx_free_PPv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Function for freeing memory. <a class="reference internal" href="#group__xxx__internal__api__functions_1gabf14aed432e9cca1d583527b924c6fd8"><span class="std std-ref">xxx_free_()</span></a> calls C standard library function <code class="docutils literal notranslate"><span class="pre">free()</span></code> and sets the pointer to NULL. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ptr</strong> – Pointer to the memory address (pointer to a pointer) to be freed. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv49xxx_debugiPKcz">
+<span id="_CPPv39xxx_debugiPKcz"></span><span id="_CPPv29xxx_debugiPKcz"></span><span id="xxx_debug__i.cCP.z"></span><span class="target" id="group__xxx__internal__api__functions_1gaff1e03515fe7fe2264a397428cb2c5b6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">xxx_debug</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">verbose</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49xxx_debugiPKcz" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Print a debug message if the verbosity level is greater than 0. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> – Verbosity level. </p></li>
+<li><p><strong>fmt</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format string arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="structures">
 <h2>Structures<a class="headerlink" href="#structures" title="Permalink to this heading"></a></h2>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv45xxx_t">
 <span id="_CPPv35xxx_t"></span><span id="_CPPv25xxx_t"></span><span id="xxx_t"></span><span class="target" id="structxxx__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">xxx_t</span></span></span><a class="headerlink" href="#_CPPv45xxx_t" title="Permalink to this definition"></a><br /></dt>
-<dd><p>xxx handle returned by <a class="reference internal" href="user-api.html#group__xxx__user__api_1ga79d5472c538ccca2a90a44aae8b192a5"><span class="std std-ref">xxx_init()</span></a>. </p>
+<dd><p>xxx handle returned by <a class="reference internal" href="user-api.html#group__xxx__user__api__functions_1ga79d5472c538ccca2a90a44aae8b192a5"><span class="std std-ref">xxx_init()</span></a>. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">

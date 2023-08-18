@@ -6,9 +6,15 @@
 Internal API
 ============
 
+Macros
+^^^^^^
+.. doxygengroup:: xxx_internal_api_macros
+   :project: xxx
+   :content-only:
+
 Functions
 ^^^^^^^^^
-.. doxygengroup:: xxx_internal_api
+.. doxygengroup:: xxx_internal_api_functions
    :project: xxx
    :content-only:
 

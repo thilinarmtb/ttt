@@ -47,6 +47,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">XXX</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">User API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#macros">Macros</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a></li>
 </ul>
 </li>
@@ -81,11 +82,33 @@
 </div>
 <section id="user-api">
 <h1>User API<a class="headerlink" href="#user-api" title="Permalink to this heading"></a></h1>
+<section id="macros">
+<h2>Macros<a class="headerlink" href="#macros" title="Permalink to this heading"></a></h2>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.XXX_VISIBILITY">
+<span class="target" id="group__xxx__user__api__macros_1gafd7ae396d43471e4e23d83802fa3c92e"></span><span class="sig-name descname"><span class="n"><span class="pre">XXX_VISIBILITY</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.XXX_VISIBILITY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Set the visibility of a symbol. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> – Visibility mode (hidden, default, etc.). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.XXX_EXTERN">
+<span class="target" id="group__xxx__user__api__macros_1ga7dfeab1b515b6257e2565b559b926959"></span><span class="sig-name descname"><span class="n"><span class="pre">XXX_EXTERN</span></span></span><a class="headerlink" href="#c.XXX_EXTERN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Declare a symbol as external. </p>
+</dd></dl>
+
+</section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv48xxx_initPiA_PPc">
-<span id="_CPPv38xxx_initPiA_PPc"></span><span id="_CPPv28xxx_initPiA_PPc"></span><span id="xxx_init__iP.cPPA"></span><span class="target" id="group__xxx__user__api_1ga79d5472c538ccca2a90a44aae8b192a5"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="internal-api.html#_CPPv45xxx_t" title="xxx_t"><span class="n"><span class="pre">xxx_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">xxx_init</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48xxx_initPiA_PPc" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv38xxx_initPiA_PPc"></span><span id="_CPPv28xxx_initPiA_PPc"></span><span id="xxx_init__iP.cPPA"></span><span class="target" id="group__xxx__user__api__functions_1ga79d5472c538ccca2a90a44aae8b192a5"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="internal-api.html#_CPPv45xxx_t" title="xxx_t"><span class="n"><span class="pre">xxx_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">xxx_init</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48xxx_initPiA_PPc" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initialize xxx. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -96,21 +119,6 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>struct xxx_t* </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv49xxx_debugiPKcz">
-<span id="_CPPv39xxx_debugiPKcz"></span><span id="_CPPv29xxx_debugiPKcz"></span><span id="xxx_debug__i.cCP.z"></span><span class="target" id="group__xxx__user__api_1gaff1e03515fe7fe2264a397428cb2c5b6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">xxx_debug</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">verbose</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49xxx_debugiPKcz" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Print a debug message if the verbosity level is greater than 0. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>verbose</strong> – Verbosity level. </p></li>
-<li><p><strong>fmt</strong> – Format string. </p></li>
-<li><p><strong>...</strong> – Format string arguments. </p></li>
-</ul>
 </dd>
 </dl>
 </dd></dl>
