@@ -50,6 +50,7 @@ if [[ $rename -eq 1 ]]; then
   git grep -l 'XXX' | grep -v setup.sh | xargs sed -i.bak "s/XXX/${NAME}/g"
   git mv xxx.sh ${name}.sh
   git mv src/xxx-impl.c src/${name}-impl.c
+  git mv src/xxx.c src/${name}.c
   git mv include/xxx.h include/${name}.h
   git mv include/xxx-impl.h include/${name}-impl.h
   git mv bin/xxx-driver.c bin/${name}-driver.c
