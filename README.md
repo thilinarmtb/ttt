@@ -1,4 +1,8 @@
-### TTT
+# TTT
+
+`TTT` is a template for a CMake based C project to help easily bootstrap C
+projects. This started as an effort to put all boilerplate code that I ended
+up writing whenever I created a new project.
 
 ## Setup a new project
 
