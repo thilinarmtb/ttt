@@ -41,7 +41,7 @@ void ttt_debug(int verbose, const char *fmt, ...) {
 void ttt_assert_(int cond, const char *msg, const char *file,
                  const unsigned line) {
   if (!cond) {
-    printf("%s:%d Assertion failure: %s", file, line, msg);
+    fprintf(stderr, "%s:%d Assertion failure: %s", file, line, msg);
     exit(EXIT_FAILURE);
   }
 }
