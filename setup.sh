@@ -47,19 +47,19 @@ if [[ $rename -eq 1 ]]; then
   NAME=$(echo "${name}" | tr '[:lower:]' '[:upper:]')
   name=$(echo "${name}" | tr '[:upper:]' '[:lower:]')
 
-  git grep -l 'xxx' | grep -v setup.sh | xargs sed -i.bak "s/xxx/${name}/g"
-  git grep -l 'XXX' | grep -v setup.sh | xargs sed -i.bak "s/XXX/${NAME}/g"
+  git grep -l 'ttt' | grep -v setup.sh | xargs sed -i.bak "s/ttt/${name}/g"
+  git grep -l 'TTT' | grep -v setup.sh | xargs sed -i.bak "s/TTT/${NAME}/g"
 
   len=${#name}
   printf -v underline -- "=%.0s" $(seq $len)
   sed -i.bak "2s/.*/$underline/g" docs/index.rst
 
-  git mv xxx.sh ${name}.sh
-  git mv src/xxx-impl.c src/${name}-impl.c
-  git mv src/xxx.c src/${name}.c
-  git mv include/xxx.h include/${name}.h
-  git mv include/xxx-impl.h include/${name}-impl.h
-  git mv bin/xxx-driver.c bin/${name}-driver.c
+  git mv ttt.sh ${name}.sh
+  git mv src/ttt-impl.c src/${name}-impl.c
+  git mv src/ttt.c src/${name}.c
+  git mv include/ttt.h include/${name}.h
+  git mv include/ttt-impl.h include/${name}-impl.h
+  git mv bin/ttt-driver.c bin/${name}-driver.c
   git clean -dfx
 fi
 
