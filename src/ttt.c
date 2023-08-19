@@ -1,7 +1,7 @@
 #include <getopt.h>
 #include <ttt-impl.h>
 
-static void print_help(const char *name) {
+static void ttt_print_help(const char *name) {
   printf("Usage: %s [OPTIONS]\n", name);
   printf("Options:\n");
   printf("  --ttt-verbose=<verbose level>, Verbose level (0, 1, 2, ...).\n");
@@ -32,11 +32,11 @@ static void ttt_parse_opts(struct ttt_t *ttt, int *argc, char ***argv_) {
         ttt_error("Invalid string for verbose level: %s\n", optarg);
       break;
     case TTT_INPUT_HELP:
-      print_help(argv[0]);
+      ttt_print_help(argv[0]);
       exit(EXIT_SUCCESS);
       break;
     default:
-      print_help(argv[0]);
+      ttt_print_help(argv[0]);
       exit(EXIT_FAILURE);
       break;
     }
