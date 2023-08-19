@@ -1,6 +1,8 @@
 TTT
 ===
 
+Welcome to TTT's documentation!
+
 .. toctree::
    :maxdepth: 3
    :caption: Table of Contents
