@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.23)
 project(ttt VERSION 0.0.1 DESCRIPTION "" LANGUAGES C)
 
 option(ENABLE_DOCS "Enable Documentation" OFF)
+option(ENABLE_ASAN "Enable AddressSanitizer" OFF)
 
 # https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling
 # Use, i.e. don't skip the full RPATH for the build tree.
@@ -59,8 +60,8 @@ if (CLANG_TIDY)
     COMMENT "Running clang-tidy ...")
 endif()
 
-# Add AddressSanitizer if the build type is Debug.
-if (CMAKE_BUILD_TYPE MATCHES Debug)
+# Turn on AddressSanitizer if ENABLE_ASAN is set.
+if (ENABLE_ASAN)
   include(CheckLinkerFlag)
   check_linker_flag(C -fsanitize=address HAS_ADDRESS_SANITIZER)
   if (HAS_ADDRESS_SANITIZER)
@@ -68,6 +69,8 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
     target_link_options(ttt PRIVATE -fsanitize=address)
     target_compile_options(ttt-driver PRIVATE -fsanitize=address)
     target_link_options(ttt-driver PRIVATE -fsanitize=address)
+  else()
+    message(FATAL_ERROR "AddressSanitizer is enabled but not supported.")
   endif()
 endif()
 

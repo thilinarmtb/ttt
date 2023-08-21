@@ -8,11 +8,12 @@ function print_help() {
   echo "  -p|--prefix <install prefix> Install prefix."
   echo "  -b|--build-dir <build directory> Build directory."
   echo "  -d|--docs <yes|no> Enable or disable building documentation."
+  echo "  -a|--asan <yes|no> Enable or disable address sanitizer."
+  echo "  -h|--help Print this help message and exit."
   echo "  --install <yes|no> Install the project."
   echo "  --format <yes|no> Format the source code with clang-format."
   echo "  --format-check <yes|no> Check if source formatting is compliant with clang-format."
   echo "  --tidy <yes|no> Run clang-tidy."
-  echo "  -h|--help Print this help message and exit."
 }
 
 # Set default values.
@@ -21,6 +22,7 @@ function print_help() {
 : ${TTT_INSTALL_PREFIX:=`pwd`/install}
 : ${TTT_BUILD_DIR:=`pwd`/build}
 : ${TTT_ENABLE_DOCS:=no}
+: ${TTT_ENABLE_ASAN:=no}
 : ${TTT_INSTALL:=yes}
 : ${TTT_FORMAT:=no}
 : ${TTT_FORMAT_CHECK:=no}
@@ -54,6 +56,15 @@ while [[ $# -gt 0 ]]; do
       shift
       shift
       ;;
+    -a|--asan)
+      TTT_ENABLE_ASAN="$2"
+      shift
+      shift
+      ;;
+    -h|--help)
+      print_help
+      exit 0
+      ;;
     --install)
       TTT_INSTALL="$2"
       shift
@@ -74,10 +85,6 @@ while [[ $# -gt 0 ]]; do
       shift
       shift
       ;;
-    -h|--help)
-      print_help
-      exit 0
-      ;;
     *)
       echo "Unknown option: $1"
       print_help
@@ -93,6 +100,7 @@ cmake -DCMAKE_C_COMPILER=${TTT_CC} \
   -DCMAKE_INSTALL_PREFIX=${TTT_INSTALL_PREFIX} \
   -B ${TTT_BUILD_DIR} \
   -DENABLE_DOCS=${TTT_ENABLE_DOCS} \
+  -DENABLE_ASAN=${TTT_ENABLE_ASAN} \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
   -S .
   
