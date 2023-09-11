@@ -23,7 +23,7 @@ function print_help() {
 : ${TTT_BUILD_DIR:=`pwd`/build}
 : ${TTT_ENABLE_DOCS:=no}
 : ${TTT_ENABLE_ASAN:=no}
-: ${TTT_INSTALL:=yes}
+: ${TTT_INSTALL:=no}
 : ${TTT_FORMAT:=no}
 : ${TTT_FORMAT_CHECK:=no}
 : ${TTT_TIDY:=no}
