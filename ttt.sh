@@ -7,13 +7,13 @@ function print_help() {
   echo "  -t|--type <Release|Debug> Build type."
   echo "  -p|--prefix <install prefix> Install prefix."
   echo "  -b|--build-dir <build directory> Build directory."
-  echo "  -d|--docs <yes|no> Enable or disable building documentation."
-  echo "  -a|--asan <yes|no> Enable or disable address sanitizer."
+  echo "  -d|--docs Enable building documentation."
+  echo "  -a|--asan Enable address sanitizer."
   echo "  -h|--help Print this help message and exit."
-  echo "  --install <yes|no> Install the project."
-  echo "  --format <yes|no> Format the source code with clang-format."
-  echo "  --format-check <yes|no> Check if source formatting is compliant with clang-format."
-  echo "  --tidy <yes|no> Run clang-tidy."
+  echo "  --install Install the project."
+  echo "  --format Format the source code with clang-format."
+  echo "  --format-check Check if source formatting is compliant with clang-format."
+  echo "  --tidy Run clang-tidy."
 }
 
 # Set default values.
@@ -21,12 +21,12 @@ function print_help() {
 : ${TTT_BUILD_TYPE:=Release}
 : ${TTT_INSTALL_PREFIX:=`pwd`/install}
 : ${TTT_BUILD_DIR:=`pwd`/build}
-: ${TTT_ENABLE_DOCS:=no}
-: ${TTT_ENABLE_ASAN:=no}
-: ${TTT_INSTALL:=no}
-: ${TTT_FORMAT:=no}
-: ${TTT_FORMAT_CHECK:=no}
-: ${TTT_TIDY:=no}
+: ${TTT_ENABLE_DOCS:=OFF}
+: ${TTT_ENABLE_ASAN:=OFF}
+: ${TTT_INSTALL:=NO}
+: ${TTT_FORMAT:=NO}
+: ${TTT_FORMAT_CHECK:=NO}
+: ${TTT_TIDY:=NO}
 
 # Handle command line arguments.
 while [[ $# -gt 0 ]]; do
@@ -52,13 +52,11 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
     -d|--docs)
-      TTT_ENABLE_DOCS="$2"
-      shift
+      TTT_ENABLE_DOCS="ON"
       shift
       ;;
     -a|--asan)
-      TTT_ENABLE_ASAN="$2"
-      shift
+      TTT_ENABLE_ASAN="ON"
       shift
       ;;
     -h|--help)
@@ -66,23 +64,19 @@ while [[ $# -gt 0 ]]; do
       exit 0
       ;;
     --install)
-      TTT_INSTALL="$2"
-      shift
+      TTT_INSTALL="YES"
       shift
       ;;
     --format)
-      TTT_FORMAT="$2"
-      shift
+      TTT_FORMAT="YES"
       shift
       ;;
     --format-check)
-      TTT_FORMAT_CHECK="$2"
-      shift
+      TTT_FORMAT_CHECK="YES"
       shift
       ;;
     --tidy)
-      TTT_TIDY="$2"
-      shift
+      TTT_TIDY="YES"
       shift
       ;;
     *)
@@ -104,11 +98,11 @@ cmake -DCMAKE_C_COMPILER=${TTT_CC} \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
   -S .
   
-if [[ "${TTT_FORMAT}" == "yes" ]]; then
+if [[ "${TTT_FORMAT}" == "YES" ]]; then
   cmake --build ${TTT_BUILD_DIR} --target format -j4
 fi
 
-if [[ "${TTT_FORMAT_CHECK}" == "yes" ]]; then
+if [[ "${TTT_FORMAT_CHECK}" == "YES" ]]; then
   cmake --build ${TTT_BUILD_DIR} --target format-check -j4
   if [[ $? -ne 0 ]]; then
     echo "Error: clang-format check failed."
@@ -116,7 +110,7 @@ if [[ "${TTT_FORMAT_CHECK}" == "yes" ]]; then
   fi
 fi
 
-if [[ "${TTT_TIDY}" == "yes" ]]; then
+if [[ "${TTT_TIDY}" == "YES" ]]; then
   cmake --build ${TTT_BUILD_DIR} --target tidy -j4
   if [[ $? -ne 0 ]]; then
     echo "Error: clang-tidy failed."
@@ -124,7 +118,7 @@ if [[ "${TTT_TIDY}" == "yes" ]]; then
   fi
 fi
 
-if [[ ${TTT_ENABLE_DOCS} == "yes" ]]; then
+if [[ ${TTT_ENABLE_DOCS} == "YES" ]]; then
   cmake --build ${TTT_BUILD_DIR} --target Sphinx -j4
   if [[ $? -ne 0 ]]; then
     echo "Error: Building docs with Sphinx failed."
@@ -132,7 +126,7 @@ if [[ ${TTT_ENABLE_DOCS} == "yes" ]]; then
   fi
 fi
 
-if [[ "${TTT_INSTALL}" == "yes" ]]; then
+if [[ "${TTT_INSTALL}" == "YES" ]]; then
   cmake --build ${TTT_BUILD_DIR} --target install -j4
   if [[ $? -ne 0 ]]; then
     echo "Error: Installing failed."

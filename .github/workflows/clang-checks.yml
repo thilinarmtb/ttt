@@ -51,11 +51,11 @@ jobs:
       - name: Run clang-format check
         id: format_check
         run: |
-          ./ttt.sh --docs no --install yes --build-dir ${BUILDDIR} --format-check yes
+          ./ttt.sh --build-dir ${BUILDDIR} --format-check
       - name: Run clang-tidy check
         id: tidy_check
         run: |
-          ./ttt.sh --docs no --install yes --build-dir ${BUILDDIR} --tidy yes
+          ./ttt.sh --build-dir ${BUILDDIR} --tidy
       - name: Block to allow inspecting failures
         run: sleep 30m
         if: ${{ failure() && inputs.debug_enabled }}

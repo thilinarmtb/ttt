@@ -1,5 +1,5 @@
+#include "ttt-impl.h"
 #include <getopt.h>
-#include <ttt-impl.h>
 
 static void ttt_print_help(const char *name) {
   printf("Usage: %s [OPTIONS]\n", name);
