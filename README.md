@@ -40,7 +40,7 @@ You can format the source code with `clang-format` (`.c` and `.h` files are
 likely to be messy after renaming from `ttt` to `mylib`) using the option
 `--format`.
 ```
-./mylib.sh --format
+./mylib.sh -format
 ```
 
 Then you can initialize git, add the files and do the initial commit for the
@@ -53,10 +53,10 @@ git commit
 
 Then simply run `mylib.sh` script to build and install the library.
 ```sh
-./mylib.sh --docs --install
+./mylib.sh -enable-docs -install
 ```
 
-Use `-h` or `--help` to see all the options supported by `mylib.sh` script.
+Use `-help` to see all the options supported by `mylib.sh` script.
 ```
-./mylib.sh --help
+./mylib.sh -help
 ```
