@@ -41,6 +41,8 @@ if (ENABLE_DOCS)
   add_subdirectory ("docs")
 endif()
 
+# Configure .clang-tidy.in to generate .clang-tidy.
+configure_file(${CMAKE_SOURCE_DIR}/.clang-tidy.in ${CMAKE_SOURCE_DIR}/.clang-tidy @ONLY)
 # Add clang-format as a custom target if available.
 find_program(CLANG_FORMAT NAMES clang-format)
 if (CLANG_FORMAT)
