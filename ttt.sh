@@ -11,6 +11,7 @@ function print_help() {
   echo "  -enable-docs Enable building documentation."
   echo "  -enable-asan Enable address sanitizer."
   echo "  -install Install the project."
+  echo "  -docs Build documentation with Doxygen+Sphinx."
   echo "  -format Format the source code with clang-format."
   echo "  -format-check Check if source formatting is compliant with clang-format."
   echo "  -tidy Run clang-tidy."
@@ -24,6 +25,7 @@ function print_help() {
 : ${TTT_ENABLE_DOCS:=OFF}
 : ${TTT_ENABLE_ASAN:=OFF}
 : ${TTT_INSTALL:=NO}
+: ${TTT_DOCS:=NO}
 : ${TTT_FORMAT:=NO}
 : ${TTT_FORMAT_CHECK:=NO}
 : ${TTT_TIDY:=NO}
@@ -65,6 +67,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     -install)
       TTT_INSTALL="YES"
+      shift
+      ;;
+    -docs)
+      TTT_DOCS="YES"
       shift
       ;;
     -format)
@@ -118,10 +124,10 @@ if [[ "${TTT_TIDY}" == "YES" ]]; then
   fi
 fi
 
-if [[ ${TTT_ENABLE_DOCS} == "YES" ]]; then
-  cmake --build ${TTT_BUILD_DIR} --target Sphinx -j4
+if [[ ${TTT_DOCS} == "YES" ]]; then
+  cmake --build ${TTT_BUILD_DIR} --target docs -j4
   if [[ $? -ne 0 ]]; then
-    echo "Error: Building docs with Sphinx failed."
+    echo "Error: Building docs with Doxygen+Sphinx failed."
     exit 1
   fi
 fi
