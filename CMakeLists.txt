@@ -4,6 +4,8 @@ project(ttt VERSION 0.0.1 DESCRIPTION "" LANGUAGES C)
 option(ENABLE_DOCS "Enable Documentation" OFF)
 option(ENABLE_ASAN "Enable AddressSanitizer" OFF)
 
+set(TTT_VERBOSE 0)
+
 # https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling
 # Use, i.e. don't skip the full RPATH for the build tree.
 set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
@@ -21,6 +23,9 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 set(SOURCES src/ttt-impl.c src/ttt.c)
+configure_file(${CMAKE_SOURCE_DIR}/include/ttt-defs.h.in
+  ${CMAKE_SOURCE_DIR}/include/ttt-defs.h @ONLY)
+
 add_library(ttt SHARED ${SOURCES})
 set_target_properties(ttt PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION 1
   PUBLIC_HEADER include/ttt.h)

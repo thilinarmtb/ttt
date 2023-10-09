@@ -7,7 +7,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <ttt.h>
+
+#include "ttt-defs.h"
+#include "ttt.h"
 
 /**
  * @defgroup ttt_internal_api_macros Internal API macros
@@ -65,7 +67,7 @@ TTT_INTERN void ttt_free_(void **ptr);
  */
 #define ttt_free(p) ttt_free_((void **)p)
 
-TTT_INTERN void ttt_debug(int verbose, const char *fmt, ...);
+TTT_INTERN void ttt_log(int verbose, const char *fmt, ...);
 
 TTT_INTERN void ttt_assert_(int cond, const char *fmt, const char *file,
                             unsigned line);
