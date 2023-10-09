@@ -19,7 +19,7 @@ void ttt_free_(void **ptr) { free(*ptr), *ptr = NULL; }
  * @param fmt Format string.
  * @param ... Format string arguments.
  */
-void ttt_debug(int verbose, const char *fmt, ...) {
+void ttt_log(int verbose, const char *fmt, ...) {
   va_list args;
   va_start(args, fmt);
   if (verbose > 0)
