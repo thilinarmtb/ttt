@@ -59,6 +59,7 @@ if [[ $rename -eq 1 ]]; then
   git mv src/ttt.c src/${name}.c
   git mv include/ttt.h include/${name}.h
   git mv include/ttt-impl.h include/${name}-impl.h
+  git mv include/ttt-defs.h.in include/${name}-defs.h.in
   git mv bin/ttt-driver.c bin/${name}-driver.c
   git clean -dfx
 fi
