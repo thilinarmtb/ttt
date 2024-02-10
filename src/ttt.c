@@ -24,8 +24,7 @@ static void ttt_parse_opts(struct ttt_t *ttt, int *argc, char ***argv_) {
   char **argv = *argv_;
   for (;;) {
     int opt = getopt_long(*argc, argv, "", long_options, NULL);
-    if (opt == -1)
-      break;
+    if (opt == -1) break;
 
     switch (opt) {
     case TTT_INPUT_VERBOSE:

@@ -22,8 +22,7 @@ void ttt_free_(void **ptr) { free(*ptr), *ptr = NULL; }
 void ttt_log(int verbose, const char *fmt, ...) {
   va_list args;
   va_start(args, fmt);
-  if (verbose > 0)
-    vprintf(fmt, args);
+  if (verbose > 0) vprintf(fmt, args);
   va_end(args);
 }
 
