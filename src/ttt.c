@@ -47,8 +47,7 @@ static void ttt_parse_opts(struct ttt_t *ttt, int *argc, char ***argv_) {
   // Remove parsed arguments from argv. We just need to update the pointers
   // since command line arguments are not transient and available until the
   // end of the program.
-  for (int i = optind; i < *argc; i++)
-    argv[i - optind] = argv[i];
+  for (int i = optind; i < *argc; i++) argv[i - optind] = argv[i];
   *argc -= optind;
 }
 
