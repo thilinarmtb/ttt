@@ -9,21 +9,21 @@ up writing whenever I created a new project.
 Simply use `setup.sh` to replace instances of `ttt` and `TTT` with your
 project specific names and/or prefixes. This script also renames the files.
 ```sh
-./setup.sh --rename mylib
+./setup.sh -rename mylib
 ```
 
 Then `mylib.sh` (Initially `ttt.sh` before calling setup), can be used to
 build and install the library `mylib.so` and the executable `mylib-driver`.
 
-If the option `-n` or `--nuke` is also passed to the script, `setup.sh`
+If the option `-n` or `-nuke` is also passed to the script, `setup.sh`
 self-deletes itself, deletes git history and this `README.md` as well.
 ```sh
-./setup.sh --rename mylib --nuke
+./setup.sh -rename mylib -nuke
 ```
 
-Use `-h` or `--help` to print the full help message.
+Use `-h` or `-help` to print the full help message.
 ```sh
-./setup.sh --help
+./setup.sh -help
 ```
 
 ## Build this project
@@ -38,7 +38,7 @@ conda activate mylib-dev
 
 You can format the source code with `clang-format` (`.c` and `.h` files are
 likely to be messy after renaming from `ttt` to `mylib`) using the option
-`--format`.
+`-format`.
 ```
 ./mylib.sh -format
 ```
