@@ -20,7 +20,7 @@ static void ttt_parse_opts(struct ttt_t *ttt, int *argc, char ***argv_) {
       {"ttt-help", no_argument, 0, TTT_INPUT_HELP},
       {0, 0, 0, 0}};
 
-  char *end = NULL;
+  char  *end  = NULL;
   char **argv = *argv_;
   for (;;) {
     int opt = getopt_long(*argc, argv, "", long_options, NULL);
