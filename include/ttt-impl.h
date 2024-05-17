@@ -55,6 +55,12 @@ TTT_INTERN void ttt_free_(void **ptr);
 #define ttt_free(p) ttt_free_((void **)p)
 
 /**
+ * @defgroup ttt_internal_types Internal types
+ *
+ * @brief Internal types (structures and enums) used by ttt.
+ */
+
+/**
  * @ingroup ttt_internal_types
  *
  * @brief Defines ttt log levels. A log can be an error, warning or general
