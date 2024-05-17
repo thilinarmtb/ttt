@@ -81,4 +81,8 @@ struct ttt_t *ttt_init(int *argc, char **argv[]) {
  *
  * @param ttt Pointer to the struct ttt_t* to be freed.
  */
-void ttt_finalize(struct ttt_t **ttt) { ttt_free(ttt); }
+int ttt_finalize(struct ttt_t **ttt) {
+  if (ttt == NULL || *ttt == NULL) return TTT_INVALID_USER_INPUT;
+  ttt_free(ttt);
+  return TTT_SUCCESS;
+}

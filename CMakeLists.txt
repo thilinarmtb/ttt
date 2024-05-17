@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 project(ttt VERSION 0.0.1 DESCRIPTION "" LANGUAGES C)
 
+option(ENABLE_TESTS "Enable Tests" ON)
 option(ENABLE_DOCS "Enable Documentation" OFF)
 option(ENABLE_ASAN "Enable AddressSanitizer" OFF)
 
@@ -33,18 +34,6 @@ target_include_directories(ttt PRIVATE include)
 target_compile_options(ttt PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
   $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>)
-
-add_executable(ttt-driver bin/ttt-driver.c)
-set_target_properties(ttt-driver PROPERTIES VERSION ${PROJECT_VERSION})
-target_link_libraries(ttt-driver PRIVATE ttt)
-target_include_directories(ttt-driver PRIVATE include)
-target_compile_options(ttt-driver PRIVATE
-  $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
-  $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>)
-
-if (ENABLE_DOCS)
-  add_subdirectory ("docs")
-endif()
 
 # Configure .clang-tidy.in to generate .clang-tidy.
 configure_file(${CMAKE_SOURCE_DIR}/.clang-tidy.in ${CMAKE_SOURCE_DIR}/.clang-tidy @ONLY)
@@ -81,6 +70,14 @@ if (ENABLE_ASAN)
   endif()
 endif()
 
-install(TARGETS ttt ttt-driver RUNTIME DESTINATION bin LIBRARY DESTINATION lib
+if (ENABLE_DOCS)
+  add_subdirectory (docs)
+endif()
+
+if (ENABLE_TESTS)
+  add_subdirectory (tests)
+endif()
+
+install(TARGETS ttt RUNTIME DESTINATION bin LIBRARY DESTINATION lib
   PUBLIC_HEADER DESTINATION include
 )

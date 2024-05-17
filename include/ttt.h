@@ -43,6 +43,27 @@
 #define TTT_INTERN extern TTT_VISIBILITY(hidden)
 #endif
 
+/**
+ * @defgroup ttt_error_codes Error codes returned to the user
+ *
+ * @brief Different error codes returned to the the user by ttt user API
+ * calls.
+ */
+
+/**
+ * @ingroup ttt_error_codes
+ *
+ * @brief ttt API call was successful.
+ */
+#define TTT_SUCCESS 0
+
+/**
+ * @ingroup ttt_error_codes
+ *
+ * @brief User input provided to ttt API is invalid.
+ */
+#define TTT_INVALID_USER_INPUT -128
+
 struct ttt_t;
 
 /**
@@ -53,6 +74,6 @@ struct ttt_t;
 
 TTT_EXTERN struct ttt_t *ttt_init(int *argc, char **argv[]);
 
-TTT_EXTERN void ttt_finalize(struct ttt_t **ttt);
+TTT_EXTERN int ttt_finalize(struct ttt_t **ttt);
 
 #endif // __LIBTTT_H__
