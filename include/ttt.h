@@ -30,6 +30,19 @@
 #define TTT_EXTERN extern TTT_VISIBILITY(default)
 #endif
 
+/**
+ * @ingroup ttt_user_api_macros
+ *
+ * @def TTT_INTERN
+ *
+ * @brief Declare a symbol as internal.
+ */
+#if defined(__cplusplus)
+#define TTT_INTERN extern "C" TTT_VISIBILITY(hidden)
+#else
+#define TTT_INTERN extern TTT_VISIBILITY(hidden)
+#endif
+
 struct ttt_t;
 
 /**
