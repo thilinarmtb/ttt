@@ -10,6 +10,22 @@
  */
 void ttt_free_(void **ptr) { free(*ptr), *ptr = NULL; }
 
+static ttt_log_type_t ttt_level = TTT_NONE;
+
+/**
+ * @ingroup ttt_internal_api_functions
+ *
+ * @brief Set the verbose level for logging.
+ *
+ * @param level Verbosity level.
+ *
+ * @return int
+ */
+void ttt_log_init(const ttt_log_type_t level) {
+  if (level < TTT_NONE || level > TTT_INFO) return;
+  ttt_level = level;
+}
+
 /**
  * @ingroup ttt_internal_api_functions
  *
@@ -19,10 +35,10 @@ void ttt_free_(void **ptr) { free(*ptr), *ptr = NULL; }
  * @param fmt Format string.
  * @param ... Format string arguments.
  */
-void ttt_log(int verbose, const char *fmt, ...) {
+void ttt_log(const ttt_log_type_t verbose, const char *fmt, ...) {
   va_list args;
   va_start(args, fmt);
-  if (verbose > 0) vprintf(fmt, args);
+  if (verbose <= ttt_level) vprintf(fmt, args);
   va_end(args);
 }
 
@@ -41,22 +57,5 @@ void ttt_assert_(int cond, const char *msg, const char *file,
                  const unsigned line) {
   if (cond) return;
   fprintf(stderr, "%s:%d Assertion failure: %s", file, line, msg);
-  exit(EXIT_FAILURE);
-}
-
-/**
- * @ingroup ttt_internal_api_functions
- *
- * @brief Print an error message and exit.
- *
- * @param fmt Format string.
- * @param ... Format string arguments.
- */
-void ttt_error(const char *fmt, ...) {
-  va_list args;
-  va_start(args, fmt);
-  int nchars = vfprintf(stderr, fmt, args);
-  va_end(args);
-  ttt_assert(nchars >= 0, "vfprintf() failed in ttt_error().");
   exit(EXIT_FAILURE);
 }

@@ -13,6 +13,7 @@ static void ttt_print_help(const char *name) {
 
 static void ttt_parse_opts(struct ttt_t *ttt, int *argc, char ***argv_) {
   ttt->verbose = TTT_VERBOSE;
+  ttt_log_init(ttt->verbose);
 
   enum ttt_input_t { TTT_INPUT_VERBOSE = 0, TTT_INPUT_HELP = 99 };
   static struct option long_options[] = {
@@ -22,6 +23,7 @@ static void ttt_parse_opts(struct ttt_t *ttt, int *argc, char ***argv_) {
 
   char  *end  = NULL;
   char **argv = *argv_;
+  int    verbose_temp;
   for (;;) {
     int opt = getopt_long(*argc, argv, "", long_options, NULL);
     if (opt == -1) break;
@@ -29,9 +31,11 @@ static void ttt_parse_opts(struct ttt_t *ttt, int *argc, char ***argv_) {
     switch (opt) {
     case TTT_INPUT_VERBOSE:
       // NOLINTNEXTLINE
-      ttt->verbose = strtol(optarg, &end, 10);
+      verbose_temp = strtol(optarg, &end, 10);
       if (!end || *end != '\0' || optarg == end)
-        ttt_error("Invalid string for verbose level: %s\n", optarg);
+        ttt_log(TTT_ERROR, "Invalid string for verbose level: %s\n", optarg);
+      else
+        ttt->verbose = verbose_temp;
       break;
     case TTT_INPUT_HELP:
       ttt_print_help(argv[0]);
