@@ -22,6 +22,7 @@ function print_help() {
 : ${TTT_BUILD_TYPE:=Release}
 : ${TTT_INSTALL_PREFIX:=`pwd`/install}
 : ${TTT_BUILD_DIR:=`pwd`/build}
+: ${TTT_ENABLE_TESTS:=OFF}
 : ${TTT_ENABLE_DOCS:=OFF}
 : ${TTT_ENABLE_ASAN:=OFF}
 : ${TTT_INSTALL:=NO}
@@ -55,6 +56,10 @@ while [[ $# -gt 0 ]]; do
     -install-prefix)
       TTT_INSTALL_PREFIX="$2"
       shift
+      shift
+      ;;
+    -enable-tests)
+      TTT_ENABLE_TESTS="ON"
       shift
       ;;
     -enable-docs)
@@ -99,6 +104,7 @@ cmake -DCMAKE_C_COMPILER=${TTT_CC} \
   -DCMAKE_BUILD_TYPE=${TTT_BUILD_TYPE} \
   -DCMAKE_INSTALL_PREFIX=${TTT_INSTALL_PREFIX} \
   -B ${TTT_BUILD_DIR} \
+  -DENABLE_TESTS=${TTT_ENABLE_TESTS} \
   -DENABLE_DOCS=${TTT_ENABLE_DOCS} \
   -DENABLE_ASAN=${TTT_ENABLE_ASAN} \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
