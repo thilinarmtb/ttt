@@ -36,9 +36,12 @@ void ttt_log_init(const ttt_log_type_t level) {
  * @param ... Format string arguments.
  */
 void ttt_log(const ttt_log_type_t verbose, const char *fmt, ...) {
+  if (verbose > ttt_level) return;
+
   va_list args;
   va_start(args, fmt);
-  if (verbose <= ttt_level) vprintf(fmt, args);
+  vfprintf(stderr, fmt, args);
+  fflush(stderr);
   va_end(args);
 }
 
