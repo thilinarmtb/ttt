@@ -85,12 +85,6 @@
 <section id="macros">
 <h2>Macros<a class="headerlink" href="#macros" title="Permalink to this heading"></a></h2>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.TTT_INTERN">
-<span class="target" id="group__ttt__internal__api__macros_1ga51847007d6ddfeaaa828352f31a99928"></span><span class="sig-name descname"><span class="n"><span class="pre">TTT_INTERN</span></span></span><a class="headerlink" href="#c.TTT_INTERN" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Declare a symbol as internal. </p>
-</dd></dl>
-
-<dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.ttt_calloc">
 <span class="target" id="group__ttt__internal__api__macros_1gacbfccf9373a22b3d21bc0ef836e9445a"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_calloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_calloc" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Macro for allocating memory. This macro calls C standard library function <code class="docutils literal notranslate"><span class="pre">calloc()</span></code> and casts the returned pointer as a pointer to type <code class="docutils literal notranslate"><span class="pre">T</span></code>. </p>
@@ -149,8 +143,22 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv47ttt_logiPKcz">
-<span id="_CPPv37ttt_logiPKcz"></span><span id="_CPPv27ttt_logiPKcz"></span><span id="ttt_log__i.cCP.z"></span><span class="target" id="group__ttt__internal__api__functions_1gae587a95fe2805ca0d3a57ee0f5fbc90a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">verbose</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv47ttt_logiPKcz" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv412ttt_log_initK14ttt_log_type_t">
+<span id="_CPPv312ttt_log_initK14ttt_log_type_t"></span><span id="_CPPv212ttt_log_initK14ttt_log_type_t"></span><span id="ttt_log_init__ttt_log_type_tC"></span><span class="target" id="group__ttt__internal__api__functions_1ga5fa9a88350cd9f0864f96bedb99f9cde"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412ttt_log_initK14ttt_log_type_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Set the verbose level for logging. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>level</strong> – Verbosity level.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>int </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv47ttt_logK14ttt_log_type_tPKcz">
+<span id="_CPPv37ttt_logK14ttt_log_type_tPKcz"></span><span id="_CPPv27ttt_logK14ttt_log_type_tPKcz"></span><span id="ttt_log__ttt_log_type_tC.cCP.z"></span><span class="target" id="group__ttt__internal__api__functions_1gad2dd453e3ec79489eb59b1c440840bce"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">verbose</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv47ttt_logK14ttt_log_type_tPKcz" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Print a debug message if the verbosity level is greater than 0. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -174,20 +182,6 @@
 <li><p><strong>msg</strong> – Message to be printed if the assertion fails. </p></li>
 <li><p><strong>file</strong> – Name of the file where the assertion is made. </p></li>
 <li><p><strong>line</strong> – Line number where the assertion is made. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv49ttt_errorPKcz">
-<span id="_CPPv39ttt_errorPKcz"></span><span id="_CPPv29ttt_errorPKcz"></span><span id="ttt_error__cCP.z"></span><span class="target" id="group__ttt__internal__api__functions_1ga295a69ce5702518be5bb889763ac40a5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_error</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49ttt_errorPKcz" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Print an error message and exit. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fmt</strong> – Format string. </p></li>
-<li><p><strong>...</strong> – Format string arguments. </p></li>
 </ul>
 </dd>
 </dl>
