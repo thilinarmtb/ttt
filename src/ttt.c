@@ -3,12 +3,13 @@
 #include "ttt-impl.h"
 
 static void ttt_print_help(const char *name) {
-  printf("Usage: %s [OPTIONS]\n", name);
-  printf("Options:\n");
-  printf("  --ttt-verbose=<verbose level>, Verbose level (0, 1, 2, ...), "
-         "Default: %d.\n",
-         TTT_VERBOSE);
-  printf("  --ttt-help, Prints this help message and exit.\n");
+  fprintf(stderr, "Usage: %s [OPTIONS]\n", name);
+  fprintf(stderr, "Options:\n");
+  fprintf(stderr,
+          "  --ttt-verbose=<verbose level>, Verbose level (0, 1, 2, ...), "
+          "Default: %d.\n",
+          TTT_VERBOSE);
+  fprintf(stderr, "  --ttt-help, Prints this help message and exit.\n");
 }
 
 static void ttt_parse_opts(struct ttt_t *ttt, int *argc, char ***argv_) {
