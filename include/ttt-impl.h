@@ -3,10 +3,7 @@
 
 #define _POSIX_C_SOURCE 200809L
 
-#include <stdarg.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 #include "ttt-defs.h"
 #include "ttt.h"
