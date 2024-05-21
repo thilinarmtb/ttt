@@ -1,4 +1,4 @@
-name: Build and test ttt
+name: Build library and run tests
 on:
   pull_request:
     branches: [main]

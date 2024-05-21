@@ -1,4 +1,4 @@
-name: Build and test docs
+name: Build docs and deploy
 on:
   pull_request:
     branches: [main]
