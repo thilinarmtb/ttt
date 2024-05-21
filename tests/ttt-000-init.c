@@ -4,7 +4,7 @@
 
 int main(int argc, char **argv) {
   // ttt_init() must succeed.
-  struct ttt_t *ttt = ttt_init(&argc, &argv);
+  ttt_t ttt = ttt_init(&argc, &argv);
   ttt_test_assert(ttt != NULL);
 
   // ttt_finalize() must succeed.

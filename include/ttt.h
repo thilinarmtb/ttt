@@ -64,7 +64,7 @@
  */
 #define TTT_INVALID_USER_INPUT -128
 
-struct ttt_t;
+typedef struct ttt *ttt_t;
 
 /**
  * @defgroup ttt_user_api_functions User API functions
@@ -72,8 +72,8 @@ struct ttt_t;
  * @brief User API functions defined in `ttt.h`.
  */
 
-TTT_EXTERN struct ttt_t *ttt_init(int *argc, char **argv[]);
+TTT_EXTERN ttt_t ttt_init(int *argc, char **argv[]);
 
-TTT_EXTERN int ttt_finalize(struct ttt_t **ttt);
+TTT_EXTERN int ttt_finalize(ttt_t *ttt);
 
 #endif // __LIBTTT_H__

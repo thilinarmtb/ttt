@@ -8,6 +8,7 @@ function print_help() {
   echo "  -build-type <Release|Debug> Build type."
   echo "  -build-dir <build directory> Build directory."
   echo "  -install-prefix <install prefix> Install prefix."
+  echo "  -enable-tests Enable building tests."
   echo "  -enable-docs Enable building documentation."
   echo "  -enable-asan Enable address sanitizer."
   echo "  -install Install the project."
