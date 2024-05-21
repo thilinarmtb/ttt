@@ -84,7 +84,10 @@ ttt_t ttt_init(int *argc, char **argv[]) {
  * @param ttt Pointer to the ttt_t to be freed.
  */
 int ttt_finalize(ttt_t *ttt) {
-  if (ttt == NULL || *ttt == NULL) return TTT_INVALID_USER_INPUT;
+  ttt_check_ptr(ttt);
+  ttt_check_ptr2(ttt);
+
   ttt_free(ttt);
+
   return TTT_SUCCESS;
 }
