@@ -114,8 +114,8 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv48ttt_initPiA_PPc">
-<span id="_CPPv38ttt_initPiA_PPc"></span><span id="_CPPv28ttt_initPiA_PPc"></span><span id="ttt_init__iP.cPPA"></span><span class="target" id="group__ttt__user__api__functions_1gaf3d76833728a013203f1d1c6fb27a3aa"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="internal-api.html#_CPPv45ttt_t" title="ttt_t"><span class="n"><span class="pre">ttt_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_init</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48ttt_initPiA_PPc" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Initialize ttt. Returns a pointer to a newly allocated struct <a class="reference internal" href="internal-api.html#structttt__t"><span class="std std-ref">ttt_t</span></a>. </p>
+<span id="_CPPv38ttt_initPiA_PPc"></span><span id="_CPPv28ttt_initPiA_PPc"></span><span id="ttt_init__iP.cPPA"></span><span class="target" id="group__ttt__user__api__functions_1gaa9fb6dfeb565af0bcaac58272a3be006"></span><span class="n"><span class="pre">ttt_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_init</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48ttt_initPiA_PPc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initialize ttt. Returns a pointer to a newly allocated ttt_t. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -124,18 +124,18 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>struct ttt_t* </p>
+<dd class="field-even"><p>ttt_t </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv412ttt_finalizePP5ttt_t">
-<span id="_CPPv312ttt_finalizePP5ttt_t"></span><span id="_CPPv212ttt_finalizePP5ttt_t"></span><span id="ttt_finalize__ttt_tPP"></span><span class="target" id="group__ttt__user__api__functions_1ga52ec726d404bd4bb3ee5080f309eeb00"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_finalize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="internal-api.html#_CPPv45ttt_t" title="ttt_t"><span class="n"><span class="pre">ttt_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ttt</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412ttt_finalizePP5ttt_t" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Finalize ttt. Frees the memory allocated for the struct <a class="reference internal" href="internal-api.html#structttt__t"><span class="std std-ref">ttt_t</span></a> returned by <a class="reference internal" href="#group__ttt__user__api__functions_1gaf3d76833728a013203f1d1c6fb27a3aa"><span class="std std-ref">ttt_init()</span></a> and sets the pointer to NULL. </p>
+<dt class="sig sig-object cpp" id="_CPPv412ttt_finalizeP5ttt_t">
+<span id="_CPPv312ttt_finalizeP5ttt_t"></span><span id="_CPPv212ttt_finalizeP5ttt_t"></span><span id="ttt_finalize__ttt_tP"></span><span class="target" id="group__ttt__user__api__functions_1gaf78c80e3f71a611b824f202284b53472"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_finalize</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ttt_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ttt</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412ttt_finalizeP5ttt_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Finalize ttt. Frees the memory allocated for the ttt_t returned by <a class="reference internal" href="#group__ttt__user__api__functions_1gaa9fb6dfeb565af0bcaac58272a3be006"><span class="std std-ref">ttt_init()</span></a> and sets the pointer to NULL. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ttt</strong> – Pointer to the struct ttt_t* to be freed. </p>
+<dd class="field-odd"><p><strong>ttt</strong> – Pointer to the ttt_t to be freed. </p>
 </dd>
 </dl>
 </dd></dl>
