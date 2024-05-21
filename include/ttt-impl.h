@@ -23,7 +23,7 @@
 /**
  * ttt handle returned by ttt_init().
  */
-struct ttt_t {
+struct ttt {
   unsigned verbose; /**< Verbosity level. */
 };
 

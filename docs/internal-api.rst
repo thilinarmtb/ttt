@@ -20,5 +20,5 @@ Functions
 
 Structures
 ^^^^^^^^^^
-.. doxygenstruct:: ttt_t
+.. doxygenstruct:: ttt
   :members:
