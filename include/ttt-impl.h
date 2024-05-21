@@ -87,4 +87,28 @@ TTT_INTERN void ttt_assert_(int cond, const char *fmt, const char *file,
  */
 #define ttt_assert(COND, MSG) ttt_assert_(COND, MSG, __FILE__, __LINE__)
 
+/**
+ * @ingroup ttt_internal_api_macros
+ *
+ * @brief Check if the given pointer is NULL.
+ *
+ * @param ptr Pointer to be checked.
+ */
+#define ttt_check_ptr(ptr)                                                     \
+  {                                                                            \
+    if (ptr == NULL) return TTT_INVALID_USER_INPUT;                            \
+  }
+
+/**
+ * @ingroup ttt_internal_api_macros
+ *
+ * @brief Check if the dereferenced value of a pointer is NULL.
+ *
+ * @param ptr Address of the pointer to be checked.
+ */
+#define ttt_check_ptr2(ptr)                                                    \
+  {                                                                            \
+    if (*ptr == NULL) return TTT_INVALID_USER_INPUT;                           \
+  }
+
 #endif // __LIBTTT_IMPL_H__
