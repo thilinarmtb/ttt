@@ -40,6 +40,20 @@ struct ttt {
  */
 #define ttt_calloc(T, n) ((T *)calloc(n, sizeof(T)))
 
+/**
+ * @ingroup ttt_internal_api_macros
+ *
+ * @brief Macro for re-allocating memory. This macro calls C standard library
+ * function `realloc()` and casts the returned pointer as a pointer to type `T`.
+ *
+ * @param T Type of the memory to be allocated.
+ * @param ptr Pointer to already allocated memory.
+ * @param n Number of elements of type T to be allocated.
+ *
+ * @return Pointer to the allocated memory.
+ */
+#define ttt_realloc(T, ptr, n) ((T *)realloc(ptr, sizeof(T) * (n)))
+
 TTT_INTERN void ttt_free_(void **ptr);
 
 /**
