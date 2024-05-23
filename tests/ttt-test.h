@@ -13,7 +13,7 @@ inline static void ttt_test_assert_(int cond, const char *file,
   exit(EXIT_FAILURE);
 }
 
-#define ttt_test_assert(COND) ttt_test_assert_(COND, __FILE__, __LINE__)
+#define ttt_test_assert(cond) ttt_test_assert_(cond, __FILE__, __LINE__)
 
 #define ttt_test_check(call)                                                   \
   {                                                                            \
