@@ -103,6 +103,16 @@ TTT_INTERN int ttt_log_(ttt_log_type_t type, int error_no, const char *fmt,
 #define TTT_VA_FIRST_IMPL(first, ...) first
 #define TTT_VA_FIRST(...)             TTT_VA_FIRST_IMPL(__VA_ARGS__, throwaway)
 
+/**
+ * @ingroup ttt_internal_api_macros
+ *
+ * @brief Wrapper macro around the ttt_log_() function.
+ *
+ * @param type Log type.
+ * @param error_no Error number or id (e.g., TTT_INVALID_USER_INPUT).
+ * @param ...  printf() like format string for the log message and relevant
+ * arguments (if any).
+ */
 #define ttt_log(type, error_no, ...)                                           \
   ttt_log_(type, error_no, TTT_VA_FIRST(__VA_ARGS__), __FILE__,                \
            __LINE__ TTT_VA_REST(__VA_ARGS__))
