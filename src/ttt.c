@@ -13,7 +13,7 @@ static void ttt_print_help(const char *name) {
   fprintf(stderr, "  --ttt-help, Prints this help message and exit.\n");
 }
 
-static void ttt_parse_opts(ttt_t ttt, int *argc, char ***argv_) {
+static int ttt_parse_opts(ttt_t ttt, int *argc, char ***argv_) {
   ttt->verbose = TTT_VERBOSE;
   ttt_log_init(ttt->verbose);
 
@@ -35,9 +35,9 @@ static void ttt_parse_opts(ttt_t ttt, int *argc, char ***argv_) {
       // NOLINTNEXTLINE
       verbose_temp = strtol(optarg, &end, 10);
       if (!end || *end != '\0' || optarg == end)
-        ttt_log(TTT_ERROR, "Invalid string for verbose level: %s\n", optarg);
-      else
-        ttt->verbose = verbose_temp;
+        return ttt_log(TTT_ERROR, TTT_INVALID_USER_INPUT,
+                       "Invalid string for verbose level: %s\n", optarg);
+      ttt->verbose = verbose_temp;
       break;
     case TTT_INPUT_HELP:
       ttt_print_help(argv[0]);
@@ -55,6 +55,8 @@ static void ttt_parse_opts(ttt_t ttt, int *argc, char ***argv_) {
   // end of the program.
   for (int i = optind; i < *argc; i++) argv[i - optind] = argv[i];
   *argc -= optind;
+
+  return TTT_SUCCESS;
 }
 
 /**
