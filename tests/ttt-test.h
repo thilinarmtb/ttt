@@ -15,4 +15,10 @@ inline static void ttt_test_assert_(int cond, const char *file,
 
 #define ttt_test_assert(COND) ttt_test_assert_(COND, __FILE__, __LINE__)
 
+#define ttt_test_check(call)                                                   \
+  {                                                                            \
+    int status = (call);                                                       \
+    ttt_test_assert(status == TTT_SUCCESS);                                    \
+  }
+
 #endif // __LIBTTT_TEST_H__
