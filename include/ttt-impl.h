@@ -74,19 +74,6 @@ TTT_INTERN void ttt_log_init(ttt_log_type_t level);
 
 TTT_INTERN void ttt_log(ttt_log_type_t verbose, const char *fmt, ...);
 
-TTT_INTERN void ttt_assert_(int cond, const char *fmt, const char *file,
-                            unsigned line);
-/**
- * @ingroup ttt_internal_api_macros
- *
- * @brief Macro for asserting a condition. This macro calls ttt_assert_()
- * function.
- *
- * @param COND Condition to be asserted.
- * @param MSG Message to be printed if the condition is not met.
- */
-#define ttt_assert(COND, MSG) ttt_assert_(COND, MSG, __FILE__, __LINE__)
-
 /**
  * @ingroup ttt_internal_api_macros
  *
