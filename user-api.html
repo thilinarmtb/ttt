@@ -113,12 +113,13 @@
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv48ttt_initPiA_PPc">
-<span id="_CPPv38ttt_initPiA_PPc"></span><span id="_CPPv28ttt_initPiA_PPc"></span><span id="ttt_init__iP.cPPA"></span><span class="target" id="group__ttt__user__api__functions_1gaa9fb6dfeb565af0bcaac58272a3be006"></span><span class="n"><span class="pre">ttt_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_init</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48ttt_initPiA_PPc" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv48ttt_initP5ttt_tPiA_PPc">
+<span id="_CPPv38ttt_initP5ttt_tPiA_PPc"></span><span id="_CPPv28ttt_initP5ttt_tPiA_PPc"></span><span id="ttt_init__ttt_tP.iP.cPPA"></span><span class="target" id="group__ttt__user__api__functions_1gaafd0b6bc44a2e5acbb65e17b5ebeab93"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ttt_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ttt</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48ttt_initP5ttt_tPiA_PPc" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initialize ttt. Returns a pointer to a newly allocated ttt_t. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>ttt</strong> – Pointer to the ttt_t handle which will be initialized. </p></li>
 <li><p><strong>argc</strong> – Pointer to the number of commnad line arguments. </p></li>
 <li><p><strong>argv</strong> – Pointer to the array of command line arguments.</p></li>
 </ul>
@@ -132,7 +133,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv412ttt_finalizeP5ttt_t">
 <span id="_CPPv312ttt_finalizeP5ttt_t"></span><span id="_CPPv212ttt_finalizeP5ttt_t"></span><span id="ttt_finalize__ttt_tP"></span><span class="target" id="group__ttt__user__api__functions_1gaf78c80e3f71a611b824f202284b53472"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_finalize</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ttt_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ttt</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412ttt_finalizeP5ttt_t" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Finalize ttt. Frees the memory allocated for the ttt_t returned by <a class="reference internal" href="#group__ttt__user__api__functions_1gaa9fb6dfeb565af0bcaac58272a3be006"><span class="std std-ref">ttt_init()</span></a> and sets the pointer to NULL. </p>
+<dd><p>Finalize ttt. Frees the memory allocated for the ttt_t returned by <a class="reference internal" href="#group__ttt__user__api__functions_1gaafd0b6bc44a2e5acbb65e17b5ebeab93"><span class="std std-ref">ttt_init()</span></a> and sets the pointer to NULL. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>ttt</strong> – Pointer to the ttt_t to be freed. </p>

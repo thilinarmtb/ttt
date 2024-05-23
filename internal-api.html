@@ -102,6 +102,24 @@
 </dd></dl>
 
 <dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ttt_realloc">
+<span class="target" id="group__ttt__internal__api__macros_1gaa84dbee809d791b966ba425894aef8e4"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_realloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">ptr</span></span>, <span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_realloc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Macro for re-allocating memory. This macro calls C standard library function <code class="docutils literal notranslate"><span class="pre">realloc()</span></code> and casts the returned pointer as a pointer to type <code class="docutils literal notranslate"><span class="pre">T</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Type of the memory to be allocated. </p></li>
+<li><p><strong>ptr</strong> – Pointer to already allocated memory. </p></li>
+<li><p><strong>n</strong> – Number of elements of type T to be allocated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pointer to the allocated memory. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.ttt_free">
 <span class="target" id="group__ttt__internal__api__macros_1gabdfc04cd4087c66717916f5f03dd6650"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_free</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">p</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_free" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Macro for freeing memory. This macro calls <a class="reference internal" href="#group__ttt__internal__api__functions_1ga79c231d9867caeb691e80068ec7bcd2c"><span class="std std-ref">ttt_free_()</span></a> function. </p>
@@ -115,14 +133,28 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_assert">
-<span class="target" id="group__ttt__internal__api__macros_1ga21460fce21bada3996e1f0225cc4e5d8"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_assert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">COND</span></span>, <span class="n"><span class="pre">MSG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_assert" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Macro for asserting a condition. This macro calls <a class="reference internal" href="#group__ttt__internal__api__functions_1ga536eb4ac47f175cd1ace350d67e658e0"><span class="std std-ref">ttt_assert_()</span></a> function. </p>
+<dt class="sig sig-object cpp" id="c.ttt_log">
+<span class="target" id="group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">type</span></span>, <span class="n"><span class="pre">error_no</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_log" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Wrapper macro around the <a class="reference internal" href="#group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"><span class="std std-ref">ttt_log_()</span></a> function. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>COND</strong> – Condition to be asserted. </p></li>
-<li><p><strong>MSG</strong> – Message to be printed if the condition is not met. </p></li>
+<li><p><strong>type</strong> – Log type. </p></li>
+<li><p><strong>error_no</strong> – Error number or id (e.g., TTT_INVALID_USER_INPUT). </p></li>
+<li><p><strong>...</strong> – printf() like format string for the log message and relevant arguments (if any). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ttt_check">
+<span class="target" id="group__ttt__internal__api__macros_1gae53c198e64b4046f1f48801203377c22"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_check</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">call</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_check" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Check the return value of an internal ttt call. Return the error id if it is not equal to TTT_SUCCESS. All ttt internal API functions return error ids generated by <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>call</strong> – Return value from an internal ttt call. </p></li>
 </ul>
 </dd>
 </dl>
@@ -170,11 +202,11 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv412ttt_log_initK14ttt_log_type_t">
-<span id="_CPPv312ttt_log_initK14ttt_log_type_t"></span><span id="_CPPv212ttt_log_initK14ttt_log_type_t"></span><span id="ttt_log_init__ttt_log_type_tC"></span><span class="target" id="group__ttt__internal__api__functions_1ga5fa9a88350cd9f0864f96bedb99f9cde"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412ttt_log_initK14ttt_log_type_t" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Set the verbose level for logging. </p>
+<span id="_CPPv312ttt_log_initK14ttt_log_type_t"></span><span id="_CPPv212ttt_log_initK14ttt_log_type_t"></span><span id="ttt_log_init__ttt_log_type_tC"></span><span class="target" id="group__ttt__internal__api__functions_1gacd4052e3df18233fb1dc3227bb6617da"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412ttt_log_initK14ttt_log_type_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Set the priority level for logging. All the calls to <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> using a log type with a higher priority than <code class="docutils literal notranslate"><span class="pre">type</span></code> will generate output on stderr. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>level</strong> – Verbosity level.</p>
+<dd class="field-odd"><p><strong>type</strong> – Log type with the lowest priority which will generate output.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>int </p>
@@ -183,32 +215,32 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv47ttt_logK14ttt_log_type_tPKcz">
-<span id="_CPPv37ttt_logK14ttt_log_type_tPKcz"></span><span id="_CPPv27ttt_logK14ttt_log_type_tPKcz"></span><span id="ttt_log__ttt_log_type_tC.cCP.z"></span><span class="target" id="group__ttt__internal__api__functions_1gad2dd453e3ec79489eb59b1c440840bce"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">verbose</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv47ttt_logK14ttt_log_type_tPKcz" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Print a debug message if the verbosity level is greater than 0. </p>
+<dt class="sig sig-object cpp" id="_CPPv48ttt_log_K14ttt_log_type_tKiPKcz">
+<span id="_CPPv38ttt_log_K14ttt_log_type_tKiPKcz"></span><span id="_CPPv28ttt_log_K14ttt_log_type_tKiPKcz"></span><span id="ttt_log___ttt_log_type_tC.iC.cCP.z"></span><span class="target" id="group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">error_no</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt_</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48ttt_log_K14ttt_log_type_tKiPKcz" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Output a message to the stderr if the log type <code class="docutils literal notranslate"><span class="pre">type</span></code> has a higher priority than the type set during <a class="reference internal" href="#group__ttt__internal__api__functions_1gacd4052e3df18233fb1dc3227bb6617da"><span class="std std-ref">ttt_log_init()</span></a>. In addition, all the log messages which has a type of TTT_ERROR is stored so that they could be later queried by the user using the integer id returned by <a class="reference internal" href="#group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"><span class="std std-ref">ttt_log_()</span></a>. <a class="reference internal" href="#group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"><span class="std std-ref">ttt_log_()</span></a> returns 0 for all other log types and the respective message is not stored. </p>
+<p>Users must use <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> macro instead of directly calling <a class="reference internal" href="#group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"><span class="std std-ref">ttt_log_()</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>verbose</strong> – Verbosity level. </p></li>
-<li><p><strong>fmt</strong> – Format string. </p></li>
-<li><p><strong>...</strong> – Format string arguments. </p></li>
+<li><p><strong>type</strong> – Log type. </p></li>
+<li><p><strong>error_no</strong> – Error number or id (e.g., TTT_INVALID_USER_INPUT). </p></li>
+<li><p><strong>fmt_</strong> – Format string for the log message. </p></li>
+<li><p><strong>...</strong> – printf() arguments: file name, line number and other optional arguments if any.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>int </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv411ttt_assert_iPKcPKcKj">
-<span id="_CPPv311ttt_assert_iPKcPKcKj"></span><span id="_CPPv211ttt_assert_iPKcPKcKj"></span><span id="ttt_assert___i.cCP.cCP.unsignedC"></span><span class="target" id="group__ttt__internal__api__functions_1ga536eb4ac47f175cd1ace350d67e658e0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_assert_</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cond</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">msg</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">file</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">line</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411ttt_assert_iPKcPKcKj" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Assert a condition to be true and print a message if the assertion fails. Use the macro <a class="reference internal" href="#group__ttt__internal__api__macros_1ga21460fce21bada3996e1f0225cc4e5d8"><span class="std std-ref">ttt_assert()</span></a> instead of using this function directly. </p>
+<dt class="sig sig-object cpp" id="_CPPv416ttt_log_finalizev">
+<span id="_CPPv316ttt_log_finalizev"></span><span id="_CPPv216ttt_log_finalizev"></span><span id="ttt_log_finalize__void"></span><span class="target" id="group__ttt__internal__api__functions_1gae5232df88cb1cdc5b11a4966e5c3314b"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_finalize</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ttt_log_finalizev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Release the memory allocated for the stored error messages and reset the log type used as the priority. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>cond</strong> – Condition to be asserted. </p></li>
-<li><p><strong>msg</strong> – Message to be printed if the assertion fails. </p></li>
-<li><p><strong>file</strong> – Name of the file where the assertion is made. </p></li>
-<li><p><strong>line</strong> – Line number where the assertion is made. </p></li>
-</ul>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int </p>
 </dd>
 </dl>
 </dd></dl>
@@ -219,7 +251,7 @@
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv43ttt">
 <span id="_CPPv33ttt"></span><span id="_CPPv23ttt"></span><span id="ttt"></span><span class="target" id="structttt"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt</span></span></span><a class="headerlink" href="#_CPPv43ttt" title="Permalink to this definition"></a><br /></dt>
-<dd><p>ttt handle returned by <a class="reference internal" href="user-api.html#group__ttt__user__api__functions_1gaa9fb6dfeb565af0bcaac58272a3be006"><span class="std std-ref">ttt_init()</span></a>. </p>
+<dd><p>ttt handle returned by <a class="reference internal" href="user-api.html#group__ttt__user__api__functions_1gaafd0b6bc44a2e5acbb65e17b5ebeab93"><span class="std std-ref">ttt_init()</span></a>. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
