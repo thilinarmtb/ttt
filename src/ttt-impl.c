@@ -47,21 +47,3 @@ void ttt_log(const ttt_log_type_t verbose, const char *fmt, ...) {
   fflush(stderr);
   va_end(args);
 }
-
-/**
- * @ingroup ttt_internal_api_functions
- *
- * @brief Assert a condition to be true and print a message if the assertion
- * fails. Use the macro ttt_assert() instead of using this function directly.
- *
- * @param cond Condition to be asserted.
- * @param msg Message to be printed if the assertion fails.
- * @param file Name of the file where the assertion is made.
- * @param line Line number where the assertion is made.
- */
-void ttt_assert_(int cond, const char *msg, const char *file,
-                 const unsigned line) {
-  if (cond) return;
-  fprintf(stderr, "%s:%d Assertion failure: %s", file, line, msg);
-  exit(EXIT_FAILURE);
-}
