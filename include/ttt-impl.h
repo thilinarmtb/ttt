@@ -86,7 +86,28 @@ typedef enum {
 
 TTT_INTERN void ttt_log_init(ttt_log_type_t level);
 
-TTT_INTERN void ttt_log(ttt_log_type_t verbose, const char *fmt, ...);
+TTT_INTERN int ttt_log_(ttt_log_type_t type, int error_no, const char *fmt,
+                        ...);
+
+#define TTT_VA_REST_CASE_IMPL(_1, _2, _3, _4, _5, _6, _7, _8, _9, ...) _9
+#define TTT_VA_REST_CASE(...)                                                  \
+  TTT_VA_REST_CASE_IMPL(__VA_ARGS__, 2, 2, 2, 2, 2, 2, 2, 1, 0)
+
+#define TTT_VA_REST_IMPL_2(first, ...) , __VA_ARGS__
+#define TTT_VA_REST_IMPL_1(...)
+#define TTT_VA_REST_IMPL_(num, ...) TTT_VA_REST_IMPL_##num(__VA_ARGS__)
+#define TTT_VA_REST_IMPL(num, ...)  TTT_VA_REST_IMPL_(num, __VA_ARGS__)
+#define TTT_VA_REST(...)                                                       \
+  TTT_VA_REST_IMPL(TTT_VA_REST_CASE(__VA_ARGS__), __VA_ARGS__)
+
+#define TTT_VA_FIRST_IMPL(first, ...) first
+#define TTT_VA_FIRST(...)             TTT_VA_FIRST_IMPL(__VA_ARGS__, throwaway)
+
+#define ttt_log(type, error_no, ...)                                           \
+  ttt_log_(type, error_no, TTT_VA_FIRST(__VA_ARGS__), __FILE__,                \
+           __LINE__ TTT_VA_REST(__VA_ARGS__))
+
+TTT_INTERN int ttt_log_finalize(void);
 
 /**
  * @ingroup ttt_internal_api_macros
