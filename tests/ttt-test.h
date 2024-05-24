@@ -6,19 +6,30 @@
 
 #include "ttt.h"
 
-inline static void ttt_test_assert_(int cond, const char *file,
-                                    const unsigned line) {
-  if (cond) return;
-  fprintf(stderr, "Assertion failure at %s:%d.\n", file, line);
-  exit(EXIT_FAILURE);
-}
+#define ttt_test_assert(cond, err)                                             \
+  {                                                                            \
+    int status = ((cond) != 1);                                                \
+    if (status) {                                                              \
+      fprintf(stderr, "Test failed in file %s at line %d.\n", __FILE__,        \
+              __LINE__);                                                       \
+      fflush(stderr);                                                          \
+    }                                                                          \
+    err |= status;                                                             \
+  }
 
-#define ttt_test_assert(cond) ttt_test_assert_(cond, __FILE__, __LINE__)
-
-#define ttt_test_check(call)                                                   \
+#define ttt_test_check(call, err)                                              \
   {                                                                            \
     int status = (call);                                                       \
-    ttt_test_assert(status == TTT_SUCCESS);                                    \
+    if (status)                                                                \
+      printf("Test failed in file %s at line %d.\n", __FILE__, __LINE__);      \
+    err |= status;                                                             \
   }
+
+#define ttt_test_calloc(T, n) ((T *)calloc((n), sizeof(T)))
+
+#define ttt_test_realloc(T, ptr, n) ((T *)realloc((ptr), sizeof(T) * (n)))
+
+#define ttt_test_free(p)                                                       \
+  { free(*(p)), *(p) = NULL; }
 
 #endif // __LIBTTT_TEST_H__
