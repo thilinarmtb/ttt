@@ -22,8 +22,6 @@ jobs:
       run:
         shell: bash -l {0}
     env:
-      BUILDDIR: build
-      DOCSDIR: build/docs
       PUSH_ON_MAIN: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
       - name: Setup GitHub actions
@@ -52,13 +50,13 @@ jobs:
       - name: Build documentation
         id: build_docs
         run: |
-          ./ttt.sh -enable-docs -build-dir ${BUILDDIR} -docs -install
+          ./ttt.sh -enable-docs -docs -install
       # https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/
       - name: Bypass Jekyll
         id: bypass_jekyll
         if: ${{ fromJSON(env.PUSH_ON_MAIN) }}
         run: |
-          cd ${DOCSDIR}/sphinx && touch .nojekyll
+          cd build/docs/sphinx && touch .nojekyll
       - name: Deploy to gh-pages
         id: deploy
         if: ${{ fromJSON(env.PUSH_ON_MAIN) }}
@@ -66,7 +64,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: ${{ env.DOCSDIR }}/sphinx
+          FOLDER: build/docs/sphinx
       - name: Block to allow inspecting failures
         run: sleep 30m
         if: ${{ failure() && inputs.debug_enabled }}
