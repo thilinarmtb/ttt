@@ -22,8 +22,6 @@ jobs:
       run:
         shell: bash -l {0}
     env:
-      BUILDDIR: build
-      DOCSDIR: build/docs
       PUSH_ON_MAIN: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
       - name: Setup GitHub actions
@@ -53,7 +51,7 @@ jobs:
         id: build_tests
         run: |
           ./setup.sh -r mylib -n
-          ./mylib.sh -build-dir ${BUILDDIR} -enable-tests -install
+          ./mylib.sh -enable-tests -install
       - name:  Test the renamed repo
         id: run_tests
         run: |

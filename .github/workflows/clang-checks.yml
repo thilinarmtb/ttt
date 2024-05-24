@@ -1,4 +1,4 @@
-name: Run clang-format and clang-tidy checks
+name: Run clang check
 on:
   pull_request:
     branches: [main]
@@ -22,7 +22,6 @@ jobs:
       run:
         shell: bash -l {0}
     env:
-      BUILDDIR: build
       PUSH_ON_MAIN: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
       - name: Setup GitHub actions
@@ -51,11 +50,11 @@ jobs:
       - name: Run clang-format check
         id: format_check
         run: |
-          ./ttt.sh -build-dir ${BUILDDIR} -format-check
+          ./ttt.sh -format-check
       - name: Run clang-tidy check
         id: tidy_check
         run: |
-          ./ttt.sh -build-dir ${BUILDDIR} -tidy
+          ./ttt.sh -tidy
       - name: Block to allow inspecting failures
         run: sleep 30m
         if: ${{ failure() && inputs.debug_enabled }}
