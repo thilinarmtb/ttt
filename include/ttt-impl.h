@@ -117,6 +117,43 @@ TTT_INTERN int ttt_log_(ttt_log_type_t type, int error_no, const char *fmt,
   ttt_log_(type, error_no, TTT_VA_FIRST(__VA_ARGS__), __FILE__,                \
            __LINE__ TTT_VA_REST(__VA_ARGS__))
 
+/**
+ * @ingroup ttt_internal_api_macros
+ *
+ * @brief Convenient macro to log a general information.
+ *
+ * @param ... printf() like format string and arguments.
+ */
+#define ttt_info(...)                                                          \
+  { ttt_log(TTT_INFO, TTT_SUCCESS, __VA_ARGS__); }
+
+/**
+ * @ingroup ttt_internal_api_macros
+ *
+ * @brief Convenient macro to log a warning if a condition is met.
+ *
+ * @param cond Condition to trigger the warning.
+ * @param ... printf() like format string and arguments.
+ */
+#define ttt_warn(cond, ...)                                                    \
+  {                                                                            \
+    if (cond) ttt_log(TTT_WARNING, TTT_SUCCESS, __VA_ARGS__);                  \
+  }
+
+/**
+ * @ingroup ttt_internal_api_macros
+ *
+ * @brief Convenient macro to log a error and return if a condition is met.
+ *
+ * @param cond Condition to trigger the warning.
+ * @param error_id Error id for the error.
+ * @param ... printf() like format string and arguments.
+ */
+#define ttt_error(cond, error_id, ...)                                         \
+  {                                                                            \
+    if (cond) return ttt_log(TTT_ERROR, error_id, __VA_ARGS__);                \
+  }
+
 TTT_INTERN int ttt_log_finalize(void);
 
 /**
