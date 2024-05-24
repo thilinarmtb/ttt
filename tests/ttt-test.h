@@ -20,8 +20,11 @@
 #define ttt_test_check(call, err)                                              \
   {                                                                            \
     int status = (call);                                                       \
-    if (status)                                                                \
-      printf("Test failed in file %s at line %d.\n", __FILE__, __LINE__);      \
+    if (status) {                                                              \
+      fprintf(stderr, "Test failed in file %s at line %d.\n", __FILE__,        \
+              __LINE__);                                                       \
+      fflush(stderr);                                                          \
+    }                                                                          \
     err |= status;                                                             \
   }
 
