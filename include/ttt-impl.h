@@ -32,7 +32,7 @@ struct ttt {
  *
  * @return Pointer to the allocated memory.
  */
-#define ttt_calloc(T, n) ((T *)calloc(n, sizeof(T)))
+#define ttt_calloc(T, n) ((T *)calloc((n), sizeof(T)))
 
 /**
  * @ingroup ttt_internal_api_macros
@@ -46,7 +46,7 @@ struct ttt {
  *
  * @return Pointer to the allocated memory.
  */
-#define ttt_realloc(T, ptr, n) ((T *)realloc(ptr, sizeof(T) * (n)))
+#define ttt_realloc(T, ptr, n) ((T *)realloc((ptr), sizeof(T) * (n)))
 
 TTT_INTERN void ttt_free_(void **ptr);
 
@@ -57,7 +57,7 @@ TTT_INTERN void ttt_free_(void **ptr);
  *
  * @param p Pointer to the memory to be freed.
  */
-#define ttt_free(p) ttt_free_((void **)p)
+#define ttt_free(p) ttt_free_((void **)(p))
 
 /**
  * @defgroup ttt_internal_types Internal types
