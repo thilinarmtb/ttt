@@ -62,7 +62,7 @@ static ttt_err_log_t **ttt_log_errs     = NULL;
  */
 int ttt_log_(const ttt_log_type_t type, const int error_no, const char *fmt_,
              ...) {
-  if (type > ttt_type && type != TTT_ERROR) return 0;
+  if (type > ttt_type && type != TTT_ERROR) return TTT_SUCCESS;
 
 #define LOG_PREFIX "%s:%d "
 #define LOG_SUFFIX "\n"
@@ -89,7 +89,7 @@ int ttt_log_(const ttt_log_type_t type, const int error_no, const char *fmt_,
   ttt_free(&fmt);
 
   if (type <= ttt_type) fprintf(stderr, "%s", msg), fflush(stderr);
-  if (type != TTT_ERROR) return 0;
+  if (type != TTT_ERROR) return TTT_SUCCESS;
 
   size_t size = strnlen(msg, BUFSIZ);
 
@@ -105,7 +105,7 @@ store_msg:
   strncpy(ttt_log_errs[ttt_log_size]->msg, msg, size);
   ttt_log_size++;
 
-  return TTT_SUCCESS;
+  return ttt_log_size;
 }
 
 /**
