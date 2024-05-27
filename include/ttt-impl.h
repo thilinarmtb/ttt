@@ -183,7 +183,8 @@ TTT_INTERN int ttt_log_finalize(void);
  */
 #define ttt_check_ptr(ptr)                                                     \
   {                                                                            \
-    if (ptr == NULL) return TTT_INVALID_USER_INPUT;                            \
+    ttt_error(ptr == NULL, TTT_INVALID_USER_INPUT,                             \
+              "Pointer passed to ttt API call is NULL");                       \
   }
 
 /**
@@ -195,7 +196,8 @@ TTT_INTERN int ttt_log_finalize(void);
  */
 #define ttt_check_ptr2(ptr)                                                    \
   {                                                                            \
-    if (*ptr == NULL) return TTT_INVALID_USER_INPUT;                           \
+    ttt_error(*ptr == NULL, TTT_INVALID_USER_INPUT,                            \
+              "Pointer passed to ttt API call is NULL");                       \
   }
 
 #endif // __LIBTTT_IMPL_H__
