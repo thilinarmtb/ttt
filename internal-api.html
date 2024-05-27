@@ -135,7 +135,7 @@
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.ttt_log">
 <span class="target" id="group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">type</span></span>, <span class="n"><span class="pre">error_no</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_log" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Wrapper macro around the <a class="reference internal" href="#group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"><span class="std std-ref">ttt_log_()</span></a> function. </p>
+<dd><p>Wrapper macro around the <a class="reference internal" href="#group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"><span class="std std-ref">ttt_log_()</span></a> function. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -257,17 +257,65 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416ttt_log_set_typeK14ttt_log_type_t">
+<span id="_CPPv316ttt_log_set_typeK14ttt_log_type_t"></span><span id="_CPPv216ttt_log_set_typeK14ttt_log_type_t"></span><span id="ttt_log_set_type__ttt_log_type_tC"></span><span class="target" id="group__ttt__internal__api__functions_1ga74f3e3560fd85649b4f76f56429d8caf"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_set_type</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ttt_log_set_typeK14ttt_log_type_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Set the priority level for logging. All the calls to <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> using a log type with a higher priority than <code class="docutils literal notranslate"><span class="pre">type</span></code> will generate output on stderr. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> – Log type with the lowest priority which will generate output.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>int </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv48ttt_log_K14ttt_log_type_tKiPKcz">
-<span id="_CPPv38ttt_log_K14ttt_log_type_tKiPKcz"></span><span id="_CPPv28ttt_log_K14ttt_log_type_tKiPKcz"></span><span id="ttt_log___ttt_log_type_tC.iC.cCP.z"></span><span class="target" id="group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">error_no</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt_</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48ttt_log_K14ttt_log_type_tKiPKcz" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Output a message to the stderr if the log type <code class="docutils literal notranslate"><span class="pre">type</span></code> has a higher priority than the type set during <a class="reference internal" href="#group__ttt__internal__api__functions_1gacd4052e3df18233fb1dc3227bb6617da"><span class="std std-ref">ttt_log_init()</span></a>. In addition, all the log messages which has a type of TTT_ERROR is stored so that they could be later queried by the user using the integer id returned by <a class="reference internal" href="#group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"><span class="std std-ref">ttt_log_()</span></a>. <a class="reference internal" href="#group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"><span class="std std-ref">ttt_log_()</span></a> returns 0 for all other log types and the respective message is not stored. </p>
-<p>Users must use <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> macro instead of directly calling <a class="reference internal" href="#group__ttt__internal__api__functions_1ga60376d9c62e0b10bdf871cfd6eedc863"><span class="std std-ref">ttt_log_()</span></a>.</p>
+<span id="_CPPv38ttt_log_K14ttt_log_type_tKiPKcz"></span><span id="_CPPv28ttt_log_K14ttt_log_type_tKiPKcz"></span><span id="ttt_log___ttt_log_type_tC.iC.cCP.z"></span><span class="target" id="group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">error_id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt_</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48ttt_log_K14ttt_log_type_tKiPKcz" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Output a message to the stderr if the log type <code class="docutils literal notranslate"><span class="pre">type</span></code> has a higher priority than the type set during <a class="reference internal" href="#group__ttt__internal__api__functions_1gacd4052e3df18233fb1dc3227bb6617da"><span class="std std-ref">ttt_log_init()</span></a>. In addition, all the log messages which has a type of TTT_ERROR is stored so that they could be later queried by the user using the integer id returned by <a class="reference internal" href="#group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"><span class="std std-ref">ttt_log_()</span></a>. <a class="reference internal" href="#group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"><span class="std std-ref">ttt_log_()</span></a> returns 0 for all other log types and the respective message is not stored. </p>
+<p>Users must use <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> macro instead of directly calling <a class="reference internal" href="#group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"><span class="std std-ref">ttt_log_()</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>type</strong> – Log type. </p></li>
-<li><p><strong>error_no</strong> – Error number or id (e.g., TTT_INVALID_USER_INPUT). </p></li>
+<li><p><strong>error_id</strong> – Error number or id (e.g., TTT_INVALID_USER_INPUT). </p></li>
 <li><p><strong>fmt_</strong> – Format string for the log message. </p></li>
 <li><p><strong>...</strong> – printf() arguments: file name, line number and other optional arguments if any.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>int </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416ttt_get_error_idPiKi">
+<span id="_CPPv316ttt_get_error_idPiKi"></span><span id="_CPPv216ttt_get_error_idPiKi"></span><span id="ttt_get_error_id__iP.iC"></span><span class="target" id="group__ttt__internal__api__functions_1ga679df3aba0ffc01965c23cd2afdc8ee1"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_get_error_id</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error_id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ttt_get_error_idPiKi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the error id given the error index returned by a ttt API call. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>error_id</strong> – Error id corresponding to the index <code class="docutils literal notranslate"><span class="pre">index</span></code>. </p></li>
+<li><p><strong>index</strong> – Error index returned by a ttt API call.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>int </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421ttt_get_error_messagePPcKi">
+<span id="_CPPv321ttt_get_error_messagePPcKi"></span><span id="_CPPv221ttt_get_error_messagePPcKi"></span><span id="ttt_get_error_message__cPP.iC"></span><span class="target" id="group__ttt__internal__api__functions_1gae3dd3d1b8fd9a1c05781dc1c94e2e2e3"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_get_error_message</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error_msg</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421ttt_get_error_messagePPcKi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the error message given the error index returned by a ttt API call. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>error_msg</strong> – Error message corresponding to the index <code class="docutils literal notranslate"><span class="pre">index</span></code>. </p></li>
+<li><p><strong>index</strong> – Error index returned by a ttt API call.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
