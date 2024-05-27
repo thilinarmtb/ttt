@@ -86,6 +86,8 @@ typedef enum {
 
 TTT_INTERN void ttt_log_init(ttt_log_type_t level);
 
+TTT_INTERN void ttt_log_set_type(ttt_log_type_t level);
+
 TTT_INTERN int ttt_log_(ttt_log_type_t type, int error_no, const char *fmt,
                         ...);
 
