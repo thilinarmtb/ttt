@@ -12,8 +12,13 @@ int main(int argc, char **argv) {
   // ttt_finalize() must succeed.
   ttt_test_check(ttt_finalize(&ttt), err);
 
-  // Finalizing again should return invalid input error.
-  ttt_test_assert(ttt_finalize(&ttt) == TTT_INVALID_USER_INPUT, err);
+  // Finalizing again should generate an invalid user input error.
+  int status = ttt_finalize(&ttt);
+  ttt_test_assert(status != TTT_SUCCESS, err);
+
+  int error_id = 0;
+  ttt_test_check(ttt_get_error_id(&error_id, status), err);
+  ttt_test_assert(error_id == TTT_INVALID_USER_INPUT, err);
 
   return err;
 }

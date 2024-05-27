@@ -18,6 +18,14 @@
 /**
  * @ingroup ttt_error_codes
  *
+ * @brief Error index provided to ttt_error_get_id() or ttt_error_get_str()
+ * is invalid.
+ */
+#define TTT_INVALID_ERROR_INDEX (-1)
+
+/**
+ * @ingroup ttt_error_codes
+ *
  * @brief User input provided to ttt API is invalid.
  */
 #define TTT_INVALID_USER_INPUT -128
@@ -75,5 +83,9 @@ typedef struct ttt *ttt_t;
 TTT_EXTERN int ttt_init(ttt_t *ttt, int *argc, char **argv[]);
 
 TTT_EXTERN int ttt_finalize(ttt_t *ttt);
+
+TTT_EXTERN int ttt_get_error_id(int *error_id, int index);
+
+TTT_EXTERN int ttt_get_error_message(char **error_msg, int index);
 
 #endif // __LIBTTT_H__

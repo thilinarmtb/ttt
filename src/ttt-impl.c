@@ -49,7 +49,7 @@ void ttt_log_set_type(const ttt_log_type_t type) {
 }
 
 typedef struct ttt_err_log {
-  int   error_no;
+  int   error_id;
   char *msg;
 } ttt_err_log_t;
 
@@ -69,14 +69,14 @@ static ttt_err_log_t **ttt_log_errs     = NULL;
  * Users must use ttt_log() macro instead of directly calling ttt_log_().
  *
  * @param type Log type.
- * @param error_no Error number or id (e.g., TTT_INVALID_USER_INPUT).
+ * @param error_id Error number or id (e.g., TTT_INVALID_USER_INPUT).
  * @param fmt_ Format string for the log message.
  * @param ... printf() arguments: file name, line number and other optional
  * arguments if any.
  *
  * @return int
  */
-int ttt_log_(const ttt_log_type_t type, const int error_no, const char *fmt_,
+int ttt_log_(const ttt_log_type_t type, const int error_id, const char *fmt_,
              ...) {
   if (type > ttt_type && type != TTT_ERROR) return TTT_SUCCESS;
 
@@ -116,12 +116,65 @@ int ttt_log_(const ttt_log_type_t type, const int error_no, const char *fmt_,
 
 store_msg:
   ttt_log_errs[ttt_log_size]           = ttt_calloc(ttt_err_log_t, 1);
-  ttt_log_errs[ttt_log_size]->error_no = error_no;
+  ttt_log_errs[ttt_log_size]->error_id = error_id;
   ttt_log_errs[ttt_log_size]->msg      = ttt_calloc(char, size + 1);
   strncpy(ttt_log_errs[ttt_log_size]->msg, msg, size);
   ttt_log_size++;
 
   return ttt_log_size;
+}
+
+static int ttt_check_error_index(const int index) {
+  if (index == 0 || ttt_log_size == 0) return TTT_SUCCESS;
+
+  ttt_error(index < 0 || index > (int)ttt_log_size, TTT_INVALID_ERROR_INDEX,
+            "Error index (%d) passed to ttt_get_error_id() is out of range.",
+            index);
+  return TTT_SUCCESS;
+}
+
+/**
+ * @ingroup ttt_internal_api_functions
+ *
+ * @brief Get the error id given the error index returned by a ttt API call.
+ *
+ * @param error_id Error id corresponding to the index \p index.
+ * @param index Error index returned by a ttt API call.
+ *
+ * @return int
+ */
+int ttt_get_error_id(int *error_id, const int index) {
+  ttt_check(ttt_check_error_index(index));
+
+  ttt_check_ptr(error_id);
+
+  *error_id = ttt_log_errs[index - 1]->error_id;
+
+  return TTT_SUCCESS;
+}
+
+/**
+ * @ingroup ttt_internal_api_functions
+ *
+ * @brief Get the error message given the error index returned by a ttt API
+ * call.
+ *
+ * @param error_msg Error message corresponding to the index \p index.
+ * @param index Error index returned by a ttt API call.
+ *
+ * @return int
+ */
+
+int ttt_get_error_message(char **error_msg, const int index) {
+  ttt_check(ttt_check_error_index(index));
+
+  ttt_check_ptr(error_msg);
+
+  const size_t size = strnlen(ttt_log_errs[index - 1]->msg, BUFSIZ) + 1;
+  *error_msg        = ttt_calloc(char, size);
+  strncpy(*error_msg, ttt_log_errs[index - 1]->msg, size);
+
+  return TTT_SUCCESS;
 }
 
 /**

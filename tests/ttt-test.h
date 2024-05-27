@@ -8,24 +8,24 @@
 
 #define ttt_test_assert(cond, err)                                             \
   {                                                                            \
-    int status = ((cond) != 1);                                                \
-    if (status) {                                                              \
+    int status___ = ((cond) != 1);                                             \
+    if (status___) {                                                           \
       fprintf(stderr, "Test failed in file %s at line %d.\n", __FILE__,        \
               __LINE__);                                                       \
       fflush(stderr);                                                          \
     }                                                                          \
-    err |= status;                                                             \
+    err |= status___;                                                          \
   }
 
 #define ttt_test_check(call, err)                                              \
   {                                                                            \
-    int status = (call);                                                       \
-    if (status) {                                                              \
+    int status___ = (call);                                                    \
+    if (status___) {                                                           \
       fprintf(stderr, "Test failed in file %s at line %d.\n", __FILE__,        \
               __LINE__);                                                       \
       fflush(stderr);                                                          \
     }                                                                          \
-    err |= status;                                                             \
+    err |= status___;                                                          \
   }
 
 #define ttt_test_calloc(T, n) ((T *)calloc((n), sizeof(T)))
