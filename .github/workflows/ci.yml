@@ -16,7 +16,7 @@ env:
   CACHE_NUMBER: 0
   TTT_ENV: /usr/share/miniconda/envs/ttt-dev
 jobs:
-  docs:
+  tests:
     runs-on: ubuntu-latest
     defaults:
       run:
