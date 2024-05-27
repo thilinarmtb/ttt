@@ -14,9 +14,6 @@ static void ttt_print_help(const char *name) {
 }
 
 static int ttt_parse_opts(ttt_t ttt, int *argc, char ***argv_) {
-  ttt->verbose = TTT_VERBOSE;
-  ttt_log_init(ttt->verbose);
-
   enum ttt_input_t { TTT_INPUT_VERBOSE = 0, TTT_INPUT_HELP = 99 };
 
   static struct option long_options[] = {
@@ -68,12 +65,18 @@ static int ttt_parse_opts(ttt_t ttt, int *argc, char ***argv_) {
  * @param argc Pointer to the number of commnad line arguments.
  * @param argv Pointer to the array of command line arguments.
  *
- * @return ttt_t
+ * @return int
  */
 int ttt_init(ttt_t *ttt, int *argc, char **argv[]) {
+  ttt_log_init(TTT_VERBOSE);
+
+  ttt_check_ptr(ttt);
   *ttt = ttt_calloc(struct ttt, 1);
 
-  ttt_check(ttt_parse_opts(*ttt, argc, argv));
+  if (argc != NULL && argv != NULL) ttt_check(ttt_parse_opts(*ttt, argc, argv));
+
+  ttt_log_set_type((*ttt)->verbose);
+  ttt_info("verbose = %d", (*ttt)->verbose);
 
   return TTT_SUCCESS;
 }

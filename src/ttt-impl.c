@@ -32,6 +32,22 @@ void ttt_log_init(const ttt_log_type_t type) {
   ttt_type = type;
 }
 
+/**
+ * @ingroup ttt_internal_api_functions
+ *
+ * @brief Set the priority level for logging. All the calls to ttt_log() using
+ * a log type with a higher priority than \p type will generate output on
+ * stderr.
+ *
+ * @param type Log type with the lowest priority which will generate output.
+ *
+ * @return int
+ */
+void ttt_log_set_type(const ttt_log_type_t type) {
+  if (type < TTT_NONE || type > TTT_INFO) return;
+  ttt_type = type;
+}
+
 typedef struct ttt_err_log {
   int   error_no;
   char *msg;
