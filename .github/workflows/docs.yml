@@ -50,7 +50,8 @@ jobs:
       - name: Build documentation
         id: build_docs
         run: |
-          ./ttt.sh -enable-docs -docs -install
+          ./tttcfg -enable-docs
+          ./ttt -docs -install
       # https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/
       - name: Bypass Jekyll
         id: bypass_jekyll

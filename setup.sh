@@ -54,7 +54,8 @@ if [[ $rename -eq 1 ]]; then
   printf -v underline -- "=%.0s" $(seq $len)
   sed -i.bak "2s/.*/$underline/g" docs/index.rst
 
-  git mv ttt.sh ${name}.sh
+  git mv ttt ${name}
+  git mv tttcfg ${name}cfg
   git mv src/ttt-impl.c src/${name}-impl.c
   git mv src/ttt.c src/${name}.c
   git mv include/ttt.h include/${name}.h

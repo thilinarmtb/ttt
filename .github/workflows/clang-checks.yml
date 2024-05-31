@@ -50,11 +50,12 @@ jobs:
       - name: Run clang-format check
         id: format_check
         run: |
-          ./ttt.sh -format-check
+          ./tttcfg
+          ./ttt  -format-check
       - name: Run clang-tidy check
         id: tidy_check
         run: |
-          ./ttt.sh -tidy
+          ./ttt -tidy
       - name: Block to allow inspecting failures
         run: sleep 30m
         if: ${{ failure() && inputs.debug_enabled }}

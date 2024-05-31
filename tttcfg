@@ -11,26 +11,19 @@ function print_help() {
   echo "  -enable-tests Enable building tests."
   echo "  -enable-docs Enable building documentation."
   echo "  -enable-asan Enable address sanitizer."
-  echo "  -install Install the project."
-  echo "  -docs Build documentation with Doxygen+Sphinx."
-  echo "  -format Format the source code with clang-format."
-  echo "  -format-check Check if source formatting is compliant with clang-format."
-  echo "  -tidy Run clang-tidy."
 }
+
+TTT_SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TTT_STATE_PATH="${TTT_SOURCE_DIR}/.tttstate"
 
 # Set default values.
 : ${TTT_CC:=cc}
 : ${TTT_BUILD_TYPE:=Release}
-: ${TTT_INSTALL_PREFIX:=`pwd`/install}
 : ${TTT_BUILD_DIR:=`pwd`/build}
+: ${TTT_INSTALL_PREFIX:=`pwd`/install}
 : ${TTT_ENABLE_TESTS:=OFF}
 : ${TTT_ENABLE_DOCS:=OFF}
 : ${TTT_ENABLE_ASAN:=OFF}
-: ${TTT_INSTALL:=NO}
-: ${TTT_DOCS:=NO}
-: ${TTT_FORMAT:=NO}
-: ${TTT_FORMAT_CHECK:=NO}
-: ${TTT_TIDY:=NO}
 
 # Handle command line arguments.
 while [[ $# -gt 0 ]]; do
@@ -71,26 +64,6 @@ while [[ $# -gt 0 ]]; do
       TTT_ENABLE_ASAN="ON"
       shift
       ;;
-    -install)
-      TTT_INSTALL="YES"
-      shift
-      ;;
-    -docs)
-      TTT_DOCS="YES"
-      shift
-      ;;
-    -format)
-      TTT_FORMAT="YES"
-      shift
-      ;;
-    -format-check)
-      TTT_FORMAT_CHECK="YES"
-      shift
-      ;;
-    -tidy)
-      TTT_TIDY="YES"
-      shift
-      ;;
     *)
       echo "Unknown option: $1"
       print_help
@@ -110,39 +83,7 @@ cmake -DCMAKE_C_COMPILER=${TTT_CC} \
   -DENABLE_ASAN=${TTT_ENABLE_ASAN} \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
   -S .
-  
-if [[ "${TTT_FORMAT}" == "YES" ]]; then
-  cmake --build ${TTT_BUILD_DIR} --target format -j4
-fi
 
-if [[ "${TTT_FORMAT_CHECK}" == "YES" ]]; then
-  cmake --build ${TTT_BUILD_DIR} --target format-check -j4
-  if [[ $? -ne 0 ]]; then
-    echo "Error: clang-format check failed."
-    exit 1
-  fi
-fi
-
-if [[ "${TTT_TIDY}" == "YES" ]]; then
-  cmake --build ${TTT_BUILD_DIR} --target tidy -j4
-  if [[ $? -ne 0 ]]; then
-    echo "Error: clang-tidy failed."
-    exit 1
-  fi
-fi
-
-if [[ ${TTT_DOCS} == "YES" ]]; then
-  cmake --build ${TTT_BUILD_DIR} --target docs -j4
-  if [[ $? -ne 0 ]]; then
-    echo "Error: Building docs with Doxygen+Sphinx failed."
-    exit 1
-  fi
-fi
-
-if [[ "${TTT_INSTALL}" == "YES" ]]; then
-  cmake --build ${TTT_BUILD_DIR} --target install -j4
-  if [[ $? -ne 0 ]]; then
-    echo "Error: Installing failed."
-    exit 1
-  fi
-fi
+# Update variables required by `ttt` script.
+echo "TTT_INSTALL_DIR=${TTT_INSTALL_DIR}"  >${TTT_STATE_PATH}
+echo "TTT_BUILD_DIR=${TTT_BUILD_DIR}"     >>${TTT_STATE_PATH}
