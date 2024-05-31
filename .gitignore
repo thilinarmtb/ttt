@@ -1,2 +1,4 @@
+.tttstate
 .clang-tidy
 include/ttt-defs.h
+build/*
