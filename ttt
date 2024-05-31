@@ -1,0 +1,85 @@
+#!/bin/bash
+
+function print_help() {
+  echo "Usage: $0 [options]"
+  echo "Options:"
+  echo "  -help Print this help message and exit."
+  echo "  -install Install the project."
+  echo "  -docs Build documentation with Doxygen+Sphinx."
+  echo "  -format Format the source code with clang-format."
+  echo "  -format-check Check if source formatting is compliant with clang-format."
+  echo "  -tidy Run clang-tidy."
+}
+
+TTT_SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TTT_STATE_PATH="${TTT_SOURCE_DIR}/.tttstate"
+
+# Read state variables created by tttcfg.
+if [[ -f "${TTT_STATE_PATH}" ]]; then
+  source "${TTT_STATE_PATH}"
+else
+  echo "Error: You should run ./tttcfg before running ${0}."
+  exit 1
+fi
+
+# Set default values.
+: ${TTT_INSTALL:=NO}
+: ${TTT_DOCS:=NO}
+: ${TTT_FORMAT:=NO}
+: ${TTT_FORMAT_CHECK:=NO}
+: ${TTT_TIDY:=NO}
+
+# Handle command line arguments.
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -help)
+      print_help
+      exit 0
+      ;;
+    -install)
+      TTT_INSTALL="YES"
+      shift
+      ;;
+    -docs)
+      TTT_DOCS="YES"
+      shift
+      ;;
+    -format)
+      TTT_FORMAT="YES"
+      shift
+      ;;
+    -format-check)
+      TTT_FORMAT_CHECK="YES"
+      shift
+      ;;
+    -tidy)
+      TTT_TIDY="YES"
+      shift
+      ;;
+    *)
+      echo "Unknown option: $1"
+      print_help
+      exit 1
+      ;;
+  esac
+done
+  
+if [[ "${TTT_FORMAT}" == "YES" ]]; then
+  cmake --build ${TTT_BUILD_DIR} --target format --parallel 4
+fi
+
+if [[ "${TTT_FORMAT_CHECK}" == "YES" ]]; then
+  cmake --build ${TTT_BUILD_DIR} --target format-check --parallel 4
+fi
+
+if [[ "${TTT_TIDY}" == "YES" ]]; then
+  cmake --build ${TTT_BUILD_DIR} --target tidy --parallel 4
+fi
+
+if [[ ${TTT_DOCS} == "YES" ]]; then
+  cmake --build ${TTT_BUILD_DIR} --target docs --parallel 4
+fi
+
+if [[ "${TTT_INSTALL}" == "YES" ]]; then
+  cmake --build ${TTT_BUILD_DIR} --target install --parallel 4
+fi

@@ -51,7 +51,8 @@ jobs:
         id: build_tests
         run: |
           ./setup.sh -r mylib -n
-          ./mylib.sh -enable-tests -install
+          ./mylibcfg -enable-tests
+          ./mylib -install
       - name:  Test the renamed repo
         id: run_tests
         run: |
