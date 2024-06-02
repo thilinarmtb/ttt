@@ -170,8 +170,8 @@ TTT_INTERN int ttt_log_finalize(void);
 
 #define ttt_check(call)                                                        \
   {                                                                            \
-    int status = (call);                                                       \
-    if (status != TTT_SUCCESS) return status;                                  \
+    int status__ = (call);                                                     \
+    if (status__ != TTT_SUCCESS) return status__;                              \
   }
 
 /**
@@ -192,12 +192,13 @@ TTT_INTERN int ttt_log_finalize(void);
  *
  * @brief Check if the dereferenced value of a pointer is NULL.
  *
- * @param ptr Address of the pointer to be checked.
+ * @param ptr Pointer to the pointer to be checked.
  */
 #define ttt_check_ptr2(ptr)                                                    \
   {                                                                            \
-    ttt_error(*ptr == NULL, TTT_INVALID_USER_INPUT,                            \
-              "Pointer passed to ttt API call is NULL");                       \
+    ttt_error(                                                                 \
+        *ptr == NULL, TTT_INVALID_USER_INPUT,                                  \
+        "Double pointer passed to ttt API call is NULL when dereferenced");    \
   }
 
 #endif // __LIBTTT_IMPL_H__

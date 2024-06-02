@@ -28,7 +28,7 @@
  *
  * @brief User input provided to ttt API is invalid.
  */
-#define TTT_INVALID_USER_INPUT -128
+#define TTT_INVALID_USER_INPUT (-128)
 
 /**
  * @defgroup ttt_user_api_macros User API macros
