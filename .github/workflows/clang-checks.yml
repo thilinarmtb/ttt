@@ -51,7 +51,7 @@ jobs:
         id: format_check
         run: |
           ./tttcfg
-          ./ttt  -format-check
+          ./ttt -format-check
       - name: Run clang-tidy check
         id: tidy_check
         run: |
