@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Internal API &mdash; ttt  documentation</title>
+  <title>Internal API &mdash; mylib  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/main_stylesheet.css" type="text/css" />
@@ -32,7 +32,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            ttt
+            mylib
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -44,7 +44,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="index.html">TTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">MYLIB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-api.html">User API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Internal API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#macros">Macros</a></li>
@@ -60,7 +60,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">ttt</a>
+          <a href="index.html">mylib</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -85,8 +85,8 @@
 <section id="macros">
 <h2>Macros<a class="headerlink" href="#macros" title="Permalink to this heading"></a></h2>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_calloc">
-<span class="target" id="group__ttt__internal__api__macros_1gacbfccf9373a22b3d21bc0ef836e9445a"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_calloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_calloc" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.mylib_calloc">
+<span class="target" id="group__mylib__internal__api__macros_1ga7e0b1f2bae6011ea825b881c5f15f738"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_calloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_calloc" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Macro for allocating memory. This macro calls C standard library function <code class="docutils literal notranslate"><span class="pre">calloc()</span></code> and casts the returned pointer as a pointer to type <code class="docutils literal notranslate"><span class="pre">T</span></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -102,8 +102,8 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_realloc">
-<span class="target" id="group__ttt__internal__api__macros_1gaa84dbee809d791b966ba425894aef8e4"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_realloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">ptr</span></span>, <span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_realloc" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.mylib_realloc">
+<span class="target" id="group__mylib__internal__api__macros_1gab6651b5081b41bddfa93333159862e37"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_realloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">ptr</span></span>, <span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_realloc" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Macro for re-allocating memory. This macro calls C standard library function <code class="docutils literal notranslate"><span class="pre">realloc()</span></code> and casts the returned pointer as a pointer to type <code class="docutils literal notranslate"><span class="pre">T</span></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -120,9 +120,9 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_free">
-<span class="target" id="group__ttt__internal__api__macros_1gabdfc04cd4087c66717916f5f03dd6650"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_free</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">p</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_free" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Macro for freeing memory. This macro calls <a class="reference internal" href="#group__ttt__internal__api__functions_1ga79c231d9867caeb691e80068ec7bcd2c"><span class="std std-ref">ttt_free_()</span></a> function. </p>
+<dt class="sig sig-object cpp" id="c.mylib_free">
+<span class="target" id="group__mylib__internal__api__macros_1gabaa5296093f73fd5b5bccce79053f17a"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_free</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">p</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_free" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Macro for freeing memory. This macro calls <a class="reference internal" href="#group__mylib__internal__api__functions_1ga9b6278837667d9c6a84ae11b714c2d5e"><span class="std std-ref">mylib_free_()</span></a> function. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -133,14 +133,14 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_log">
-<span class="target" id="group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">type</span></span>, <span class="n"><span class="pre">error_no</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_log" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Wrapper macro around the <a class="reference internal" href="#group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"><span class="std std-ref">ttt_log_()</span></a> function. </p>
+<dt class="sig sig-object cpp" id="c.mylib_log">
+<span class="target" id="group__mylib__internal__api__macros_1ga4bcc1b527002dfe13a08b405fe37a8ca"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_log</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">type</span></span>, <span class="n"><span class="pre">error_no</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_log" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Wrapper macro around the <a class="reference internal" href="#group__mylib__internal__api__functions_1ga0b23ac6a51bf97f3d11aa912493e339d"><span class="std std-ref">mylib_log_()</span></a> function. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>type</strong> – Log type. </p></li>
-<li><p><strong>error_no</strong> – Error number or id (e.g., TTT_INVALID_USER_INPUT). </p></li>
+<li><p><strong>error_no</strong> – Error number or id (e.g., MYLIB_INVALID_USER_INPUT). </p></li>
 <li><p><strong>...</strong> – printf() like format string for the log message and relevant arguments (if any). </p></li>
 </ul>
 </dd>
@@ -148,8 +148,8 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_info">
-<span class="target" id="group__ttt__internal__api__macros_1ga7f5589ccdc95a5185cac06fb1ffe69fa"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_info</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_info" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.mylib_info">
+<span class="target" id="group__mylib__internal__api__macros_1gac0a67fc9f00c618074793d2840f9d6e1"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_info</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_info" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Convenient macro to log a general information. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -161,8 +161,8 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_warn">
-<span class="target" id="group__ttt__internal__api__macros_1gaa5a2751a105f87319f1c9edb5bfd9bdd"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_warn</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">cond</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_warn" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.mylib_warn">
+<span class="target" id="group__mylib__internal__api__macros_1gac7376f68a75d2a7e4db834d61144d882"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_warn</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">cond</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_warn" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Convenient macro to log a warning if a condition is met. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -175,8 +175,8 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_error">
-<span class="target" id="group__ttt__internal__api__macros_1gae7f82fd4a0a989109502c85fd7db8647"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_error</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">cond</span></span>, <span class="n"><span class="pre">error_id</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_error" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.mylib_error">
+<span class="target" id="group__mylib__internal__api__macros_1ga385c46f089e82edbcfca95ff43d94bdf"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_error</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">cond</span></span>, <span class="n"><span class="pre">error_id</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_error" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Convenient macro to log a error and return if a condition is met. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -190,21 +190,21 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_check">
-<span class="target" id="group__ttt__internal__api__macros_1gae53c198e64b4046f1f48801203377c22"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_check</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">call</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_check" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Check the return value of an internal ttt call. Return the error id if it is not equal to TTT_SUCCESS. All ttt internal API functions return error ids generated by <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> function. </p>
+<dt class="sig sig-object cpp" id="c.mylib_check">
+<span class="target" id="group__mylib__internal__api__macros_1ga41f6dca86ea74ff1d15d63d43ec9b389"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_check</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">call</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_check" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Check the return value of an internal mylib call. Return the error id if it is not equal to MYLIB_SUCCESS. All mylib internal API functions return error ids generated by <a class="reference internal" href="#group__mylib__internal__api__macros_1ga4bcc1b527002dfe13a08b405fe37a8ca"><span class="std std-ref">mylib_log()</span></a> function. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>call</strong> – Return value from an internal ttt call. </p></li>
+<li><p><strong>call</strong> – Return value from an internal mylib call. </p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_check_ptr">
-<span class="target" id="group__ttt__internal__api__macros_1gaccbc0735b4e13cdc2795379303e4726b"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_check_ptr</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_check_ptr" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.mylib_check_ptr">
+<span class="target" id="group__mylib__internal__api__macros_1ga829eb3108bae8aebc6043c9f06609d0d"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_check_ptr</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_check_ptr" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Check if the given pointer is NULL. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -216,8 +216,8 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.ttt_check_ptr2">
-<span class="target" id="group__ttt__internal__api__macros_1gacf1c1e2a7f9d9814e47660538808221f"></span><span class="sig-name descname"><span class="n"><span class="pre">ttt_check_ptr2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ttt_check_ptr2" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.mylib_check_ptr2">
+<span class="target" id="group__mylib__internal__api__macros_1ga153e61dde373ba7aa790d99bec14ff99"></span><span class="sig-name descname"><span class="n"><span class="pre">mylib_check_ptr2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.mylib_check_ptr2" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Check if the dereferenced value of a pointer is NULL. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -232,9 +232,9 @@
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv49ttt_free_PPv">
-<span id="_CPPv39ttt_free_PPv"></span><span id="_CPPv29ttt_free_PPv"></span><span id="ttt_free___voidPP"></span><span class="target" id="group__ttt__internal__api__functions_1ga79c231d9867caeb691e80068ec7bcd2c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_free_</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49ttt_free_PPv" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Function for freeing memory. <a class="reference internal" href="#group__ttt__internal__api__functions_1ga79c231d9867caeb691e80068ec7bcd2c"><span class="std std-ref">ttt_free_()</span></a> calls C standard library function <code class="docutils literal notranslate"><span class="pre">free()</span></code> and sets the pointer to NULL. </p>
+<dt class="sig sig-object cpp" id="_CPPv411mylib_free_PPv">
+<span id="_CPPv311mylib_free_PPv"></span><span id="_CPPv211mylib_free_PPv"></span><span id="mylib_free___voidPP"></span><span class="target" id="group__mylib__internal__api__functions_1ga9b6278837667d9c6a84ae11b714c2d5e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mylib_free_</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411mylib_free_PPv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Function for freeing memory. <a class="reference internal" href="#group__mylib__internal__api__functions_1ga9b6278837667d9c6a84ae11b714c2d5e"><span class="std std-ref">mylib_free_()</span></a> calls C standard library function <code class="docutils literal notranslate"><span class="pre">free()</span></code> and sets the pointer to NULL. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>ptr</strong> – Pointer to the memory address (pointer to a pointer) to be freed. </p>
@@ -243,9 +243,9 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv412ttt_log_initK14ttt_log_type_t">
-<span id="_CPPv312ttt_log_initK14ttt_log_type_t"></span><span id="_CPPv212ttt_log_initK14ttt_log_type_t"></span><span id="ttt_log_init__ttt_log_type_tC"></span><span class="target" id="group__ttt__internal__api__functions_1gacd4052e3df18233fb1dc3227bb6617da"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412ttt_log_initK14ttt_log_type_t" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Set the priority level for logging. All the calls to <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> using a log type with a higher priority than <code class="docutils literal notranslate"><span class="pre">type</span></code> will generate output on stderr. </p>
+<dt class="sig sig-object cpp" id="_CPPv414mylib_log_initK16mylib_log_type_t">
+<span id="_CPPv314mylib_log_initK16mylib_log_type_t"></span><span id="_CPPv214mylib_log_initK16mylib_log_type_t"></span><span id="mylib_log_init__mylib_log_type_tC"></span><span class="target" id="group__mylib__internal__api__functions_1ga9db54b292f9b7efb29d0c4ca1a485056"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mylib_log_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">mylib_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414mylib_log_initK16mylib_log_type_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Set the priority level for logging. All the calls to <a class="reference internal" href="#group__mylib__internal__api__macros_1ga4bcc1b527002dfe13a08b405fe37a8ca"><span class="std std-ref">mylib_log()</span></a> using a log type with a higher priority than <code class="docutils literal notranslate"><span class="pre">type</span></code> will generate output on stderr. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>type</strong> – Log type with the lowest priority which will generate output.</p>
@@ -257,9 +257,9 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv416ttt_log_set_typeK14ttt_log_type_t">
-<span id="_CPPv316ttt_log_set_typeK14ttt_log_type_t"></span><span id="_CPPv216ttt_log_set_typeK14ttt_log_type_t"></span><span id="ttt_log_set_type__ttt_log_type_tC"></span><span class="target" id="group__ttt__internal__api__functions_1ga74f3e3560fd85649b4f76f56429d8caf"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_set_type</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ttt_log_set_typeK14ttt_log_type_t" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Set the priority level for logging. All the calls to <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> using a log type with a higher priority than <code class="docutils literal notranslate"><span class="pre">type</span></code> will generate output on stderr. </p>
+<dt class="sig sig-object cpp" id="_CPPv418mylib_log_set_typeK16mylib_log_type_t">
+<span id="_CPPv318mylib_log_set_typeK16mylib_log_type_t"></span><span id="_CPPv218mylib_log_set_typeK16mylib_log_type_t"></span><span id="mylib_log_set_type__mylib_log_type_tC"></span><span class="target" id="group__mylib__internal__api__functions_1gaf2978a29e672116f88675a7d6fe4bcee"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mylib_log_set_type</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">mylib_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418mylib_log_set_typeK16mylib_log_type_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Set the priority level for logging. All the calls to <a class="reference internal" href="#group__mylib__internal__api__macros_1ga4bcc1b527002dfe13a08b405fe37a8ca"><span class="std std-ref">mylib_log()</span></a> using a log type with a higher priority than <code class="docutils literal notranslate"><span class="pre">type</span></code> will generate output on stderr. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>type</strong> – Log type with the lowest priority which will generate output.</p>
@@ -271,15 +271,15 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv48ttt_log_K14ttt_log_type_tKiPKcz">
-<span id="_CPPv38ttt_log_K14ttt_log_type_tKiPKcz"></span><span id="_CPPv28ttt_log_K14ttt_log_type_tKiPKcz"></span><span id="ttt_log___ttt_log_type_tC.iC.cCP.z"></span><span class="target" id="group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ttt_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">error_id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt_</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48ttt_log_K14ttt_log_type_tKiPKcz" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Output a message to the stderr if the log type <code class="docutils literal notranslate"><span class="pre">type</span></code> has a higher priority than the type set during <a class="reference internal" href="#group__ttt__internal__api__functions_1gacd4052e3df18233fb1dc3227bb6617da"><span class="std std-ref">ttt_log_init()</span></a>. In addition, all the log messages which has a type of TTT_ERROR is stored so that they could be later queried by the user using the integer id returned by <a class="reference internal" href="#group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"><span class="std std-ref">ttt_log_()</span></a>. <a class="reference internal" href="#group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"><span class="std std-ref">ttt_log_()</span></a> returns 0 for all other log types and the respective message is not stored. </p>
-<p>Users must use <a class="reference internal" href="#group__ttt__internal__api__macros_1ga0f4466ec1b20b3989c1ccc3beaead06e"><span class="std std-ref">ttt_log()</span></a> macro instead of directly calling <a class="reference internal" href="#group__ttt__internal__api__functions_1gadb29b82f3c3409910710e86d66c6983b"><span class="std std-ref">ttt_log_()</span></a>.</p>
+<dt class="sig sig-object cpp" id="_CPPv410mylib_log_K16mylib_log_type_tKiPKcz">
+<span id="_CPPv310mylib_log_K16mylib_log_type_tKiPKcz"></span><span id="_CPPv210mylib_log_K16mylib_log_type_tKiPKcz"></span><span id="mylib_log___mylib_log_type_tC.iC.cCP.z"></span><span class="target" id="group__mylib__internal__api__functions_1ga0b23ac6a51bf97f3d11aa912493e339d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mylib_log_</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">mylib_log_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">error_id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt_</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410mylib_log_K16mylib_log_type_tKiPKcz" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Output a message to the stderr if the log type <code class="docutils literal notranslate"><span class="pre">type</span></code> has a higher priority than the type set during <a class="reference internal" href="#group__mylib__internal__api__functions_1ga9db54b292f9b7efb29d0c4ca1a485056"><span class="std std-ref">mylib_log_init()</span></a>. In addition, all the log messages which has a type of MYLIB_ERROR is stored so that they could be later queried by the user using the integer id returned by <a class="reference internal" href="#group__mylib__internal__api__functions_1ga0b23ac6a51bf97f3d11aa912493e339d"><span class="std std-ref">mylib_log_()</span></a>. <a class="reference internal" href="#group__mylib__internal__api__functions_1ga0b23ac6a51bf97f3d11aa912493e339d"><span class="std std-ref">mylib_log_()</span></a> returns 0 for all other log types and the respective message is not stored. </p>
+<p>Users must use <a class="reference internal" href="#group__mylib__internal__api__macros_1ga4bcc1b527002dfe13a08b405fe37a8ca"><span class="std std-ref">mylib_log()</span></a> macro instead of directly calling <a class="reference internal" href="#group__mylib__internal__api__functions_1ga0b23ac6a51bf97f3d11aa912493e339d"><span class="std std-ref">mylib_log_()</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>type</strong> – Log type. </p></li>
-<li><p><strong>error_id</strong> – Error number or id (e.g., TTT_INVALID_USER_INPUT). </p></li>
+<li><p><strong>error_id</strong> – Error number or id (e.g., MYLIB_INVALID_USER_INPUT). </p></li>
 <li><p><strong>fmt_</strong> – Format string for the log message. </p></li>
 <li><p><strong>...</strong> – printf() arguments: file name, line number and other optional arguments if any.</p></li>
 </ul>
@@ -291,14 +291,14 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv416ttt_get_error_idPiKi">
-<span id="_CPPv316ttt_get_error_idPiKi"></span><span id="_CPPv216ttt_get_error_idPiKi"></span><span id="ttt_get_error_id__iP.iC"></span><span class="target" id="group__ttt__internal__api__functions_1ga679df3aba0ffc01965c23cd2afdc8ee1"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_get_error_id</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error_id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ttt_get_error_idPiKi" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Get the error id given the error index returned by a ttt API call. </p>
+<dt class="sig sig-object cpp" id="_CPPv418mylib_get_error_idPiKi">
+<span id="_CPPv318mylib_get_error_idPiKi"></span><span id="_CPPv218mylib_get_error_idPiKi"></span><span id="mylib_get_error_id__iP.iC"></span><span class="target" id="group__mylib__internal__api__functions_1ga75e64efe9369b5458dc394d639dd9e89"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mylib_get_error_id</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error_id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418mylib_get_error_idPiKi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the error id given the error index returned by a mylib API call. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>error_id</strong> – Error id corresponding to the index <code class="docutils literal notranslate"><span class="pre">index</span></code>. </p></li>
-<li><p><strong>index</strong> – Error index returned by a ttt API call.</p></li>
+<li><p><strong>index</strong> – Error index returned by a mylib API call.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -308,14 +308,14 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv421ttt_get_error_messagePPcKi">
-<span id="_CPPv321ttt_get_error_messagePPcKi"></span><span id="_CPPv221ttt_get_error_messagePPcKi"></span><span id="ttt_get_error_message__cPP.iC"></span><span class="target" id="group__ttt__internal__api__functions_1gae3dd3d1b8fd9a1c05781dc1c94e2e2e3"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_get_error_message</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error_msg</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421ttt_get_error_messagePPcKi" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Get the error message given the error index returned by a ttt API call. </p>
+<dt class="sig sig-object cpp" id="_CPPv423mylib_get_error_messagePPcKi">
+<span id="_CPPv323mylib_get_error_messagePPcKi"></span><span id="_CPPv223mylib_get_error_messagePPcKi"></span><span id="mylib_get_error_message__cPP.iC"></span><span class="target" id="group__mylib__internal__api__functions_1gaf0085c21110df29bd2c554d598589767"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mylib_get_error_message</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error_msg</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423mylib_get_error_messagePPcKi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the error message given the error index returned by a mylib API call. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>error_msg</strong> – Error message corresponding to the index <code class="docutils literal notranslate"><span class="pre">index</span></code>. </p></li>
-<li><p><strong>index</strong> – Error index returned by a ttt API call.</p></li>
+<li><p><strong>index</strong> – Error index returned by a mylib API call.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -325,8 +325,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv416ttt_log_finalizev">
-<span id="_CPPv316ttt_log_finalizev"></span><span id="_CPPv216ttt_log_finalizev"></span><span id="ttt_log_finalize__void"></span><span class="target" id="group__ttt__internal__api__functions_1gae5232df88cb1cdc5b11a4966e5c3314b"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt_log_finalize</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ttt_log_finalizev" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv418mylib_log_finalizev">
+<span id="_CPPv318mylib_log_finalizev"></span><span id="_CPPv218mylib_log_finalizev"></span><span id="mylib_log_finalize__void"></span><span class="target" id="group__mylib__internal__api__functions_1ga188669f24a5db2ebf974d78dba52d79c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mylib_log_finalize</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418mylib_log_finalizev" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Release the memory allocated for the stored error messages and reset the log type used as the priority. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -339,14 +339,14 @@
 <section id="structures">
 <h2>Structures<a class="headerlink" href="#structures" title="Permalink to this heading"></a></h2>
 <dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv43ttt">
-<span id="_CPPv33ttt"></span><span id="_CPPv23ttt"></span><span id="ttt"></span><span class="target" id="structttt"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ttt</span></span></span><a class="headerlink" href="#_CPPv43ttt" title="Permalink to this definition"></a><br /></dt>
-<dd><p>ttt handle returned by <a class="reference internal" href="user-api.html#group__ttt__user__api__functions_1gaafd0b6bc44a2e5acbb65e17b5ebeab93"><span class="std std-ref">ttt_init()</span></a>. </p>
+<dt class="sig sig-object cpp" id="_CPPv45mylib">
+<span id="_CPPv35mylib"></span><span id="_CPPv25mylib"></span><span id="mylib"></span><span class="target" id="structmylib"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mylib</span></span></span><a class="headerlink" href="#_CPPv45mylib" title="Permalink to this definition"></a><br /></dt>
+<dd><p>mylib handle returned by <a class="reference internal" href="user-api.html#group__mylib__user__api__functions_1ga6960d2ba0ab852b58d6b34c2d029f365"><span class="std std-ref">mylib_init()</span></a>. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3ttt7verboseE">
-<span id="_CPPv3N3ttt7verboseE"></span><span id="_CPPv2N3ttt7verboseE"></span><span id="ttt::verbose__unsigned"></span><span class="target" id="structttt_1a6de7c2dedf467da806c536e78e9b3995"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">verbose</span></span></span><a class="headerlink" href="#_CPPv4N3ttt7verboseE" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5mylib7verboseE">
+<span id="_CPPv3N5mylib7verboseE"></span><span id="_CPPv2N5mylib7verboseE"></span><span id="mylib::verbose__unsigned"></span><span class="target" id="structmylib_1a68ad83e1a36164d614d0f0d1daf9bb82"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">verbose</span></span></span><a class="headerlink" href="#_CPPv4N5mylib7verboseE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Verbosity level. </p>
 </dd></dl>
 
@@ -366,7 +366,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ttt.</p>
+    <p>&#169; Copyright 2022, mylib.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,7 +1,7 @@
-TTT
-===
+MYLIB
+=====
 
-Welcome to TTT's documentation!
+Welcome to MYLIB's documentation!
 
 .. toctree::
    :maxdepth: 3

@@ -8,12 +8,12 @@ User API
 
 Macros
 ^^^^^^
-.. doxygengroup:: ttt_user_api_macros
-   :project: ttt
+.. doxygengroup:: mylib_user_api_macros
+   :project: mylib
    :content-only:
 
 Functions
 ^^^^^^^^^
-.. doxygengroup:: ttt_user_api_functions
-   :project: ttt
+.. doxygengroup:: mylib_user_api_functions
+   :project: mylib
    :content-only:

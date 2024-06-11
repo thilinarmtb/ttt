@@ -8,17 +8,17 @@ Internal API
 
 Macros
 ^^^^^^
-.. doxygengroup:: ttt_internal_api_macros
-   :project: ttt
+.. doxygengroup:: mylib_internal_api_macros
+   :project: mylib
    :content-only:
 
 Functions
 ^^^^^^^^^
-.. doxygengroup:: ttt_internal_api_functions
-   :project: ttt
+.. doxygengroup:: mylib_internal_api_functions
+   :project: mylib
    :content-only:
 
 Structures
 ^^^^^^^^^^
-.. doxygenstruct:: ttt
+.. doxygenstruct:: mylib
   :members:
