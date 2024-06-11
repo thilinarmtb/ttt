@@ -1,4 +1,4 @@
-name: Build docs and deploy
+name: Build documentation and deploy
 on:
   pull_request:
     branches: [main]
@@ -25,12 +25,14 @@ jobs:
       PUSH_ON_MAIN: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
       - name: Setup GitHub actions
+        id: setup_actions
         uses: actions/checkout@v3
       - name: Setup tmate session
+        id: setup_tmate
         uses: mxschmitt/action-tmate@v3.13
         if: ${{ inputs.debug_enabled }}
-      - name: Setup a new repository
-        id: setup_new_repo
+      - name: Setup a new project
+        id: setup_new_project
         run: |
           ./setup.sh -r mylib -n
       - name: Setup conda environment
@@ -41,11 +43,11 @@ jobs:
           use-mamba: false
       # https://dev.to/epassaro/caching-anaconda-environments-in-github-actions-5hde
       - name: Cache conda environment
+        id: cache_conda
         uses: actions/cache@v3
         with:
           path: ${{ env.MYLIB_ENV }}
           key:  conda-${{ runner.os }}-${{ hashFiles('environment-dev.yml') }}-${{ hashFiles('requirements-dev.txt') }}-${{ env.CACHE_NUMBER }}
-        id: cache
       - name: Update conda environment
         id: update_env
         run: |
@@ -63,7 +65,7 @@ jobs:
         run: |
           cd build/docs/sphinx && touch .nojekyll
       - name: Deploy to gh-pages
-        id: deploy
+        id: deploy_to_gh_pages
         if: ${{ fromJSON(env.PUSH_ON_MAIN) }}
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
@@ -71,5 +73,6 @@ jobs:
           BRANCH: gh-pages
           FOLDER: build/docs/sphinx
       - name: Block to allow inspecting failures
+        id: block_for_tmate
         run: sleep 30m
         if: ${{ failure() && inputs.debug_enabled }}
