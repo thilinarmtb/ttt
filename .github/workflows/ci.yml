@@ -14,7 +14,7 @@ on:
 env:
   # Increase to reset cache manually
   CACHE_NUMBER: 0
-  TTT_ENV: /usr/share/miniconda/envs/ttt-dev
+  MYLIB_ENV: /usr/share/miniconda/envs/mylib-dev
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -29,28 +29,31 @@ jobs:
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3.13
         if: ${{ inputs.debug_enabled }}
+      - name: Setup a new repository
+        id: setup_new_repo
+        run: |
+          ./setup.sh -r mylib -n
       - name: Setup conda environment
         id: setup_conda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: ttt-dev
+          activate-environment: mylib-dev
           use-mamba: false
       # https://dev.to/epassaro/caching-anaconda-environments-in-github-actions-5hde
       - name: Cache conda environment
         uses: actions/cache@v3
         with:
-          path: ${{ env.TTT_ENV }}
+          path: ${{ env.MYLIB_ENV }}
           key:  conda-${{ runner.os }}-${{ hashFiles('environment-dev.yml') }}-${{ hashFiles('requirements-dev.txt') }}-${{ env.CACHE_NUMBER }}
         id: cache
       - name: Update conda environment
         id: update_env
         run: |
-          conda env update -n ttt-dev -f environment-dev.yml
+          conda env update -n mylib-dev -f environment-dev.yml
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Build tests
         id: build_tests
         run: |
-          ./setup.sh -r mylib -n
           ./mylibcfg -enable-tests
           ./mylib -install
       - name:  Test the renamed repo
