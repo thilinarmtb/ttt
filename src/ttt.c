@@ -1,7 +1,7 @@
 #include <getopt.h>
 #include <stdio.h>
 
-#include "ttt-impl.h"
+#include "ttt_impl.h"
 
 static void ttt_print_help(const char *name) {
   fprintf(stderr, "Usage: %s [OPTIONS]\n", name);

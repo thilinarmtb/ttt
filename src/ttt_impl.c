@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ttt-impl.h"
+#include "ttt_impl.h"
 
 /**
  * @ingroup ttt_internal_api_functions

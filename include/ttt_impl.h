@@ -5,8 +5,8 @@
 
 #include <stdlib.h>
 
-#include "ttt-defs.h"
 #include "ttt.h"
+#include "ttt_defs.h"
 
 /**
  * ttt handle returned by ttt_init().

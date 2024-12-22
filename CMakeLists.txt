@@ -21,7 +21,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
-set(SOURCES src/ttt-impl.c src/ttt.c)
+file(GLOB SOURCES src/*.c)
 
 add_library(ttt SHARED ${SOURCES})
 set_target_properties(ttt PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION 1
@@ -53,13 +53,14 @@ if (CLANG_TIDY)
 endif()
 
 # Turn on AddressSanitizer if ENABLE_ASAN is set.
+set(SUPPORTS_ADDRESS_SANITIZER FALSE)
 if (ENABLE_ASAN)
   include(CheckLinkerFlag)
-  check_linker_flag(C -fsanitize=address HAS_ADDRESS_SANITIZER)
-  if (HAS_ADDRESS_SANITIZER)
+  check_linker_flag(C -fsanitize=address SUPPORTS_ADDRESS_SANITIZER)
+  if (SUPPORTS_ADDRESS_SANITIZER)
     target_compile_options(ttt PRIVATE -fsanitize=address)
-    target_link_options(ttt PRIVATE -fsanitize=address)
     target_compile_options(ttt-driver PRIVATE -fsanitize=address)
+    target_link_options(ttt PRIVATE -fsanitize=address)
     target_link_options(ttt-driver PRIVATE -fsanitize=address)
   else()
     message(FATAL_ERROR "AddressSanitizer is enabled but not supported.")
