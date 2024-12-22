@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "ttt-test.h"
+#include "ttt_test.h"
 
 int main(int argc, char **argv) {
   int err = 0;

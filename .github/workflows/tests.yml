@@ -61,7 +61,7 @@ jobs:
       - name:  Test the renamed repo
         id: run_tests
         run: |
-          ./install/tests/mylib-000-init
+          ./install/tests/test_000_init
       - name: Block to allow inspecting failures
         id: block_for_tmate
         run: sleep 30m

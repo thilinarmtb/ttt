@@ -56,13 +56,12 @@ if [[ $rename -eq 1 ]]; then
 
   git mv ttt ${name}
   git mv tttcfg ${name}cfg
-  git mv src/ttt-impl.c src/${name}-impl.c
+  git mv src/ttt_impl.c src/${name}_impl.c
   git mv src/ttt.c src/${name}.c
   git mv include/ttt.h include/${name}.h
-  git mv include/ttt-impl.h include/${name}-impl.h
-  git mv include/ttt-defs.h include/${name}-defs.h
-  git mv tests/ttt-test.h tests/${name}-test.h
-  git mv tests/ttt-000-init.c tests/${name}-000-init.c
+  git mv include/ttt_impl.h include/${name}_impl.h
+  git mv include/ttt_defs.h include/${name}_defs.h
+  git mv tests/ttt_test.h tests/${name}_test.h
   git clean -dfx
 fi
 
