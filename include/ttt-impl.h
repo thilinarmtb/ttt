@@ -111,7 +111,7 @@ TTT_INTERN int ttt_log_(ttt_log_type_t type, int error_no, const char *fmt,
  * @brief Wrapper macro around the ttt_log_() function.
  *
  * @param type Log type.
- * @param error_no Error number or id (e.g., TTT_INVALID_USER_INPUT).
+ * @param error_no Error number or id (e.g., TTT_ERROR_INVALID_INPUT).
  * @param ...  printf() like format string for the log message and relevant
  * arguments (if any).
  */
@@ -183,7 +183,7 @@ TTT_INTERN int ttt_log_finalize(void);
  */
 #define ttt_check_ptr(ptr)                                                     \
   {                                                                            \
-    ttt_error(ptr == NULL, TTT_INVALID_USER_INPUT,                             \
+    ttt_error(ptr == NULL, TTT_ERROR_INVALID_INPUT,                            \
               "Pointer passed to ttt API call is NULL");                       \
   }
 
@@ -197,7 +197,7 @@ TTT_INTERN int ttt_log_finalize(void);
 #define ttt_check_ptr2(ptr)                                                    \
   {                                                                            \
     ttt_error(                                                                 \
-        *ptr == NULL, TTT_INVALID_USER_INPUT,                                  \
+        *ptr == NULL, TTT_ERROR_INVALID_INPUT,                                 \
         "Double pointer passed to ttt API call is NULL when dereferenced");    \
   }
 

@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
 
   int error_id = 0;
   ttt_test_check(ttt_get_error_id(&error_id, status), err);
-  ttt_test_assert(error_id == TTT_INVALID_USER_INPUT, err);
+  ttt_test_assert(error_id == TTT_ERROR_INVALID_INPUT, err);
 
   return err;
 }

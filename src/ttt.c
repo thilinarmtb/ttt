@@ -32,7 +32,7 @@ static int ttt_parse_opts(ttt_t ttt, int *argc, char ***argv_) {
     case TTT_INPUT_VERBOSE:
       // NOLINTNEXTLINE
       verbose_temp = strtol(optarg, &end, 10);
-      ttt_error(!end || *end != '\0' || optarg == end, TTT_INVALID_USER_INPUT,
+      ttt_error(!end || *end != '\0' || optarg == end, TTT_ERROR_INVALID_INPUT,
                 "Invalid string for verbose level: %s\n", optarg);
       ttt->verbose = verbose_temp;
       break;
