@@ -69,7 +69,7 @@ static ttt_err_log_t **ttt_log_errs     = NULL;
  * Users must use ttt_log() macro instead of directly calling ttt_log_().
  *
  * @param type Log type.
- * @param error_id Error number or id (e.g., TTT_INVALID_USER_INPUT).
+ * @param error_id Error number or id (e.g., TTT_ERROR_INVALID_INPUT).
  * @param fmt_ Format string for the log message.
  * @param ... printf() arguments: file name, line number and other optional
  * arguments if any.
@@ -127,7 +127,7 @@ store_msg:
 static int ttt_check_error_index(const int index) {
   if (index == 0 || ttt_log_size == 0) return TTT_SUCCESS;
 
-  ttt_error(index < 0 || index > (int)ttt_log_size, TTT_INVALID_ERROR_INDEX,
+  ttt_error(index < 0 || index > (int)ttt_log_size, TTT_ERROR_INVALID_INDEX,
             "Error index (%d) passed to ttt_get_error_id() is out of range.",
             index);
   return TTT_SUCCESS;

@@ -21,14 +21,14 @@
  * @brief Error index provided to ttt_error_get_id() or ttt_error_get_str()
  * is invalid.
  */
-#define TTT_INVALID_ERROR_INDEX (-1)
+#define TTT_ERROR_INVALID_INDEX (-1)
 
 /**
  * @ingroup ttt_error_codes
  *
  * @brief User input provided to ttt API is invalid.
  */
-#define TTT_INVALID_USER_INPUT (-128)
+#define TTT_ERROR_INVALID_INPUT (-2)
 
 /**
  * @defgroup ttt_user_api_macros User API macros
